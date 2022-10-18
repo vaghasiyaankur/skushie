@@ -35,7 +35,7 @@
             </div>
             <div class="row">
               <div class="col-lg-12 col-xl-12">
-                <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card card-custom card_custom_effect gutter-b bg-white border-0">
                   <div class="card-body">
                     <form>
                       <div class="form-group row">
@@ -136,7 +136,7 @@
                 </div>
               </div>
               <div class="col-lg-12 col-xl-12" v-if="quotation.type != ''">
-                <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card card-custom card_custom_effect gutter-b bg-white border-0">
                   <div class="card-body">
                     <div class="col-md-12">
                       <label class="text-body">Products</label>
@@ -311,7 +311,7 @@
                 </div>
               </div>
               <div class="col-lg-12 col-xl-12" v-if="quotation.type != ''">
-                <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card card-custom card_custom_effect gutter-b bg-white border-0">
                   <div class="card-body">
                     <div class="row mb-3">
                       <div class="col-12">

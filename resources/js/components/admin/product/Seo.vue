@@ -26,8 +26,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 d-flex justify-content-end">
-      <a href="#" data-toggle="pill" @click.prevent="setActive('ad-info-tab')" :class="{ active: isActive('ad-info-tab') }" class="btn btn-dark swipe-to-top cta ">Back</a>
+    <div class="col-12 d-flex justify-content-between">
+      <a href="#" data-toggle="pill" @click.prevent="setActive('ad-info-tab')" :class="{ active: isActive('ad-info-tab') }" class="btn btn-outline-primary swipe-to-top cta border_radius_10 ">Back</a>
       <a href="#" data-toggle="pill" @click.prevent="addProduct()" class="btn btn-primary  ml-2">Save</a>
     </div>
   </div>
@@ -69,3 +69,21 @@ export default {
   props: ["product", "errors", 'edit'],
 };
 </script>
+<style scoped> 
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  background-color: rgb(115 103 240) !important;
+  border-color: rgb(115 103 240) !important;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+background-color: transparent !important;
+color: #ae69f5 !important;
+border-color: var(--artical-background-primary) !important;
+}
+#pills-tabContent .swipe-to-top.cta{
+  padding: 8px 30px !important;
+}
+#pills-tabContent .tab-pane a.btn:hover{
+  box-shadow: 0 8px 25px -8px #7367f0;
+
+}
+</style>

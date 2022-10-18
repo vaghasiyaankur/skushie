@@ -17,9 +17,8 @@
                   class="
                     single-select
                     w-100
-                    mb-3
                     categories-select
-                    ms-offscreen
+                    ms-offscreen custom_select_box
                   "
                   v-model="product_type"
                 >
@@ -44,7 +43,7 @@
                 ></small>
               </fieldset>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>&nbsp;</label>
               <div
                 class="
@@ -53,8 +52,8 @@
                   justify-content-between
                   align-items-center
                   border
-                  p-2
-                  mb-3
+                  custom_select_box
+                  
                 "
               >
                 <h4 class="font-size-h4 text-dark mb-0">Is Active?</h4>
@@ -96,7 +95,7 @@
                   justify-content-between
                   align-items-center
                   border
-                  p-2
+                  custom_select_box
                   mb-3
                 "
               >
@@ -139,7 +138,7 @@
                   justify-content-between
                   align-items-center
                   border
-                  p-2
+                  custom_select_box
                   mb-3
                 "
               >
@@ -179,6 +178,7 @@
                     single-select
                     w-100
                     mb-3
+                    custom_select_box
                     categories-select
                     ms-offscreen
                   "
@@ -211,6 +211,7 @@
                     single-select
                     w-100
                     mb-3
+                    custom_select_box
                     categories-select
                     ms-offscreen
                   "
@@ -538,12 +539,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 d-flex justify-content-end">
+      <div class="col-12 d-flex justify-content-between">
         <a
           data-toggle="pill"
           @click.prevent="setActive('info-tab')"
           :class="{ active: isActive('info-tab') }"
-          class="btn btn-dark swipe-to-top cta"
+          class="btn btn-outline-primary swipe-to-top cta border_radius_10 show "
           >Back</a
         >
         <a
@@ -1083,3 +1084,26 @@ export default {
   props: ["product", "errors", "edit"],
 };
 </script>
+<style scoped>
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  background-color: rgb(115 103 240) !important;
+  border-color: rgb(115 103 240) !important;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+background-color: transparent !important;
+color: #ae69f5 !important;
+border-color: var(--artical-background-primary) !important;
+}
+#pills-tabContent .swipe-to-top.cta{
+  padding: 8px 30px !important;
+}
+#pills-tabContent .tab-pane a.cta:hover{
+  box-shadow: 0 8px 25px -8px #7367f0;
+
+}
+#pills-tabContent .custom_select_box{
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 6.4px 14px !important;
+}
+</style>

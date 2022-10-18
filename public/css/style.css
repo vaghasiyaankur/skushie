@@ -15,8 +15,11 @@
 	border: 0;
 	outline: none;
 	vertical-align: top;
+ 
 }
-
+html,body{
+  font-family: 'Montserrat', sans-serif !important;
+}
 .fancybox-wrap {
 	position: absolute;
 	top: 0;
@@ -26295,7 +26298,6 @@ article:hover .btn-hover {
   box-shadow: none;
   background: #1e30ca !important;
 }
-
 .slick-prev:hover:after,
 .slick-prev:focus:after,
 .slick-prev:active:after,

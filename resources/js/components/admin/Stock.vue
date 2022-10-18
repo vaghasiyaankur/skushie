@@ -11,7 +11,7 @@
                                 <div class="card-header align-items-center  border-bottom-dark px-0">
                                     <div class="card-title mb-0">
                                         <h3 class="card-label mb-0 font-weight-bold text-body">
-                                            Add Stock
+                                            Add Stock 
                                         </h3>
                                     </div>
                                     
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                         <div class="col-lg-12 col-xl-12">
-                            <div class="card card-custom gutter-b bg-white border-0">
+                            <div class="card card-custom card_custom_effect gutter-b bg-white border-0">
                                 <div class="card-body">
                                     <div class="col-md-12">
                                         <label class="text-body">Products</label>
@@ -127,22 +127,27 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                      <button class="btn btn-primary" @click="addstock()">Submit</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-xl-12">
+                        
+                        <!-- <div class="col-lg-12 col-xl-12">
                             <div class="card card-custom gutter-b bg-white border-0">
                                 <div class="card-body">
-                                    <div class="col-md-12"><button class="btn btn-primary" @click="addstock()">Submit</button></div>
+                                    <div class="col-md-12">
+                                      <button class="btn btn-primary" @click="addstock()">Submit</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 </template>
 

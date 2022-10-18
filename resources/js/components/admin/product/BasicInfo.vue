@@ -14,6 +14,26 @@
   width: 50px;
   height: 50px;
 }
+#pills-tabContent .tab-pane a.cta:hover{
+  box-shadow: 0 8px 25px -8px #7367f0;
+}
+#pills-tabContent .custom_select_box{
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 6.4px 14px !important;
+  }
+  .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    background-color: rgb(115 103 240) !important;
+    border-color: rgb(115 103 240) !important;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+  background-color: transparent !important;
+  color: #ae69f5 !important;
+  border-color: var(--artical-background-primary) !important;
+}
+#pills-tabContent .swipe-to-top.cta{
+  padding: 8px 30px !important;
+}
 </style>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <template>
@@ -109,14 +129,14 @@
 
             <br />
             <br />
-            <ul class="nav nav-pills lang-tab" id="pills-tab1" role="tablist">
+            <ul class="nav nav-pills lang-tab mb-3" id="pills-tab1" role="tablist">
               <li
                 class="nav-item"
                 v-for="language in languages"
                 @click="setSelectedLanguage(language.id)"
               >
                 <a
-                  class="nav-link btn-light shadow-none rounded-0"
+                  class="nav-link btn-light shadow-none border_radius_10 "
                   :class="language.id == selectedLanguage ? 'show active' : ''"
                 >
                   {{ language.language_name }}
@@ -128,7 +148,7 @@
               <div class="col-12">
                 <div class="tab-content lang-content" id="v-pills-tabContent">
                   <div
-                    class="tab-pane fade"
+                    class="tab-pane fade card_custom_effect"
                     v-for="(language, index) in languages"
                     :class="
                       language.id == selectedLanguage ? 'show active' : ''
@@ -188,7 +208,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12 col-12">
+              <div class="col-md-12 col-12 mt-3">
                 <div class="form-group">
                   <label class="text-dark">Video URL</label>
                   <input

@@ -11,7 +11,7 @@
                         <div class="card-header align-items-center  border-bottom-dark px-0">
                            <div class="card-title mb-0">
                               <h3 class="card-label mb-0 font-weight-bold text-body">
-                                 {{this.$route.params.id ? 'Edit' : 'Add'}} Product
+                                 {{this.$route.params.id ? 'Edit' : 'Add'}}
                               </h3>
                            </div>
                            
@@ -398,3 +398,9 @@ export default {
     }
 };
 </script>
+<style>
+.tab-content.lang-content > .active{
+   border-radius: 10px !important;
+   box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%) !important;
+}
+</style>

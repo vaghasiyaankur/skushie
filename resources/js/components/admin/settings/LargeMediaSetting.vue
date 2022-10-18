@@ -1,15 +1,15 @@
 <template>
 <div class="form-group row">
     <div class="col-md-12">
-        <label>Large Height</label>
+        <label class="fontsize-16">Large Height</label>
         <fieldset class="form-group mb-3">
-            <input type="number" class="form-control border-dark" placeholder="" v-model="gallary_setting.large_height" ref="large_height">
+            <input type="number" class="form-control" placeholder="" v-model="gallary_setting.large_height" ref="large_height">
         </fieldset>
     </div>
     <div class="col-md-12">
-        <label>Large Width</label>
+        <label class="fontsize-16">Large Width</label>
         <fieldset class="form-group mb-3">
-            <input type="number" class="form-control border-dark" placeholder="" v-model="gallary_setting.large_width" ref="large_width">
+            <input type="number" class="form-control" placeholder="" v-model="gallary_setting.large_width" ref="large_width">
         </fieldset>
     </div>
 

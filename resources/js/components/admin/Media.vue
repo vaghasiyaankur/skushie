@@ -22,13 +22,13 @@
         <div class="col-12">
           <div class="gallary-categories">
             <ul
-              class="nav nav-pills justify-content-start mb-0"
+              class="nav nav-pills justify-content-center mb-3"
               id="pills-tab"
               role="tablist"
             >
               <li class="nav-item">
                 <a
-                  class="nav-link btn-light-dark shadow-none mr-4 mb-4"
+                  class="nav-link btn-light-dark shadow-none"
                   :class="{ active: tag_id == '' }"
                   id="All-tab-center"
                   data-toggle="pill"
@@ -43,7 +43,7 @@
               </li>
               <li class="nav-item" v-for="tag in tags">
                 <a
-                  class="nav-link btn-light-dark shadow-none mr-4 mb-4"
+                  class="nav-link btn-light-dark shadow-none"
                   :class="{ active: tag_id == tag.tag_id }"
                   id="general-tab-center"
                   data-toggle="pill"
@@ -75,7 +75,7 @@
                     id="checkbox1"
                     @change="check($event)"
                   />
-                  <label for="checkbox1">
+                  <label for="checkbox1" class="mb-0 pl-2">
                     Select All
                     <small class="text-muted"
                       >({{ this.selectedImages.length }} Item Selected)</small
@@ -86,7 +86,7 @@
               <div class="icons d-flex">
                 <button
                   type="button"
-                  class="btn btn-danger p-2 ml-2"
+                  class="btn btn-danger ml-2 border_radius_10"
                   title="Delete"
                   id="confirm-color"
                   @click="deletegallary()"
@@ -97,7 +97,7 @@
                 <button
                   type="button"
                   title="Add New"
-                  class="btn btn-primary white p-2 ml-2"
+                  class="btn btn-primary white ml-2"
                   data-toggle="modal"
                   data-target="#imagepopup"
                   @click="toggleModal()"
@@ -228,7 +228,7 @@
                       @click="setSelectedImages(gallary.id)"
                     >
                       <div
-                        class="thumbnail text-center mb-4"
+                        class="thumbnail text-center mb-4 card_custom_effect"
                         :class="{ active: selectedImages.includes(gallary.id) }"
                       >
                         <div class="detail-link">
@@ -294,7 +294,7 @@
                           class="
                             pagination
                             d-flex
-                            justify-content-end
+                            justify-content-between
                             align-items-center
                           "
                         >
@@ -304,7 +304,7 @@
                             <span id="totalnumber">{{ meta.total }}</span> )
                           </div>
                           <a
-                            class="btn btn-secondary white"
+                            class="btn btn-secondary white border_radius_10"
                             href="#"
                             id="loadMore"
                             @click="setLimit()"
@@ -539,3 +539,48 @@ export default {
   },
 };
 </script>
+<style scoped>
+.gallary-categories ul li a {
+  width: 145px;
+  border-radius: 0px !important;
+  text-align: center;
+  background: #e9ecf1;
+  border-right: 1px solid #c1c4c9;
+  padding: 13px 15px !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gallary-categories ul li:first-child a{
+  border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+}
+.gallary-categories ul li:last-child a {
+  border-right: 0px;
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+}
+.thumbnail{
+  box-shadow: 0 4px 24px 0 rgb(177 177 177 / 50%);
+  border-color: rgb(177 177 177 / 50%)!important;
+}
+.thumbnail.active{
+  /*box-shadow: 0 4px 24px 0 #ae69f58a;*/
+  border-color: #ae69f5 !important;
+}
+.thumbnail:hover {
+  box-shadow: 0 4px 24px 0 #ae69f58a;
+  border-color: #ae69f5 !important;
+}
+
+.checkbox-input:checked {
+  accent-color: #7367f0;
+  border-color: #7367f0 !important;
+}
+.checkbox-input {
+  width: 1.285rem;
+  height: 1.285rem;
+  box-shadow: 0 2px 4px 0 rgb(115 103 240 / 40%) !important ;
+}
+.checkbox-input:not(:disabled):checked {
+}
+</style>

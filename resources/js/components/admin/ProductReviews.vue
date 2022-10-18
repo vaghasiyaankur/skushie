@@ -105,7 +105,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchreviews(pagination.prev_page_url)">Previous</button></li>
 
                                                     <li class="disabled"><button class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</button></li>
@@ -306,3 +306,11 @@ export default {
     }
 };
 </script>
+<style>
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+    background-color: transparent;
+  }
+  table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+    background-color: transparent;
+  }
+</style>

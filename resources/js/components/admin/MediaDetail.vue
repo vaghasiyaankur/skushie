@@ -9,7 +9,7 @@
                         <div class="card card-custom gutter-b bg-transparent shadow-none border-0">
                             <div class="card-header align-items-center  border-bottom-dark px-0">
                                 <div class="card-title mb-0">
-                                    <h3 class="card-label mb-0 font-weight-bold text-body">Image Detail
+                                    <h3 class="card-label mb-0 font-weight-bold text-body">Image Detail asdf
                                     </h3>
                                 </div>
                                 <div class="icons d-flex">
@@ -23,198 +23,211 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-12 ">
-                        <div class="card card-custom gutter-b bg-white border-0 h-auto">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 col-md-6 d-flex align-items-center">
-                                        <div class="thumbnail-detail w-100">
-                                            <img :src='"/gallary/"+gallary.gallary_name' class="img-fluid border-radius-10px w-100" alt="actual image">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="card card-custom bg-light shadow-none border-0">
-                                            <div class="card-body">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card card-custom gutter-b bg-white border-0 h-auto">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 d-flex align-items-center">
+                                                <div class="thumbnail-detail w-100 card_custom_effect">
+                                                    <img :src='"/gallary/"+gallary.gallary_name' class="img-fluid border-radius-10px w-100" alt="actual image">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="card card-custom bg-light shadow-none border-0">
+                                                    <div class="card-body">
 
-                                                <div class="thumbnail h-100 d-flex flex-column justify-content-center">
-                                                    <h4 class="text-primary">Actual Size(
-                                                        {{ gallary.detail ? gallary.detail[0].gallary_type =='large' ?   gallary.detail[0].gallary_height +'*'+  gallary.detail[0].gallary_width : '' :"" }} 
-                                                        
-                                                        )</h4>
-                                                    <div class="thumbnail-input-detail mt-3 w-100">
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12">
-                                                                <label class="form-label">Path</label>
-                                                                <input type="text" id="first-name" class="form-control" name="fname" placeholder="image path" :value='"/gallary/"+gallary.gallary_name' />
-                                                               
-                                                            </div>
+                                                        <div class="thumbnail h-100 d-flex flex-column justify-content-center">
+                                                            <h4 class="text-primary">Actual Size(
+                                                                {{ gallary.detail ? gallary.detail[0].gallary_type =='large' ?   gallary.detail[0].gallary_height +'*'+  gallary.detail[0].gallary_width : '' :"" }} 
+                                                                
+                                                                )</h4>
+                                                            <div class="thumbnail-input-detail mt-3 w-100">
+                                                                <div class="form-group row align-items-center justify-content-center ">
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Path</label>
+                                                                        <input type="text" id="first-name" class="form-control" name="fname" placeholder="image path" :value='"/gallary/"+gallary.gallary_name' />
+                                                                    
+                                                                    </div>
 
-                                                        </div>
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12">
-                                                                <label class="form-label">Image Tag</label>
-                                                                <input-tag  v-model="gallary_tags"></input-tag>
-                                                                <br />
+                                                                </div>
                                                                 <div class="form-group row align-items-center justify-content-center">
-                                                                    <div class="col-12 d-flex justify-content-end">
-                                                                        <button class="btn btn-secondary white" @click="updateTags()" >
-                                                                        Update Tags
-                                                                        </button>
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Image Tag</label>
+                                                                        <input-tag  v-model="gallary_tags"></input-tag>
+                                                                        <br />
+                                                                        <div class="form-group row align-items-center justify-content-center mb-0">
+                                                                            <div class="col-12 d-flex justify-content-end">
+                                                                                <button class="btn btn_outline_purple white" @click="updateTags()" >
+                                                                                Update Tags
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="card card-custom gutter-b bg-white border-0 h-auto">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 col-md-5 d-flex align-items-center">
-                                        <div class="thumbnail-detail w-100">
-                                            <img :src="gallary.detail[0].gallary_type =='large' ?''+gallary.detail[0].gallary_path:''" class="img-fluid border-radius-10px w-100" alt="actual image">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-7">
-                                        <div class="card card-custom bg-light shadow-none border-0">
-                                            <div class="card-body">
-
-                                                <div class="thumbnail h-100 d-flex flex-column justify-content-center">
-                                                    <h4 class="text-primary">Large ({{ gallary.detail ? gallary.detail[0].gallary_type =='large' ?   gallary.detail[0].gallary_height +'*'+  gallary.detail[0].gallary_width : '' :"" }})</h4>
-                                                    <div class="thumbnail-input-detail mt-3 w-100">
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12">
-                                                                <label class="form-label">Path</label>
-                                                                <input type="text" id="first-name1" class="form-control" name="fname" placeholder="image path" :value=" gallary.detail[0].gallary_type =='large' ?''+gallary.detail[0].gallary_path:''">
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-6">
-                                                                <label class="form-label">Height</label>
-                                                                <input type="text" class="form-control" name="fname" placeholder="width" v-model="resize_large.height">
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <label class="form-label">Width</label>
-                                                                <input type="text" class="form-control" name="fname" placeholder="Width" v-model="resize_large.width">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12 d-flex justify-content-end">
-                                                                <button class="btn btn-secondary white" @click="resizeSingleImage(gallary.detail[0].id, 'large')">Regenrate</button>
+                            <div class="col-lg-6">
+                                <div class="card card-custom gutter-b bg-white border-0 h-auto">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 d-flex align-items-center">
+                                                <div class="thumbnail-detail w-100 card_custom_effect">
+                                                    <img :src="gallary.detail[0].gallary_type =='large' ?''+gallary.detail[0].gallary_path:''" class="img-fluid border-radius-10px w-100" alt="actual image">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 ">
+                                                <div class="card card-custom bg-light shadow-none border-0">
+                                                    <div class="card-body">
+    
+                                                        <div class="thumbnail h-100 d-flex flex-column justify-content-center">
+                                                            <h4 class="text-primary">Large ({{ gallary.detail ? gallary.detail[0].gallary_type =='large' ?   gallary.detail[0].gallary_height +'*'+  gallary.detail[0].gallary_width : '' :"" }})</h4>
+                                                            <div class="thumbnail-input-detail mt-3 w-100">
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Path</label>
+                                                                        <input type="text" id="first-name1" class="form-control mb-3" name="fname" placeholder="image path" :value=" gallary.detail[0].gallary_type =='large' ?''+gallary.detail[0].gallary_path:''">
+                                                                    </div>
+    
+                                                                </div>
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Height</label>
+                                                                        <input type="text" class="form-control" name="fname" placeholder="width" v-model="resize_large.height">
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Width</label>
+                                                                        <input type="text" class="form-control" name="fname" placeholder="Width" v-model="resize_large.width">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-12 d-flex justify-content-end">
+                                                                        <button class="btn btn_outline_purple white" @click="resizeSingleImage(gallary.detail[0].id, 'large')">Regenrate</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+    
                                             </div>
                                         </div>
-
+    
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="card card-custom gutter-b bg-white border-0 h-auto">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 col-md-5 d-flex align-items-center">
-                                        <div class="thumbnail-detail w-100">
-                                            <img :src="gallary.detail[1].gallary_type =='medium' ?''+gallary.detail[1].gallary_path:''" class="img-fluid border-radius-10px w-100" alt="actual image">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-7">
-                                        <div class="card card-custom bg-light shadow-none border-0">
-                                            <div class="card-body">
-
-                                                <div class="thumbnail h-100 d-flex flex-column justify-content-center">
-                                                    <h4 class="text-primary">MEDIUM ({{ gallary.detail ? gallary.detail[1].gallary_type =='medium' ?   gallary.detail[1].gallary_height +'*'+  gallary.detail[1].gallary_width : '' :"" }})</h4>
-                                                    <div class="thumbnail-input-detail mt-3 w-100">
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12">
-                                                                <label class="form-label">Path</label>
-                                                                <input type="text" id="first-name1" class="form-control" name="fname" placeholder="image path" :value=" gallary.detail[1].gallary_type =='medium' ?''+gallary.detail[1].gallary_path:''">
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-6">
-                                                                <label class="form-label">Height</label>
-                                                                <input type="text" class="form-control" name="fname" placeholder="width" v-model="resize_medium.height">
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <label class="form-label">Width</label>
-                                                                <input type="text" class="form-control" name="fname" placeholder="Width" v-model="resize_medium.width">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12 d-flex justify-content-end">
-                                                                <button class="btn btn-secondary white" @click="resizeSingleImage(gallary.detail[1].id, 'medium')">Regenrate</button>
+                            
+                            <div class="col-lg-6">
+                                <div class="card card-custom gutter-b bg-white border-0 h-auto">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 d-flex align-items-center">
+                                                <div class="thumbnail-detail w-100 card_custom_effect">
+                                                    <img :src="gallary.detail[1].gallary_type =='medium' ?''+gallary.detail[1].gallary_path:''" class="img-fluid border-radius-10px w-100" alt="actual image">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="card card-custom bg-light shadow-none border-0">
+                                                    <div class="card-body">
+    
+                                                        <div class="thumbnail h-100 d-flex flex-column justify-content-center">
+                                                            <h4 class="text-primary">MEDIUM ({{ gallary.detail ? gallary.detail[1].gallary_type =='medium' ?   gallary.detail[1].gallary_height +'*'+  gallary.detail[1].gallary_width : '' :"" }})</h4>
+                                                            <div class="thumbnail-input-detail mt-3 w-100">
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Path</label>
+                                                                        <input type="text" id="first-name1" class="form-control" name="fname" placeholder="image path" :value=" gallary.detail[1].gallary_type =='medium' ?''+gallary.detail[1].gallary_path:''">
+                                                                    </div>
+    
+                                                                </div>
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Height</label>
+                                                                        <input type="text" class="form-control" name="fname" placeholder="width" v-model="resize_medium.height">
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Width</label>
+                                                                        <input type="text" class="form-control" name="fname" placeholder="Width" v-model="resize_medium.width">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-12 d-flex justify-content-end">
+                                                                        <button class="btn btn_outline_purple white" @click="resizeSingleImage(gallary.detail[1].id, 'medium')">Regenrate</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+    
                                             </div>
                                         </div>
-
+    
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
-
-                        <div class="card card-custom gutter-b bg-white border-0 h-auto">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-12 col-md-5 d-flex align-items-center">
-                                        <div class="thumbnail-detail w-100">
-                                            <img :src="gallary.detail[2].gallary_type =='thumbnail' ?''+gallary.detail[2].gallary_path:''" class="img-fluid border-radius-10px w-100" alt="actual image">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-7">
-                                        <div class="card card-custom bg-light shadow-none border-0">
-                                            <div class="card-body">
-
-                                                <div class="thumbnail h-100 d-flex flex-column justify-content-center">
-                                                    <h4 class="text-primary">Thumbnail ({{ gallary.detail ? gallary.detail[2].gallary_type =='thumbnail' ?   gallary.detail[2].gallary_height +'*'+  gallary.detail[2].gallary_width : '' :"" }})</h4>
-                                                    <div class="thumbnail-input-detail mt-3 w-100">
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12">
-                                                                <label class="form-label">Path</label>
-                                                                <input type="text" id="first-name1" class="form-control" name="fname" placeholder="image path" :value=" gallary.detail[2].gallary_type =='thumbnail' ?''+gallary.detail[2].gallary_path:''">
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-6">
-                                                                <label class="form-label">Height</label>
-                                                                <input type="text" class="form-control" name="fname"  placeholder="width" v-model="resize_thumbnail.height">
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <label class="form-label">Width</label>
-                                                                <input type="text" class="form-control" name="fname"  placeholder="height" v-model="resize_thumbnail.width">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row align-items-center justify-content-center">
-                                                            <div class="col-12 d-flex justify-content-end">
-                                                                <button class="btn btn-secondary white" @click="resizeSingleImage(gallary.detail[2].id, 'thumbnail')">Regenrate</button>
+                            
+                            <div class="col-lg-6">
+                                <div class="card card-custom gutter-b bg-white border-0 h-auto ">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 d-flex align-items-center">
+                                                <div class="thumbnail-detail w-100 card_custom_effect">
+                                                    <img :src="gallary.detail[2].gallary_type =='thumbnail' ?''+gallary.detail[2].gallary_path:''" class="img-fluid border-radius-10px w-100" alt="actual image">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="card card-custom bg-light shadow-none border-0">
+                                                    <div class="card-body">
+    
+                                                        <div class="thumbnail h-100 d-flex flex-column justify-content-center">
+                                                            <h4 class="text-primary">Thumbnail ({{ gallary.detail ? gallary.detail[2].gallary_type =='thumbnail' ?   gallary.detail[2].gallary_height +'*'+  gallary.detail[2].gallary_width : '' :"" }})</h4>
+                                                            <div class="thumbnail-input-detail mt-3 w-100">
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-12">
+                                                                        <label class="form-label">Path</label>
+                                                                        <input type="text" id="first-name1" class="form-control" name="fname" placeholder="image path" :value=" gallary.detail[2].gallary_type =='thumbnail' ?''+gallary.detail[2].gallary_path:''">
+                                                                    </div>
+    
+                                                                </div>
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Height</label>
+                                                                        <input type="text" class="form-control" name="fname"  placeholder="width" v-model="resize_thumbnail.height">
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <label class="form-label">Width</label>
+                                                                        <input type="text" class="form-control" name="fname"  placeholder="height" v-model="resize_thumbnail.width">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row align-items-center justify-content-center">
+                                                                    <div class="col-12 d-flex justify-content-end">
+                                                                        <button class="btn btn_outline_purple white" @click="resizeSingleImage(gallary.detail[2].id, 'thumbnail')">Regenrate</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+    
                                             </div>
                                         </div>
-
+    
                                     </div>
                                 </div>
-
                             </div>
+
+                            
                         </div>
 
                     </div>
@@ -359,3 +372,21 @@ export default {
     }
 };
 </script>
+<style>
+.vue-input-tag-wrapper .input-tag{
+    background-color: #7367f0;
+    border-radius: 4px;
+    border: 1px solid #7367f0;
+    color: #fff;
+}
+.vue-input-tag-wrapper .input-tag .remove:empty:before {
+    color: #fff;
+}
+.vue-input-tag-wrapper{
+    border: 1px solid #d8d6de;
+    border-radius: 4px;
+}
+.card_custom_effect:hover{
+    border-radius: 10px;
+}
+</style>

@@ -451,16 +451,15 @@ export default {
 </script>
 <style>
 
-.order--table tbody tr:nth-of-type(odd) {
-  background-color: rgba(0,0,0,.05) !important;
-}
-.order--table tbody tr:nth-of-type(even) {
-  background-color: #ffffff !important;
-}
+
 .pagination.pagination-sm li a{
   padding: 6px 12px;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 50px;
+  font-size: 15px;
+}
+.pagination-sm .page-item:last-child .page-link {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 .page-link:focus{
   box-shadow: none !important;

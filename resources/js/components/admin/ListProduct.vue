@@ -32,7 +32,7 @@
                     <div class="icons d-flex">
                       <router-link
                         to="/admin/add-product"
-                        class="btn ml-2 p-0 kt_notes_panel_toggle"
+                        class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black"
                         data-toggle="tooltip"
                         title=""
                         data-placement="right"
@@ -41,22 +41,13 @@
                       >
                         <span
                           class="
-                            bg-secondary
-                            h-30px
-                            font-size-h5
-                            w-30px
-                            d-flex
-                            align-items-center
-                            justify-content-center
-                            rounded-circle
-                            shadow-sm
-                          "
+                          h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm"
                         >
                           <svg
                             width="25px"
                             height="25px"
                             viewBox="0 0 16 16"
-                            class="bi bi-plus white"
+                            class="bi bi-plus"
                             fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -408,7 +399,7 @@
                               </tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm m-0 float-right">
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                             <li
                               v-bind:class="[
                                 { disabled: !pagination.prev_page_url },
@@ -713,3 +704,16 @@ export default {
   props: ["loading"],
 };
 </script>
+<style>
+.pagination.pagination-sm li button{
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 15px;
+}
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+  background-color: transparent;
+}
+table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+  background-color: transparent;
+}
+</style>

@@ -15,11 +15,11 @@
                                         </h3>
                                     </div>
                                     <div class="icons d-flex">
-                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('product-variation-manage')">
-                                            <span class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm " v-on:click="
+                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('product-variation-manage')">
+                                            <span class="h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm  " v-on:click="
                                                         display_form = !display_form
                                                     ">
-                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                                 </svg>
                                             </span>
@@ -53,7 +53,7 @@
                                                 <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchvariations()"></label>
                                                 <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
                                             </div>
-                                                <table id="productvariationTable" class="display dataTable no-footer" role="grid">
+                                                <table id="productvariationTable" class="display dataTable no-footer order--table" role="grid">
                                                     <thead class="text-body">
                                                         <tr role="row">
                                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
@@ -88,7 +88,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchvariations(pagination.prev_page_url)">Previous</button></li>
 
                                                     <li class="disabled"><button class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</button></li>
@@ -119,7 +119,7 @@
         <form id="myform">
             <div class="row">
                 <div class="col-12">
-                    <div class="tabslang">
+                    <div class="tabslang mb-3">
                     <div v-for="language in languages" class="tablang" :class="language.id == selectedLanguage ?'active':''" @click="setSelectedLanguage(language.id)">
                         {{ language.language_name }}
                     </div>
@@ -146,7 +146,7 @@
 
                 
             </div>
-            <button type="button" @click="addUpdatevariation()" class="btn btn-primary">Submit</button>
+            <button type="button" @click="addUpdatevariation()" class="btn btn-primary w-100 mt-3">Submit</button>
         </form>
     </div>
 </div>
@@ -368,3 +368,11 @@ export default {
     }
 };
 </script>
+<style scoped>
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+    background-color: transparent;
+  }
+  table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+    background-color: transparent;
+  }
+</style>

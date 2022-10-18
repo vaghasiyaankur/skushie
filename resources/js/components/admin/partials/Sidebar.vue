@@ -3152,3 +3152,14 @@ export default {
   props: ["burgerMenu"],
 };
 </script>
+<style>
+.nav .nav-link.active, .nav-pills .show > .nav-link{
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
+  box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
+  color: white !important;  
+ 
+}
+.aside .aside-menu .nav-item .nav-link{
+  border-radius: 10px ;
+}
+</style>

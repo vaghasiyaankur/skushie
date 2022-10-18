@@ -1,4 +1,7 @@
 <style>
+html,body{
+  font-family: 'Montserrat', sans-serif !important
+}
 .tabslang {
   display: flex;
   cursor: pointer;
@@ -11,6 +14,124 @@
 .tablang.active {
   background: #ae69f5;
   color: white;
+}
+.btn-primary{
+  color: #fff !important;
+  background-color: #7367f0 !important;
+  border-color: #7367f0 !important;
+  border-radius: 10px !important;
+  padding: 8px 30px;
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 25px -8px #7367f0;
+}
+.border_radius_10{
+  border-radius: 10px !important;
+}
+.form-control{
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #6e6b7b;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #d8d6de;
+  appearance: none;
+  border-radius: 0.357rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-control:hover {
+  border-color: #7367f0;
+  box-shadow: 0 0 5px 0px rgb(115 103 240 / 51%) !important;
+}
+.form-control:focus{
+  border-color: #7367f0;
+}
+.tablang.active{
+  background: #ae69f5;
+  padding: 5px 12px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: inset 0 -3px 0 0 rgb(34 41 47 / 20%);
+}
+.fontsize-16{
+  font-size: 16px;
+}
+.order--table tbody tr:nth-of-type(odd) {
+  background-color: #f3f2f7 !important;
+}
+.order--table tbody tr:nth-of-type(even) {
+  background-color: #ffffff !important;
+}
+.order--table tbody tr:hover{
+  background-color:#fafafc !important ;
+}
+.dataTables_wrapper .dataTables_filter input {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background: #f3f2f7 !important;
+  border-color: #f3f2f7 !important;
+}
+.dataTables_wrapper .dataTables_filter button{
+  outline: none;
+  border: none;
+  padding: 5px 15px;
+  box-shadow: 0px 0px 10px #ea5455;
+  background: rgb(234, 84, 85);
+  color: #fff;
+  border-radius: 10px;
+  margin-left: 10px; 
+  font-size: 15px;
+}
+.text-body {
+  color: #636363 !important;
+}
+.aside .aside-menu .nav-item .nav-link:hover {
+  color: #8f85f3;
+}
+.btn:focus, .btn.focus{
+  box-shadow: none;
+}
+.aside .aside-menu .nav-item .nav-link .nav-text{
+  font-size: 16px;
+}
+.icons .kt_notes_panel_toggle span{
+  border: 1px solid rgb(174 105 245);
+  border-radius: 5px;
+  color: rgb(174 105 245);
+  box-shadow: 0 0 10px rgb(174 105 245 / 22%) !important;
+  transition: all 0.5s ease;
+}
+.icons .kt_notes_panel_toggle span:hover {
+  background: #ae69f5 !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px rgb(174 105 245 / 75%) !important;
+  transition: all 0.5s ease;
+
+}
+.btn_outline_purple{
+  background-color: transparent;
+    border-color: #cfa5f9;
+    color: #ae69f5 !important;
+    border-radius: 10px;
+}
+.btn_outline_purple:hover{
+  background-color: #efe1fd;
+  border-color: #cfa5f9;
+}
+.card_custom_effect{
+  transition: all 0.3s ease;
+}
+.card_custom_effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 25px 0 rgb(34 41 47 / 25%);
+}
+.btn-secondary:hover {
+  box-shadow: 0 8px 25px -8px #ff9f43;
 }
 </style>
 <template>
@@ -143,12 +264,11 @@ export default {
   created() {
     if (localStorage.getItem("permissions")) {
       this.permissions = localStorage.getItem("permissions").split(",");
-      
         if (
             this.$route.name !== "dashboard" &&
             !this.permissions.includes(this.$route.name)
         ) {
-            this.$router.push("/admin/accessdenied");
+            // this.$router.push("/admin/accessdenied");
         }
     }
   },

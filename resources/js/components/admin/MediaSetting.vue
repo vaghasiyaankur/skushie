@@ -7,8 +7,8 @@
     <div class="card-body">
 
         <div class="row">
-            <div class="col-md-3">
-                <ul class="nav flex-column nav-pills mb-3" id="v-pills-tab1" role="tablist" aria-orientation="vertical">
+            <div class="col-md-12">
+                <ul class="nav nav-pills mb-4" id="v-pills-tab1" role="tablist" aria-orientation="vertical">
                     <li class="nav-item">
                         <a class="nav-link" @click.prevent="setActive('large')" :class="{ active: isActive('large') }" href="#large">Large Setting</a>
                     </li>
@@ -20,8 +20,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-9">
-                <div class="tab-content" id="v-pills-tabContent1">
+            <div class="col-md-12">
+                <div class="tab-content v_pill_tab card_custom_effect" id="v-pills-tabContent1">
                     <div class="tab-pane fade" :class="{ 'active show': isActive('large') }">
                         <LargeMediaSetting />
                     </div>
@@ -68,3 +68,16 @@ export default {
     }
 }
 </script>
+<style>
+.v_pill_tab{
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    border-radius: 10px;
+    padding: 20px;
+}
+#v-pills-tab1 li a{
+    font-size: 15px;
+    border-radius: 10px !important;
+    padding: 8px 25px;
+}
+
+</style>

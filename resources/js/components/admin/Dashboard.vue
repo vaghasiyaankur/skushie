@@ -14,6 +14,7 @@
             <div
                class="
                card card-custom
+               card_custom_effect
                gutter-b
                bg-white
                border-0
@@ -68,7 +69,7 @@
          <div class="col-lg-6 col-xl-3">
             <div
                class="
-               card card-custom
+               card card-custom card_custom_effect
                gutter-b
                bg-white
                border-0
@@ -126,7 +127,7 @@
          <div class="col-lg-6 col-xl-3">
             <div
                class="
-               card card-custom
+               card card-custom card_custom_effect
                gutter-b
                bg-white
                border-0
@@ -184,7 +185,7 @@
          <div class="col-lg-6 col-xl-3">
             <div
                class="
-               card card-custom
+               card card-custom card_custom_effect
                gutter-b
                bg-white
                border-0
@@ -482,7 +483,7 @@
                   </div>
                </div>
                <div class="card-body pt-3">
-                  <div id="chart" class="chart_main">
+                  <div id="chart" class="chart_main card_custom_effect">
                      <apexchart
                         type="line"
                         height="350"
@@ -503,7 +504,7 @@
                 </div>
              </div>
              <div class="card-body pt-3">
-                <div id="chart" class="chart_main">
+                <div id="chart" class="chart_main card_custom_effect">
                    <apexchart
                       type="line"
                       height="350"
