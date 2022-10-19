@@ -15,11 +15,11 @@
                                         </h3>
                                     </div>
                                     <div class="icons d-flex">
-                                        <router-link to="/admin/add-sale-quotation" class="btn ml-2 p-0 kt_notes_panel_toggle" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('quotation-manage')">
-                                            <span class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm " v-on:click="
+                                        <router-link to="/admin/add-sale-quotation" class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('quotation-manage')">
+                                            <span class="h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm " v-on:click="
                                                         display_form = !display_form
                                                     ">
-                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                                 </svg>
                                             </span>
@@ -139,7 +139,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><a class="page-link" href="#" @click="fetchsale_quotations(pagination.prev_page_url)">Previous</a></li>
 
                                                     <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>

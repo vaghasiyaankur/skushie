@@ -150,7 +150,9 @@ html,body{
 
 .form-text{
   font-size: 14px !important;
-
+}
+.white__nowrap{
+  white-space:nowrap;
 }
 </style>
 <template>

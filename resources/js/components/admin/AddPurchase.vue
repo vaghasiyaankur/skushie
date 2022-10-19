@@ -38,7 +38,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-xl-12">
                                 <div
-                                    class="card card-custom gutter-b bg-white border-0"
+                                    class="card card-custom gutter-b card_custom_effect  bg-white border-0"
                                 >
                                     <div class="card-body">
                                         <form>
@@ -202,7 +202,7 @@
                             </div>
                             <div class="col-lg-12 col-xl-12">
                                 <div
-                                    class="card card-custom gutter-b bg-white border-0"
+                                    class="card card-custom gutter-b card_custom_effect bg-white border-0"
                                 >
                                     <div class="card-body">
                                         <div class="col-md-12">
@@ -516,7 +516,7 @@
                             </div>
                             <div class="col-lg-12 col-xl-12">
                                 <div
-                                    class="card card-custom gutter-b bg-white border-0"
+                                    class="card card-custom gutter-b card_custom_effect bg-white border-0"
                                 >
                                     <div class="card-body">
                                         <div class="row mb-3">
@@ -557,7 +557,7 @@
                                             <div class="col-12 col-md-3">
                                                 <div>
                                                     <table
-                                                        class="table right-table mb-0"
+                                                        class="table right-table mb-0 cutom_table_effect"
                                                     >
                                                         <tbody>
                                                             <tr
@@ -720,7 +720,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="col-md-12 d-flex justify-content-end"
+                                            class="col-md-12 d-flex justify-content-end mt-3"
                                         >
                                             <button
                                                 class="btn btn-primary"
@@ -1347,3 +1347,13 @@ export default {
     }
 };
 </script>
+<style scoped>
+.cutom_table_effect{
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px 0 rgb(34 41 47 / 18%);
+  border-radius: 7px;
+}
+.cutom_table_effect tr,.cutom_table_effect td{
+  border-bottom:1px solid #e9ecef;
+}
+</style>

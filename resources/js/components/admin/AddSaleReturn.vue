@@ -35,7 +35,7 @@
             </div>
             <div class="row">
               <div class="col-lg-12 col-xl-12">
-                <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card card-custom gutter-b card_custom_effect bg-white border-0">
                   <div class="card-body">
                     <form>
                       <div class="form-group row">
@@ -88,7 +88,7 @@
                 </div>
               </div>
               <div class="col-lg-12 col-xl-12" v-if="display_table">
-                <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card card-custom gutter-b card_custom_effect bg-white border-0">
                   <div class="card-body">
                     <div class="col-12">
                       <div class="table-responsive">
@@ -239,7 +239,7 @@
                 </div>
               </div>
               <div class="col-lg-12 col-xl-12" v-if="display_table">
-                <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card card-custom gutter-b card_custom_effect bg-white border-0">
                   <div class="card-body">
                     <div class="row mb-3">
                       <div class="col-12">

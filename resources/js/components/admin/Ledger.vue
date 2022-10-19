@@ -93,7 +93,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><a class="page-link" href="#" @click="fetchaccounts(pagination.prev_page_url)">Previous</a></li>
 
                                                     <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>

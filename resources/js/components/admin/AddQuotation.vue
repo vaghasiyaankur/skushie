@@ -26,7 +26,7 @@
                   >
                     <div class="card-title mb-0">
                       <h3 class="card-label mb-0 font-weight-bold text-body">
-                        Add Quotation
+                        Add Quotation 
                       </h3>
                     </div>
                   </div>

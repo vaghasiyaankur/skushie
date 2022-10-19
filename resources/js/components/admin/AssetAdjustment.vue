@@ -35,125 +35,132 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <div class="card card-custom gutter-b bg-white border-0">
-                  <div class="card-body">
-                    <div>
-                      <div class="form-group">
-                        <label>Account Type</label>
-                        <fieldset class="form-group mb-3">
-                          <select
-                            class="
-                              js-example-basic-single js-states
-                              form-control
-                              bg-transparent
-                            "
-                            v-model="account.parent"
-                            @change="appendChild($event, 'select')"
-                          >
-                            <option value="" disabled selected v-bind:key="0">
-                              Asset
-                            </option>
-                          </select>
-                        </fieldset>
-                      </div>
-                      <div
-                        class="form-group child"
-                        v-for="(child, index) in childToAppend"
-                      >
-                        <select
-                          class="
-                            js-example-basic-single js-states
-                            form-control
-                            bg-transparent
-                          "
-                          @change="appendChild($event, 'select' + index)"
-                        >
-                          <option value="" disabled selected v-bind:key="0">
-                            Select account
-                          </option>
-                          <option
-                            v-for="childern in child.data"
-                            :value="childern.id"
-                            v-bind:key="childern.id"
-                          >
-                            {{ childern.name }}
-                          </option>
-                        </select>
-                      </div>
-                      <small
-                        class="form-text text-danger"
-                        v-if="errors.has('account_id')"
-                        v-text="errors.get('account_id')"
-                      ></small>
-
-                      <div class="row">
-                        <div class="col-8"></div>
-                        <div class="col-3">
-                          <div class="form-group">
-                            <label>Transaction Type</label>
-                            <fieldset class="form-group mb-3">
+                <div class="row">
+                  <div class="col-12">              
+                    <div class="card card-custom gutter-b card_custom_effect bg-white border-0">                        
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-6">                        
+                            <div class="form-group">
+                              <label>Account Type</label>
+                              <fieldset class="form-group mb-3">
+                                <select
+                                  class="
+                                    js-example-basic-single js-states
+                                    form-control
+                                    bg-transparent
+                                  "
+                                  v-model="account.parent"
+                                  @change="appendChild($event, 'select')"
+                                >
+                                  <option value="" disabled selected v-bind:key="0">
+                                    Asset
+                                  </option>
+                                </select>
+                              </fieldset>
+                            </div>
+                            <div
+                              class="form-group child"
+                              v-for="(child, index) in childToAppend"
+                            >
                               <select
-                          class="
-                            js-example-basic-single js-states
-                            form-control
-                            bg-transparent
-                          "
-                          v-model="ttype"
-                        >
-                          <option value="dr"  v-bind:key="0">
-                            DR
-                          </option>
-                          <option value="cr"  v-bind:key="1">
-                            CR
-                          </option>
-                        </select>
+                                class="
+                                  js-example-basic-single js-states
+                                  form-control
+                                  bg-transparent
+                                "
+                                @change="appendChild($event, 'select' + index)"
+                              >
+                                <option value="" disabled selected v-bind:key="0">
+                                  Select account
+                                </option>
+                                <option
+                                  v-for="childern in child.data"
+                                  :value="childern.id"
+                                  v-bind:key="childern.id"
+                                >
+                                  {{ childern.name }}
+                                </option>
+                              </select>
+                            </div>
+                            <small
+                              class="form-text text-danger"
+                              v-if="errors.has('account_id')"
+                              v-text="errors.get('account_id')"
+                            ></small>                          
+                          </div>
+                          <div class="col-md-6">
+                            <div class="row">
+                              <!-- <div class="col-8"></div> -->
+                              <div class="col-12">
+                                <div class="form-group">
+                                  <label>Transaction Type</label>
+                                  <fieldset class="form-group mb-3">
+                                    <select
+                                class="
+                                  js-example-basic-single js-states
+                                  form-control
+                                  bg-transparent
+                                "
+                                v-model="ttype"
+                              >
+                                <option value="dr"  v-bind:key="0">
+                                  DR
+                                </option>
+                                <option value="cr"  v-bind:key="1">
+                                  CR
+                                </option>
+                              </select>
 
-                              <small
-                                class="form-text text-danger"
-                                v-if="errors.has('ttype')"
-                                v-text="errors.get('ttype')"
-                              ></small>
-                            </fieldset>
-                          </div>
+                                    <small
+                                      class="form-text text-danger"
+                                      v-if="errors.has('ttype')"
+                                      v-text="errors.get('ttype')"
+                                    ></small>
+                                  </fieldset>
+                                </div>
 
-                          <div class="form-group">
-                            <label>Amount</label>
-                            <fieldset class="form-group mb-3">
-                              <input
-                                type="text"
-                                class="form-control"
-                                v-model="account.amount"
-                              />
-                              <small
-                                class="form-text text-danger"
-                                v-if="errors.has('dr_amount')"
-                                v-text="errors.get('dr_amount')"
-                              ></small>
-                            </fieldset>
+                                <div class="form-group">
+                                  <label>Amount</label>
+                                  <fieldset class="form-group mb-3">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      v-model="account.amount"
+                                    />
+                                    <small
+                                      class="form-text text-danger"
+                                      v-if="errors.has('dr_amount')"
+                                      v-text="errors.get('dr_amount')"
+                                    ></small>
+                                  </fieldset>
+                                </div>
+                                <div class="form-group">
+                                  <label>Description</label>
+                                  <fieldset class="form-group mb-3">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      v-model="account.description"
+                                    />
+                                    <small
+                                      class="form-text text-danger"
+                                      v-if="errors.has('description')"
+                                      v-text="errors.get('description')"
+                                    ></small>
+                                  </fieldset>
+                                </div>
+                                <button
+                                  class="btn btn-primary"
+                                  @click="customValidator()"
+                                >
+                                  Submit
+                                </button>
+                              </div>
+                              <div class="col-1"></div>
+                            </div>
                           </div>
-                          <div class="form-group">
-                            <label>Description</label>
-                            <fieldset class="form-group mb-3">
-                              <input
-                                type="text"
-                                class="form-control"
-                                v-model="account.description"
-                              />
-                              <small
-                                class="form-text text-danger"
-                                v-if="errors.has('description')"
-                                v-text="errors.get('description')"
-                              ></small>
-                            </fieldset>
-                          </div>
-                          <button
-                            class="btn btn-primary"
-                            @click="customValidator()"
-                          >
-                            Submit
-                          </button>
                         </div>
-                        <div class="col-1"></div>
                       </div>
                     </div>
                   </div>

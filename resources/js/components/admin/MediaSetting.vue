@@ -68,7 +68,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .v_pill_tab{
     box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
     border-radius: 10px;
@@ -79,5 +79,9 @@ export default {
     border-radius: 10px !important;
     padding: 8px 25px;
 }
-
+.nav .nav-link.active, .nav-pills .show > .nav-link{
+    background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
+    box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
+    color: #fff !important;
+}
 </style>

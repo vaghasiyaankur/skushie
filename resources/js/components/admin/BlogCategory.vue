@@ -31,7 +31,7 @@
                     </div>
                     <div class="icons d-flex">
                       <button
-                        class="btn ml-2 p-0 kt_notes_panel_toggle"
+                        class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black"
                         data-toggle="tooltip"
                         title=""
                         data-placement="right"
@@ -39,15 +39,7 @@
                       >
                         <span
                           class="
-                            bg-secondary
-                            h-30px
-                            font-size-h5
-                            w-30px
-                            d-flex
-                            align-items-center
-                            justify-content-center
-                            rounded-circle
-                            shadow-sm
+                          h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm  
                           "
                           v-on:click="display_form = !display_form"
                         >
@@ -55,7 +47,7 @@
                             width="25px"
                             height="25px"
                             viewBox="0 0 16 16"
-                            class="bi bi-plus white"
+                            class="bi bi-plus"
                             fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -256,31 +248,36 @@
                                     style="width: 100px"
                                   />
                                 </td>
-                                <td>
-                                  <a
-                                    href="javascript:void(0)"
-                                    class="click-edit"
-                                    id="click-edit1"
+                                <td class="white__nowrap">
+                                  <a href="javascript:void(0)" 
+                                    class=" click-edit btn btn-outline-primary text-nowrap  waves-effect  p-2"
+                                    id="click-edit1" 
                                     data-toggle="tooltip"
                                     title=""
                                     data-placement="right"
                                     data-original-title="Check out more demos"
                                     @click="editcategory(category)"
-                                    ><i class="fa fa-edit"></i
-                                  ></a>
+                                    >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                    <span class="pl-2">Edit</span>
+                                  </a>
                                   <a
-                                    class=""
+                                    class="btn btn-outline-danger text-nowrap  waves-effect p-2"
                                     href="#"
                                     @click="
                                       deletecategory(category.blog_category_id)
                                     "
-                                    ><i class="fa fa-trash"></i
-                                  ></a>
+                                    >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"     stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25">
+                                      <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                    <span >Delete</span>
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm m-0 float-right">
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                             <li
                               v-bind:class="[
                                 { disabled: !pagination.prev_page_url },
@@ -417,55 +414,63 @@
                 v-text="errors.get('blog_category_slug')"
               ></small>
             </div>
-
-            <div class="form-group">
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="toggleImageSelect()"
-              >
-                Upload Category Media
-              </button>
-              <small id="textHelp" class="form-text text-muted"
-                >Select Image file from gallary.</small
-              >
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('gallary_id')"
-                v-text="errors.get('gallary_id')"
-              ></small>
-
-              <img
-                v-if="gallary_path != ''"
-                :src="gallary_path"
-                style="width: 100px; height: 100px"
-              />
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="w-100 "></label>
+                  <button
+                    type="button"
+                    class="btn btn-primary mt-2"
+                    @click="toggleImageSelect()"
+                  >
+                    Upload Category Media
+                  </button>
+                  <small id="textHelp" class="form-text text-muted"
+                    >Select Image file from gallary.</small
+                  >
+                  <small
+                    class="form-text text-danger"
+                    v-if="errors.has('gallary_id')"
+                    v-text="errors.get('gallary_id')"
+                  ></small>
+  
+                  <img
+                    v-if="gallary_path != ''"
+                    :src="gallary_path"
+                    style="width: 100px; height: 100px"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="text-dark">Status </label>
+                  <select v-model="category.status">
+                    <option value="active" :selected="category.status == 'active'">
+                      Active
+                    </option>
+                    <option
+                      value="inactive"
+                      :selected="category.status == 'inactive'"
+                    >
+                      Inactive
+                    </option>
+                  </select>
+                  <small
+                    class="form-text text-danger"
+                    v-if="errors.has('status')"
+                    v-text="errors.get('status')"
+                  ></small>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="text-dark">Status </label>
-              <select v-model="category.status">
-                <option value="active" :selected="category.status == 'active'">
-                  Active
-                </option>
-                <option
-                  value="inactive"
-                  :selected="category.status == 'inactive'"
-                >
-                  Inactive
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('status')"
-                v-text="errors.get('status')"
-              ></small>
-            </div>
+             
+             
           </div>
         </div>
         <button
           type="button"
           @click="addUpdatecategory()"
-          class="btn btn-primary"
+          class="btn btn-primary w-100"
         >
           Submit
         </button>
@@ -716,3 +721,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+#myform .form-group select{
+  width:100%;
+  padding:8px 16px;
+  border-radius:5px;
+}
+</style>
