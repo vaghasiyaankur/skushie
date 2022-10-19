@@ -115,13 +115,27 @@ html,body{
 }
 .btn_outline_purple{
   background-color: transparent;
-    border-color: #cfa5f9;
-    color: #ae69f5 !important;
-    border-radius: 10px;
+  border-color: #cfa5f9;
+  color: #ae69f5 !important;
+  border-radius: 10px;
 }
 .btn_outline_purple:hover{
   background-color: #efe1fd;
   border-color: #cfa5f9;
+}
+.btn-outline-primary{
+  background-color: transparent;
+  border-color: #7367f0 !important;
+  color: #7367f0 !important;
+  transition: all 0.3s ease;
+}
+.btn-outline-primary:hover{
+  background-color: #7367f01f !important;
+}
+.btn-outline-danger:hover{
+  
+  background-color: rgba(234, 84, 85, 0.04) !important;
+  color: #ea5455;
 }
 .card_custom_effect{
   transition: all 0.3s ease;
@@ -132,6 +146,11 @@ html,body{
 }
 .btn-secondary:hover {
   box-shadow: 0 8px 25px -8px #ff9f43;
+}
+
+.form-text{
+  font-size: 14px !important;
+
 }
 </style>
 <template>

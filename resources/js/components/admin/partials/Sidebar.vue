@@ -402,6 +402,8 @@
                           class="nav-link sub-nav-link"
                           data-toggle="collapse"
                           @click.prevent="setChildActive('product')"
+                          :class="this.$route.name == 'product-list' || this.$route.name == 'product-manage' ? 'active' : ''"
+
                         >
                           <span
                             class="
@@ -3153,11 +3155,19 @@ export default {
 };
 </script>
 <style>
-.nav .nav-link.active, .nav-pills .show > .nav-link{
+/*.nav .nav-link.active, .nav-pills .show > .nav-link{
   background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
   box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
   color: white !important;  
- 
+}*/
+.nav .nav-link.active, .nav-pills .show > .nav-link{
+  background:whitesmoke !important;
+  color:#000 !important;
+}
+#accordion .router-link-active{
+  background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
+  box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
+  color: white !important;  
 }
 .aside .aside-menu .nav-item .nav-link{
   border-radius: 10px ;

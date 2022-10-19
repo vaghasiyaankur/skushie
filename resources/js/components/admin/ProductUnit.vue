@@ -100,8 +100,10 @@
                                                                 {{ unit.is_active == '1' ? 'Active' : 'InActive' }}
                                                             </td>
                                                             <td v-if="$parent.permissions.includes('product-unit-manage')">
-                                                            <a href="javascript:void(0)" class=" click-edit" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editunit(unit)"><i class="fa fa-edit"></i></a>
-                                                            <a class="" href="#" @click="deleteunit(unit.id)"><i class="fa fa-trash"></i></a>
+                                                            <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editunit(unit)"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span class="pl-2">Edit</span></a>
+                                                            <a class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deleteunit(unit.id)"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                                <span>Delete</span>
+                                                            </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>

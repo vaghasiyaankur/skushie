@@ -11,7 +11,7 @@
           <div class="form-group row">
             <div class="col-md-6">
               <label>Product Type</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <select
                   @change="setProductType($event.target.value)"
                   class="
@@ -169,15 +169,14 @@
                 v-text="errors.get('is_featured')"
               ></small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>Units</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <select
                   @change="setUnit($event.target.value)"
                   class="
                     single-select
                     w-100
-                    mb-3
                     custom_select_box
                     categories-select
                     ms-offscreen
@@ -202,15 +201,14 @@
                 v-text="errors.get('product_unit')"
               ></small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>Brands</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <select
                   @change="setBrand($event.target.value)"
                   class="
                     single-select
                     w-100
-                    mb-3
                     custom_select_box
                     categories-select
                     ms-offscreen
@@ -229,9 +227,9 @@
                 v-text="errors.get('brand_id')"
               ></small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>Product Weight</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <input
                   type="text"
                   id="weight"
@@ -247,9 +245,9 @@
                 v-text="errors.get('product_weight')"
               ></small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>Price</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <input
                   type="number"
                   class="form-control round bg-transparent text-dark"
@@ -264,9 +262,9 @@
                 v-text="errors.get('price')"
               ></small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>Discount Price</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <input
                   type="number"
                   class="form-control round bg-transparent text-dark"
@@ -281,9 +279,9 @@
                 v-text="errors.get('discount_price')"
               ></small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>Minimum Order</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <input
                   type="text"
                   id="type"
@@ -299,9 +297,9 @@
                 v-text="errors.get('product_min_order')"
               ></small>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>Maximum Order</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <input
                   type="text"
                   id="type-max"
@@ -318,9 +316,9 @@
               ></small>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
               <label>SKU</label>
-              <fieldset class="form-group mb-3">
+              <fieldset class="form-group mb-0">
                 <input
                   type="text"
                   id="type-max"
@@ -339,14 +337,13 @@
             <!-- <div class="col-md-6" v-if="product_type == 'variable'">
                     </div> -->
 
-            <div class="col-md-6" v-if="product_type == 'variable'">
+            <div class="col-md-6 mb-3" v-if="product_type == 'variable'">
               <label>Attributes</label>
-              <fieldset class="form-group mb-3 d-flex">
+              <fieldset class="form-group mb-0 d-flex">
                 <select
                   class="
                     single-select
                     w-100
-                    mb-3
                     categories-select
                     ms-offscreen
                   "
