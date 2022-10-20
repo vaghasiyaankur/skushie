@@ -63,10 +63,11 @@
                               class="form-group child"
                               v-for="(child, index) in childToAppend"
                             >
+                            <label></label>
                               <select
                                 class="
                                   js-example-basic-single js-states
-                                  form-control
+                                  form-control mt-2
                                   bg-transparent
                                 "
                                 @change="appendChild($event, 'select' + index)"

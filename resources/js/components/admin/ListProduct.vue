@@ -110,7 +110,7 @@
                           </div>
                           <table
                             id="product"
-                            class="display dataTable no-footer"
+                            class="display dataTable no-footer order--table"
                             product="grid"
                           >
                             <thead class="text-body">
@@ -371,9 +371,10 @@
                                 <td
                                   v-if="
                                     $parent.permissions.includes(
-                                      'product-manage'
-                                    )
+                                      'product-manage' 
+                                    )                                    
                                   "
+                                  class="white__nowrap"
                                 >
                                   <router-link
                                     :to="{

@@ -15,16 +15,16 @@
                                         </h3>
                                     </div>
                                     <div class="icons d-flex">
-                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('supplier-manage')">
-                                            <span class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm " v-on:click="
+                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('supplier-manage')">
+                                            <span class="h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm" v-on:click="
                                                         display_form = !display_form
                                                     ">
-                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                                 </svg>
                                             </span>
                                         </button>
-                                                                            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -119,14 +119,22 @@
                                                             <td>
                                                                 {{ supplier.supplier_city}}
                                                             </td>
-                                                            <td v-if="$parent.permissions.includes('supplier-manage')">
-                                                            <a href="javascript:void(0)" class=" click-edit" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editsupplier(supplier)"><i class="fa fa-edit"></i></a>
-                                                                        <a class="" href="#" @click="deletesupplier(supplier.supplier_id)"><i class="fa fa-trash"></i></a>
+                                                            <td v-if="$parent.permissions.includes('supplier-manage')" class="white__nowrap">
+                                                                <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editsupplier(supplier)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                                </svg>
+                                                                    <span class="pl-2">Edit</span>
+                                                                </a>
+                                                                <a class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deletesupplier(supplier.supplier_id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                                                    <line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                                    <span>Delete</span>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchsuppliers(pagination.prev_page_url)">Previous</button></li>
 
                                                     <li class="disabled"><button class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</button></li>
@@ -189,7 +197,7 @@
 
                     <div class="form-group">
                         <label class="text-dark">Country </label>
-                        <select v-model="supplier.country_id" @change="fetchStatesByCountryID(supplier.country_id)">
+                        <select v-model="supplier.country_id" @change="fetchStatesByCountryID(supplier.country_id)" class="w-100">
                         <option value="">Select Country</option>
                         <option v-for="country in countries" v-bind:value="country.country_id">
                         {{ country.country_name }}
@@ -200,8 +208,8 @@
 
                     <div class="form-group">
                         <label class="text-dark">State </label>
-                        <select v-model="supplier.state_id">
-                        <option value="">Select State</option>
+                        <select v-model="supplier.state_id" class="w-100">
+                        <option value=""> Select State</option>
                         <option v-for="state in states" v-bind:value="state.id">
                         {{ state.name }}
                         </option>
@@ -221,7 +229,7 @@
 
                 </div>
             </div>
-            <button type="button" @click="addUpdatesupplier()" class="btn btn-primary">Submit</button>
+            <button type="button" @click="addUpdatesupplier()" class="btn btn-primary w-100">Submit</button>
         </form>
     </div>
 </div>

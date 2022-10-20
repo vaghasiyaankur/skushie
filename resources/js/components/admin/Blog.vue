@@ -75,7 +75,7 @@
                                                 </button>
                                             </div>
 
-                                                <table id="productblogTable" class="display dataTable no-footer" role="grid">
+                                                <table id="productblogTable" class="display dataTable no-footer order--table" role="grid">
                                                     <thead class="text-body">
                                                         <tr role="row">
                                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending"  @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
@@ -177,50 +177,58 @@
                         <input type="text" :name="'name'+index" v-model="blog.name[index]" class="form-control" />
                         <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
                     </div>
-
-                    <br />
                     <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
                         <label class="text-dark">Description ( {{ language.language_name }} ) </label>
                         <!-- <input type="text" :name="'desc'+index" v-model="blog.desc[index]" class="form-control" /> -->
                         <vue-editor v-model="blog.desc[index]"></vue-editor>
                         <small class="form-text text-danger" v-if="errors.has('desc')" v-text="errors.get('desc')"></small>
                     </div>
-
-                    <div class="form-group">
-                        <label>Blog Category</label>
-                        <fieldset class="form-group mb-3">
-                            <select class="js-example-basic-single js-states form-control bg-transparent" v-model='blog.blog_category_id' >
-                                <option value="">Select Category</option>
-                                <option 
-                                v-for='category in categories' :value='category.blog_category_id'
-                                v-bind:key="category.blog_category_id" :selected='blog.blog_category_id === category.blog_category_id'>{{ category.blog_detail ? category.blog_detail[0].name : '' }}</option>
-                            </select>
-                            <small class="form-text text-danger" v-if="errors.has('blog_category_id')" v-text="errors.get('blog_category_id')"></small>
-                            
-                        </fieldset>
-                    </div>
-                    
-
-                    <div class="form-group " >
-                        <label class="text-dark">Slug</label>
-                        <input type="text" :name="blog.slug" v-model="blog.slug" class="form-control" />
-                        <small class="form-text text-danger" v-if="errors.has('slug')" v-text="errors.get('slug')"></small>
-                    </div>
-                    <div class="form-group">
-                        <label class="text-dark">Is Featured </label>
-                        <select v-model="blog.is_featured">
-                            <option :selected="blog.is_featured == 1" value="1">Yes</option>
-                            <option :selected="blog.is_featured == 0" value="0">no</option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('is_active')" v-text="errors.get('is_active')"></small>
-                    </div>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary" @click="toggleImageSelect()">Upload blog Media</button>
-                        <small id="textHelp" class="form-text text-muted">Select Image file from gallary.</small>
-                        <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
-
-                        <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
-                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Blog Category</label>
+                                <fieldset class="form-group mb-3">
+                                    <select class="js-example-basic-single js-states form-control bg-transparent" v-model='blog.blog_category_id' >
+                                        <option value="">Select Category</option>
+                                        <option 
+                                        v-for='category in categories' :value='category.blog_category_id'
+                                        v-bind:key="category.blog_category_id" :selected='blog.blog_category_id === category.blog_category_id'>{{ category.blog_detail ? category.blog_detail[0].name : '' }}</option>
+                                    </select>
+                                    <small class="form-text text-danger" v-if="errors.has('blog_category_id')" v-text="errors.get('blog_category_id')"></small>
+                                    
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group " >
+                                <label class="text-dark">Slug</label>
+                                <input type="text" :name="blog.slug" v-model="blog.slug" class="form-control" />
+                                <small class="form-text text-danger" v-if="errors.has('slug')" v-text="errors.get('slug')"></small>
+                            </div>
+                        </div>
+                    </div>                                        
+                    <div class="row">
+                        <div class="col-6">                            
+                            <div class="form-group">
+                                <label class="text-dark">Is Featured </label>
+                                <select v-model="blog.is_featured">
+                                    <option :selected="blog.is_featured == 1" value="1">Yes</option>
+                                    <option :selected="blog.is_featured == 0" value="0">no</option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('is_active')" v-text="errors.get('is_active')"></small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="w-100"></label>
+                                <button type="button" class="btn btn-primary mt-2 w-100" @click="toggleImageSelect()">Upload blog Media</button>
+                                <small id="textHelp" class="form-text text-muted">Select Image file from gallary.</small>
+                                <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
+        
+                                <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
+                            </div>
+                        </div>
+                    </div>                    
                 </div>
             </div>
             <button type="button" @click="addUpdateblog()" class="btn btn-primary w-100">Submit</button>
@@ -478,3 +486,10 @@ export default {
     }
 };
 </script>
+<style scoped>
+#myform .form-group select{
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+</style>

@@ -53,7 +53,7 @@
                                                 <!-- <label>Search:<input type="search" class="" placeholder="" aria-controls="sale" v-model="searchParameter" @keyup="fetchsale_quotations()"></label>
                                                  -->
                                                 </div>
-                                                <table id="sale" class="display dataTable no-footer" sale="grid">
+                                                <table id="sale" class="display dataTable no-footer order--table" sale="grid">
                                                     <thead class="text-body">
                                                         <tr sale="row">
                                                             <th class="sorting" tabindex="0" aria-controls="sale" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending"  @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">

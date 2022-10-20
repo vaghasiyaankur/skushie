@@ -37,7 +37,7 @@
               <div class="col-12">
                 <div class="card card-custom gutter-b bg-white border-0">
                   <div class="card-body">
-                    <div class="row">
+                    <div class="row mb-3">
                       <div class="col-md-3">
                         <label>Type</label>
                         <select class="form-control" v-model="stock_type">
@@ -56,9 +56,10 @@
                       <div class="col-md-3">
                         <button
                           style="margin-top: 20px"
-                          class="btn btn-success"
+                          class="btn btn-success border_radius_10"
                           @click="fetchstocks('')"
                         >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
                           Filter
                         </button>
                       </div>
@@ -287,7 +288,7 @@
                               </tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm m-0 float-right">
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                             <li
                               v-bind:class="[
                                 { disabled: !pagination.prev_page_url },

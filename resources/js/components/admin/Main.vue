@@ -38,13 +38,13 @@ html,body{
   color: #6e6b7b;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #d8d6de;
+  border:1px solid #e9ecef;
   appearance: none;
   border-radius: 0.357rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .form-control:hover {
-  border-color: #7367f0;
+  border-color: #7367f0 !important;
   box-shadow: 0 0 5px 0px rgb(115 103 240 / 51%) !important;
 }
 .form-control:focus{
@@ -153,6 +153,37 @@ html,body{
 }
 .white__nowrap{
   white-space:nowrap;
+}
+select {
+  color: var(--artical-color-dark) !important;
+  border: 1px solid;
+  border-color: #e9ecef !important;
+  background-color: transparent;
+  padding: 8px 14px;
+  outline: none;
+  border-radius: 0.357rem;
+}
+select:hover,select:focus{
+  border-color: #7367f0 !important;
+  box-shadow: 0 0 5px 0px rgb(115 103 240 / 51%) !important;
+}
+.multiselect:hover, .multiselect:focus {
+  border: 1px solid #7367f0 !important;
+  box-shadow: 0 0 5px 0px rgb(115 103 240 / 51%) !important;
+  border-radius: 5px;
+}
+.multiselect__option--highlight{
+    background: #7367f0 !important;
+    outline: none;
+    color: #fff;
+}
+.btn-success {
+  color: #fff;
+  background-color: #28c76f !important;
+  border-color: #28c76f !important;
+}
+.btn-success:hover {
+  box-shadow: 0 8px 25px -8px #28c76f;
 }
 </style>
 <template>

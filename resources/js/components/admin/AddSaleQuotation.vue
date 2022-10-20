@@ -187,7 +187,7 @@
                     </div>
                     <div class="col-12" v-if="display_table">
                       <div class="table-responsive">
-                        <table class="table table-striped text-body">
+                        <table class="table table-striped text-body order--table">
                           <thead>
                             <tr>
                               <th class="border-0 header-heading" scope="col">

@@ -541,7 +541,7 @@ export default {
 </script>
 <style scoped>
 .gallary-categories ul li a {
-  width: 145px;
+  width: 120px;
   border-radius: 0px !important;
   text-align: center;
   background: #e9ecf1;

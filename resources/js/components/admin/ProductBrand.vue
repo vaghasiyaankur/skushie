@@ -87,7 +87,7 @@
                                                             <td>
                                                                 {{ brand.brand_status }}
                                                             </td>
-                                                            <td v-if="$parent.permissions.includes('product-brand-manage')">
+                                                            <td v-if="$parent.permissions.includes('product-brand-manage')" class="white__nowrap">
                                                                 <a href="javascript:void(0)" class=" click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editbrand(brand)"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span class="pl-2">Edit</span></a>
                                                                 <a class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deletebrand(brand.brand_id)"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Delete</span>
                                                                 </a>
@@ -134,10 +134,10 @@
 
                     <div class="form-group">
                         <button type="button" class="btn btn-primary" @click="toggleImageSelect()">Upload Brand Media</button>
-                        <small id="textHelp" class="form-text text-muted mt-2">Select Image file from gallary.</small>
+                        <small id="textHelp" class="form-text text-muted my-2">Select Image file from gallary.</small>
                         <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
 
-                        <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
+                        <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;" class="rounded"/>
                     </div>
                     <div class="form-group">
                         <label>Status</label>

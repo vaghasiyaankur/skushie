@@ -36,7 +36,7 @@
                                             </select> entries</label></div>
 
                                             <div id="productaccountTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="productaccountTable" v-model="searchParameter" @keyup="fetchaccounts()"></label></div>
-                                                <table id="productaccountTable" class="display dataTable no-footer" role="grid">
+                                                <table id="productaccountTable" class="display dataTable no-footer order--table" role="grid">
                                                     <thead class="text-body">
                                                         <tr role="row">
                                                             <th class="sorting" tabindex="0" aria-controls="productaccountTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending"  @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">

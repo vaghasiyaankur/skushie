@@ -172,7 +172,7 @@
                                 <td>
                                   {{ order.payment_method }}
                                 </td>
-                                <td>
+                                <td class="white__nowrap">
                                   <a
                                     :href="'/admin/order/' + order.order_id"
                                     class="click-edit click-edit btn btn-outline-primary text-nowrap  waves-effect p-2"

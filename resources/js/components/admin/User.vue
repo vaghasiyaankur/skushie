@@ -15,11 +15,11 @@
                                         </h3>
                                     </div>
                                     <div class="icons d-flex">
-                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('user-manage')">
-                                            <span class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm " v-on:click="
+                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('user-manage')">
+                                            <span class="h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm" v-on:click="
                                                         display_form = !display_form
                                                     ">
-                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                                 </svg>
                                             </span>
@@ -52,7 +52,7 @@
                                     <div>
                                         <div class=" table-responsive" id="printableTable">
                                         
-                                            <div id="UserTable_wrapper" class="dataTables_wrapper no-footer">
+                                            <div id="UserTable_wrapper" class="dataTables_wrapper no-footer order--table">
 
                                             <div class="dataTables_length" id="UserTable_length"><label>Show 
                                             <select name="UserTable_length"  class="" v-model="limit" v-on:change="fetchUsers()">
@@ -109,14 +109,22 @@
                                                             <td>
                                                                 {{ user.status }}
                                                             </td>
-                                                            <td v-if="$parent.permissions.includes('user-manage') ">
-                                                            <a v-if="user.role.id != 1" href="#"  class=" click-edit" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click.prevent="editUser(user)"><i class="fa fa-edit"></i></a>
-                                                            <a v-if="user.role.id != 1" class="" href="#"  @click.prevent="deleteUser(user.u_id)"><i class="fa fa-trash"></i></a>
+                                                            <td v-if="$parent.permissions.includes('user-manage') " class="white__nowrap">
+                                                            <a v-if="user.role.id != 1" href="#"  class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click.prevent="editUser(user)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                                                <span class="pl-2">Edit</span>
+                                                            </a>
+                                                            <a v-if="user.role.id != 1" class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#"  @click.prevent="deleteUser(user.u_id)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                                                </svg>
+                                                                <span>Delete</span>
+                                                            </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchUsers(pagination.prev_page_url)">Previous</button></li>
 
                                                     <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
@@ -170,27 +178,30 @@
                         <input type="password" name="text" v-model="user.confirm_password" class="form-control" />
                         <small class="form-text text-danger" v-if="errors.has('confirm_password')" v-text="errors.get('confirm_password')"></small>
                     </div>
-
-                    <div class="form-group">
-                        <label class="text-dark">Role </label>
-                        <select v-model="user.role_id">
-                        <option value="">Select Role</option>
-                        <option v-for="role in roles" v-bind:value="role.id">
-                        {{ role.name }}
-                        </option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('role_id')" v-text="errors.get('role_id')"></small>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="text-dark">Status </label>
-                        <select v-model="user.status">
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('status')" v-text="errors.get('status')"></small>
-                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="text-dark">Role </label>
+                                <select v-model="user.role_id" class="w-100">
+                                <option value="">Select Role</option>
+                                <option v-for="role in roles" v-bind:value="role.id">
+                                {{ role.name }}
+                                </option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('role_id')" v-text="errors.get('role_id')"></small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="text-dark">Status </label>
+                                <select v-model="user.status" class="w-100">
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('status')" v-text="errors.get('status')"></small>
+                            </div>  
+                        </div>
+                    </div>                                        
                     <div class="form-group">
                         <label class="text-dark">Warehouse </label>
                          <multiselect v-model="user.warehouse_id" 
@@ -214,7 +225,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" @click="addUpdateUser()" class="btn btn-primary">Submit</button>
+            <button type="button" @click="addUpdateUser()" class="btn btn-primary w-100">Submit</button>
         </form>
     </div>
 </div>

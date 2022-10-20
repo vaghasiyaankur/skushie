@@ -15,11 +15,11 @@
                                         </h3>
                                     </div>
                                     <div class="icons d-flex">
-                                        <router-link to="/admin/roles/permissions/add" class="btn ml-2 p-0 kt_notes_panel_toggle" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('role-manage')">
-                                            <span class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm " v-on:click="
+                                        <router-link to="/admin/roles/permissions/add" class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" v-if="$parent.permissions.includes('role-manage')">
+                                            <span class="h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm  " v-on:click="
                                                         display_form = !display_form
                                                     ">
-                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                                 </svg>
                                             </span>
@@ -69,7 +69,7 @@
                                                 <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchRoles()"></label>
                                                 <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
                                             </div>
-                                                <table id="Role" class="display dataTable no-footer" role="grid">
+                                                <table id="Role" class="display dataTable no-footer order--table" role="grid">
                                                     <thead class="text-body">
                                                         <tr role="row">
                                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
@@ -90,17 +90,24 @@
                                                             </td>
                                                             <td>
                                                                 {{ role.name }}
-                                                            </td>
-                                                            <td v-if="$parent.permissions.includes('role-manage') && role.id != 1">
-                                                            <router-link :to="'/admin/roles/permissions/'+role.id+'/'+role.name" ><i class="fa fa-edit"></i></router-link>
+                                                            </td>  
+                                                            <td v-if="$parent.permissions.includes('role-manage') && role.id != 1" class="white__nowrap">
+                                                                <router-link :to="'/admin/roles/permissions/'+role.id+'/'+role.name" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" >
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                                                    <span  class="pl-2">Edit</span>
+                                                                </router-link>
 
-                                                            <!-- <a href="javascript:void(0)" class=" click-edit" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editRole(role)"><i class="fa fa-edit"></i></a> -->
-                                                            <a v-if="role.id > 7" class="" href="#" @click="deleteRole(role.id)"><i class="fa fa-trash"></i></a>
+                                                                <!-- <a href="javascript:void(0)" class=" click-edit" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editRole(role)"><i class="fa fa-edit"></i></a> -->
+                                                                <a v-if="role.id > 7" class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deleteRole(role.id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                                                    <line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                                    <span >Delete</span>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchRoles(pagination.prev_page_url)">Previous</button></li>
 
                                                     <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>

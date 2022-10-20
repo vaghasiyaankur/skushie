@@ -136,7 +136,7 @@
                           </div>
                           <table
                             id="productaccountTable"
-                            class="display dataTable no-footer"
+                            class="display dataTable no-footer order--table"
                             role="grid"
                           >
                             <thead class="text-body">
@@ -615,8 +615,3 @@ export default {
   },
 };
 </script>
-<style scoped>   
-#productaccountTable thead.text-body {
-  background: #f3f2f7b0;
-}
-</style>

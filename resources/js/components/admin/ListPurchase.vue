@@ -68,7 +68,7 @@
                                             <div id="purchase_filter" class="dataTables_filter">
                                                 <!-- <label>Search:<input type="search" class="" placeholder="" aria-controls="purchase" v-model="searchParameter" @keyup="fetchPurchases()"></label> -->
                                                 </div>
-                                                <table id="purchase" class="display dataTable no-footer" purchase="grid">
+                                                <table id="purchase" class="display dataTable no-footer order--table" purchase="grid">
                                                     <thead class="text-body">
                                                         <tr purchase="row">
                                                             <th class="sorting" tabindex="0" aria-controls="purchase" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">

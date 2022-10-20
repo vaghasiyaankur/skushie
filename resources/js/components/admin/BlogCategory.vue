@@ -130,7 +130,7 @@
                           </div>
                           <table
                             id="productcategoryTable"
-                            class="display dataTable no-footer"
+                            class="display dataTable no-footer order--table"
                             role="grid"
                           >
                             <thead class="text-body">
@@ -420,12 +420,12 @@
                   <label class="w-100 "></label>
                   <button
                     type="button"
-                    class="btn btn-primary mt-2"
+                    class="btn btn-primary mt-2 w-100"
                     @click="toggleImageSelect()"
                   >
                     Upload Category Media
                   </button>
-                  <small id="textHelp" class="form-text text-muted"
+                  <small id="textHelp" class="form-text text-muted my-2"
                     >Select Image file from gallary.</small
                   >
                   <small
@@ -437,7 +437,7 @@
                   <img
                     v-if="gallary_path != ''"
                     :src="gallary_path"
-                    style="width: 100px; height: 100px"
+                    style="width: 100px; height: 100px" class="rounded"
                   />
                 </div>
               </div>

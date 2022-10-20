@@ -190,7 +190,7 @@
 
                     <div class="col-12" v-if="display_table">
                       <div class="table-responsive">
-                        <table class="table table-striped text-body">
+                        <table class="table table-striped text-body order--table">
                           <thead>
                             <tr>
                               <th class="border-0 header-heading" scope="col">
@@ -338,7 +338,7 @@
                     <div class="row justify-content-end">
                       <div class="col-12 col-md-3">
                         <div>
-                          <table class="table right-table mb-0">
+                          <table class="table right-table mb-0 cutom_table_effect">
                             <tbody>
                               <tr
                                 class="
@@ -782,3 +782,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+
+  .cutom_table_effect{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px 0 rgb(34 41 47 / 18%);
+    border-radius: 7px;
+}
+</style>

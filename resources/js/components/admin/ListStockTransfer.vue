@@ -69,7 +69,7 @@
                                             <div id="sale_filter" class="dataTables_filter">
                                                 <!-- <label>Search:<input type="search" class="" placeholder="" aria-controls="sale" v-model="searchParameter" @keyup="fetchstock_transfers()"></label> -->
                                                 </div>
-                                                <table id="sale" class="display dataTable no-footer" sale="grid">
+                                                <table id="sale" class="display dataTable no-footer order--table" sale="grid">
                                                     <thead class="text-body">
                                                         <tr sale="row">
                                                             <th class="no-sort sorting_disabled" rowspan="1" colspan="1" aria-label="Action" style="width: 53.1891px;">

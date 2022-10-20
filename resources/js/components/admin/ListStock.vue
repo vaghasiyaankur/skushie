@@ -69,7 +69,7 @@
                                                 <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchstocks()"></label>
                                                 <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
                                                 </div>
-                                                <table id="sale" class="display dataTable no-footer" sale="grid">
+                                                <table id="sale" class="display dataTable no-footer order--table" sale="grid">
                                                     <thead class="text-body">
                                                         <tr sale="row">
                                                             
