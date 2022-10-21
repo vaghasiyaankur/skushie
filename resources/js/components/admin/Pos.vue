@@ -253,7 +253,7 @@
     <div class="contentPOS">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xl-4 order-xl-first order-last">
+          <div class="col-xl-3 order-xl-first order-last">
             <div class="card card-custom gutter-b bg-white border-0">
               <div class="card-body">
                 <div class="d-flex justify-content-between colorfull-select">
@@ -271,44 +271,13 @@
                       </template>
                     </select>
                   </div>
-                  <div class="selectmain">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                <li v-bind:class="[{ disabled: !pagination.prev_page_url }]">
-                  <a
-                    class="page-link"
-                    href="javascript:;"
-                    @click="getProduct(pagination.prev_page_url)"
-                    >Previous</a
-                  >
-                </li>
-
-                <li class="disabled">
-                  <a class="page-link text-dark" href="javascript:;"
-                    >Page {{ pagination.current_page }} of
-                    {{ pagination.last_page }}</a
-                  >
-                </li>
-
-                <li
-                  v-bind:class="[{ disabled: !pagination.next_page_url }]"
-                  class="page-item"
-                >
-                  <a
-                    class="page-link"
-                    href="javascript:;"
-                    @click="getProduct(pagination.next_page_url)"
-                    >Next</a
-                  >
-                </li>
-              </ul>
-
-                  </div>
+                  
                 </div>
               </div>
               <div class="product-items">
                 <div class="row">
                   <div
-                    class="col-xl-4 col-lg-2 col-md-3 col-sm-4 col-6"
+                    class="col-xl-6 col-4"
                     v-for="category_product in category_products"
                   >
                     <div class="productCard">
@@ -350,11 +319,42 @@
                   </div>
                 </div>
               </div>
+              <div class="pb-3 px-3 border-0">
+                <ul class="pagination pagination-sm m-0 w-100 float-right justify-content-between">
+                  <li v-bind:class="[{ disabled: !pagination.prev_page_url }]">
+                    <a
+                      class="page-link"
+                      href="javascript:;"
+                      @click="getProduct(pagination.prev_page_url)"
+                      >Previous</a
+                    >
+                  </li>
 
+                  <li class="disabled">
+                    <a class="page-link text-dark" href="javascript:;"
+                      >Page {{ pagination.current_page }} of
+                      {{ pagination.last_page }}</a
+                    >
+                  </li>
+
+                    <li
+                      v-bind:class="[{ disabled: !pagination.next_page_url }]"
+                      class="page-item"
+                    >
+                      <a
+                        class="page-link"
+                        href="javascript:;"
+                        @click="getProduct(pagination.next_page_url)"
+                        >Next</a
+                      >
+                    </li>
+                </ul>
+
+              </div>
               
             </div>
           </div>
-          <div class="col-xl-5 col-lg-8 col-md-8">
+          <div class="col-xl-6 col-lg-8 col-md-8">
             <div class="">
               <div
                 class="
@@ -367,48 +367,22 @@
               >
                 <div class="card-body">
                   <div class="d-flex justify-content-between colorfull-select">
-                    <div class="selectmain">
+                    <div class="selectmain select__option pr-2">
                       <label class="text-dark d-flex"
                         >Choose a Customer
                         <span
-                          class="badge badge-secondary white rounded-circle"
+                          class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black"
                           data-toggle="modal"
                           data-target="#choosecustomer"
                           @click="showCustomerModel()"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="svg-sm"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            version="1.1"
-                            id="Layer_122"
-                            x="0px"
-                            y="0px"
-                            width="512px"
-                            height="512px"
-                            viewBox="0 0 512 512"
-                            enable-background="new 0 0 512 512"
-                            xml:space="preserve"
-                          >
-                            <g>
-                              <rect
-                                x="234.362"
-                                y="128"
-                                width="43.263"
-                                height="256"
-                              ></rect>
-                              <rect
-                                x="128"
-                                y="234.375"
-                                width="256"
-                                height="43.25"
-                              ></rect>
-                            </g>
-                          </svg>
+                        <span class="h-20px font-size-h5 bg-white w-20px d-flex align-items-center justify-content-center shadow-sm  rounded-circle">
+                          <svg data-v-90508010="" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-plus"><path data-v-90508010="" fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path></svg>
                         </span>
+                      </span>
                       </label>
                       <select
-                        class="arabic-select select-down"
+                        class="arabic-select select-down w-100"
                         v-model="selectedCustomer"
                         @change="selectCustomerAddress()"
                       >
@@ -434,49 +408,23 @@
                       ></small>
                     </div>
 
-                    <div class="selectmain">
+                    <div class="selectmain select__option pl-2">
                       <label class="text-dark d-flex"
                         >Choose a Customer Address
                         <span
-                          class="badge badge-secondary white rounded-circle"
+                          class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black"
                           data-toggle="modal"
                           data-target="#choosecustomer"
                           @click="showCustomerAddressModel()"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="svg-sm"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            version="1.1"
-                            id="Layer_122"
-                            x="0px"
-                            y="0px"
-                            width="512px"
-                            height="512px"
-                            viewBox="0 0 512 512"
-                            enable-background="new 0 0 512 512"
-                            xml:space="preserve"
-                          >
-                            <g>
-                              <rect
-                                x="234.362"
-                                y="128"
-                                width="43.263"
-                                height="256"
-                              ></rect>
-                              <rect
-                                x="128"
-                                y="234.375"
-                                width="256"
-                                height="43.25"
-                              ></rect>
-                            </g>
-                          </svg>
+                        <span class="h-20px font-size-h5 bg-white w-20px d-flex align-items-center justify-content-center shadow-sm  rounded-circle">
+                          <svg data-v-90508010="" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-plus"><path data-v-90508010="" fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path></svg>
+                        </span>
                         </span>
                       </label>
                       <!--" -->
                       <select
-                        class="arabic-select select-down"
+                        class="arabic-select select-down w-100"
                         v-model="selectedCustomerAddress"
                       >
                         <option
@@ -627,6 +575,10 @@
                                     add_to_cart_product.product_combination_id
                                   )
                                 "
+                                style="color: #eb340e;
+                                background-color: rgb(240 101 72 / 18%);
+                                padding: 10px;
+                                border-radius: 5px;"
                                 class="confirm-delete"
                                 title="Delete"
                                 ><i class="fas fa-trash-alt"></i
@@ -645,7 +597,7 @@
                     >
                       <button
                         type="submit"
-                        class="btn btn-danger mr-2 confirm-delete"
+                        class="btn btn-outline-danger mr-2 border_radius_10 confirm-delete"
                         title="Delete"
                         @click="emptyValue()"
                       >
@@ -654,19 +606,10 @@
                       </button>
                       <button
                         type="submit"
-                        class="btn btn-secondary white"
+                        class="btn btn-outline-secondary border_radius_10"
                         @click="draftOrder()"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          class="bi bi-folder-fill svg-sm mr-2"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"
-                          />
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                         Draft Order
                       </button>
                     </div>
@@ -1579,7 +1522,7 @@
                   <fieldset class="form-group mb-3">
                     <select
                       v-model="customer_address_fields.country_id"
-                      @change="fetchStates()"
+                      @change="fetchStates()" class="w-100"
                     >
                       <option
                         v-for="country in countries"
@@ -1598,7 +1541,7 @@
                 <div class="col-md-6">
                   <label class="text-body">State </label>
                   <fieldset class="form-group mb-3">
-                    <select v-model="customer_address_fields.state_id">
+                    <select v-model="customer_address_fields.state_id" class="w-100">
                       <option v-for="state in states" :value="state.id">
                         {{ state.name }}
                       </option>
@@ -2878,5 +2821,27 @@ export default {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+}
+.kt_notes_panel_toggle span {
+  border: 1px solid rgb(174 105 245);
+  color: rgb(174 105 245) !important;
+  box-shadow: 0 0 10px rgb(174 105 245 / 22%) !important;
+  transition: all 0.5s ease;
+}
+.kt_notes_panel_toggle span:hover{  
+    background: #ae69f5 !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgb(174 105 245 / 75%) !important;
+    transition: all 0.5s ease;
+}
+.select__option{
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.btn-outline-secondary:hover {
+  background-color: #ffb85a1f !important;
+}
+.product-items{
+  height: 515px !important;
 }
 </style>

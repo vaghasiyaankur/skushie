@@ -15,11 +15,11 @@
                                         </h3>
                                     </div>
                                     <div class="icons d-flex">
-                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos">
-                                            <span class="bg-secondary h-30px font-size-h5 w-30px d-flex align-items-center justify-content-center  rounded-circle shadow-sm " v-on:click="
+                                        <button class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos">
+                                            <span class="h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm" v-on:click="
                                                         display_form = !display_form
                                                     ">
-                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus white" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                                                 </svg>
                                             </span>
@@ -63,7 +63,7 @@
                                                         </select> entries</label></div>
 
                                                 <div id="productBannerTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="productBannerTable" v-model="searchParameter" @keyup="fetchBanners()"></label></div>
-                                                <table id="productBannerTable" class="display dataTable no-footer" role="grid">
+                                                <table id="productBannerTable" class="display dataTable no-footer order--table" role="grid">
                                                     <thead class="text-body">
                                                         <tr role="row">
                                                             <th class="sorting" tabindex="0" aria-controls="productBannerTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
@@ -104,13 +104,20 @@
                                                                 <img v-if="banner.gallary != null" class="img-thumbnail" :src='"/gallary/thumbnail"+banner.gallary.gallary_name' alt="image not found" />
                                                             </td>
                                                             <td>
-                                                                <a href="javascript:void(0)" class=" click-edit" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editBanner(banner)"><i class="fa fa-edit"></i></a>
-                                                                <a class="" href="#" @click="deleteBanner(banner.banner_id)"><i class="fa fa-trash"></i></a>
+                                                                <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editBanner(banner)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                                                    <span class="pl-2">Edit</span>
+                                                                </a>
+                                                                <a class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deleteBanner(banner.banner_id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line> 
+                                                                        <line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                                    <span>Delete</span>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm m-0 float-right">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><a class="page-link" href="#" @click="fetchBanners(pagination.prev_page_url)">Previous</a></li>
 
                                                     <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
@@ -151,78 +158,92 @@
                         <input type="text"  v-model="banner.description" class="form-control" />
                         <small class="form-text text-danger" v-if="errors.has('description')" v-text="errors.get('description')"></small>
                     </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label> </label>
+                                <button type="button" class="btn btn-primary w-100 mt-2" @click="toggleImageSelect()">Upload Banner Media</button>
+                                <div class="clearfix"></div>
+                                <small id="textHelp" class="form-text text-muted" v-if="gallary_path == null || gallary_path == ''">Select Image file from gallary.</small>
+                                <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
 
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary" @click="toggleImageSelect()">Upload Banner Media</button>
-                        <div class="clearfix"></div>
-                        <small id="textHelp" class="form-text text-muted" v-if="gallary_path == null || gallary_path == ''">Select Image file from gallary.</small>
-                        <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
-
-                        <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
+                                <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">Status </label>
+                                <div class="clearfix"></div>
+                                <select v-model="banner.status" class="w-100">
+                                    <option value="">Select Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('status')" v-text="errors.get('status')"></small>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark w-100">Language </label>
+                                <select v-model="banner.language_id" class="w-100">
+                                <option value="">Select Language </option>
+                                <option v-for="language in languages" :selected="banner.language_id == language.id" v-bind:value="language.id">
+                                {{ language.language_name }}
+                                </option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('language_id')" v-text="errors.get('language_id')"></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-dark">Banner Navigation </label>
+                                <div class="clearfix"></div>
+                                <select v-model="banner.slider_navigation_id">
+                                <option value="">Select Banner Navigation</option>
+                                <option v-for="slider_navigation in slider_navigations" v-bind:value="slider_navigation.slider_navigation_id">
+                                {{ slider_navigation.slider_navigation_name }}
+                                </option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('slider_navigation_id')" v-text="errors.get('slider_navigation_id')"></small>
+                            </div>
+                        </div>
+                    </div>   
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-group" v-if="banner.slider_navigation_id == 1">
+                                <label class="text-dark">Category </label>
+                                <div class="clearfix"></div>
+                                <select v-model="banner.ref_id">
+                                <option value="">Select Category</option>
+                                <option v-for="category in categories" v-bind:value="category.id">
+                                {{ category.detail == null ? '' : category.detail[0].name }}
+                                </option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" v-if="banner.slider_navigation_id == 2">
+                                <label class="text-dark">Products </label>
+                                <div class="clearfix"></div>
+                                <select v-model="banner.ref_id">
+                                <option value="">Select Product</option>
+                                <option v-for="product in products" v-bind:value="product.product_id">
+                                {{ product.detail == null ? '' : product.detail[0].title }}
+                                </option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
+                            </div>  
+                        </div>
+                    </div>                                
+                   
 
-                    <div class="form-group">
-                        <label class="text-dark">Language </label>
-                        <select v-model="banner.language_id">
-                        <option value="">Select Language </option>
-                        <option v-for="language in languages" :selected="banner.language_id == language.id" v-bind:value="language.id">
-                        {{ language.language_name }}
-                        </option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('language_id')" v-text="errors.get('language_id')"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="text-dark">Banner Navigation </label>
-                        <div class="clearfix"></div>
-                        <select v-model="banner.slider_navigation_id">
-                        <option value="">Select Banner Navigation</option>
-                        <option v-for="slider_navigation in slider_navigations" v-bind:value="slider_navigation.slider_navigation_id">
-                        {{ slider_navigation.slider_navigation_name }}
-                        </option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('slider_navigation_id')" v-text="errors.get('slider_navigation_id')"></small>
-                    </div>
-
-                    <div class="form-group" v-if="banner.slider_navigation_id == 1">
-                        <label class="text-dark">Category </label>
-                        <div class="clearfix"></div>
-                        <select v-model="banner.ref_id">
-                        <option value="">Select Category</option>
-                        <option v-for="category in categories" v-bind:value="category.id">
-                        {{ category.detail == null ? '' : category.detail[0].name }}
-                        </option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
-                    </div>
-
-                    <div class="form-group" v-if="banner.slider_navigation_id == 2">
-                        <label class="text-dark">Products </label>
-                        <div class="clearfix"></div>
-                        <select v-model="banner.ref_id">
-                        <option value="">Select Product</option>
-                        <option v-for="product in products" v-bind:value="product.product_id">
-                        {{ product.detail == null ? '' : product.detail[0].title }}
-                        </option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="text-dark">Status </label>
-                        <div class="clearfix"></div>
-                        <select v-model="banner.status">
-                            <option value="">Select Status</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                        <small class="form-text text-danger" v-if="errors.has('status')" v-text="errors.get('status')"></small>
-                    </div>
-
-
+                                                      
                 </div>
             </div>
-            <button type="button" @click="addUpdateBanner()" class="btn btn-primary">Submit</button>
+            <button type="button" @click="addUpdateBanner()" class="btn btn-primary w-100">Submit</button>
         </form>
     </div>
     <attach-image @toggleImageSelect="toggleImageSelect" :showModal="showModal" @setImage="setImage"/>

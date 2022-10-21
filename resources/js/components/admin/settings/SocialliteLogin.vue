@@ -41,7 +41,7 @@
                 <input type="text" class="form-control border-dark" placeholder="" v-model="loginCredential.google_redirect" ref="site_name">
             </fieldset>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 d-flex justify-content-end">
             <br />
             <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
         </div>
@@ -50,95 +50,95 @@
 </template>
 
 <script>
-import ErrorHandling from './../../../ErrorHandling'
-export default {
-    data() {
-        return {
-            loginCredential: {
-                sociallite_login:'0',
-                facebook_client_id:'0',
-                facebook_client_secret:'0',
-                facebook_redirect:'0',
-                google_client_id:'0',
-                google_client_secret:'0',
-                google_redirect:'0'
+    import ErrorHandling from './../../../ErrorHandling'
+    export default {
+        data() {
+            return {
+                loginCredential: {
+                    sociallite_login:'0',
+                    facebook_client_id:'0',
+                    facebook_client_secret:'0',
+                    facebook_redirect:'0',
+                    google_client_id:'0',
+                    google_client_secret:'0',
+                    google_redirect:'0'
+                },
+                errors: new ErrorHandling(),
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            };
+        },
+
+        methods: {
+            check: function(e) {
+                this.loginCredential[e.target.name] = this.loginCredential[e.target.name] == '1' ? '0' : '1';
             },
-            errors: new ErrorHandling(),
-            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-        };
-    },
-
-    methods: {
-        check: function(e) {
-            this.loginCredential[e.target.name] = this.loginCredential[e.target.name] == '1' ? '0' : '1';
-        },
-        fetchSetting() {
-            this.$emit('updateLoadingState', true);
-            var token = localStorage.getItem('token');
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            };
-            var responseData = {};
-
-            axios.get('/api/admin/setting?type=login_credential', config)
-                .then(res => {
-                    for (var i = 0; i < res.data.data.length; i++) {
-                        Object.assign(responseData, {
-                            [res.data.data[i].setting_key]: res.data.data[i].setting_value
-                        });
+            fetchSetting() {
+                this.$emit('updateLoadingState', true);
+                var token = localStorage.getItem('token');
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`
                     }
-                    console.log('response datass', responseData);
-                    this.loginCredential = responseData;
-                })
-                .finally(() => (this.$emit('updateLoadingState', false)));
-        },
+                };
+                var responseData = {};
 
-        updateSetting() {
-            this.$emit('updateLoadingState', true);
-            var loginCredential = Object.entries(this.loginCredential);
-            var key = [];
-            var value = [];
+                axios.get('/api/admin/setting?type=login_credential', config)
+                    .then(res => {
+                        for (var i = 0; i < res.data.data.length; i++) {
+                            Object.assign(responseData, {
+                                [res.data.data[i].setting_key]: res.data.data[i].setting_value
+                            });
+                        }
+                        console.log('response datass', responseData);
+                        this.loginCredential = responseData;
+                    })
+                    .finally(() => (this.$emit('updateLoadingState', false)));
+            },
 
-            for (var i = 0; i < loginCredential.length; i++) {
-                key.push(loginCredential[i][0]);
-                value.push(loginCredential[i][1])
+            updateSetting() {
+                this.$emit('updateLoadingState', true);
+                var loginCredential = Object.entries(this.loginCredential);
+                var key = [];
+                var value = [];
+
+                for (var i = 0; i < loginCredential.length; i++) {
+                    key.push(loginCredential[i][0]);
+                    value.push(loginCredential[i][1])
+                }
+
+                // console.log(key, value);
+
+                var token = localStorage.getItem('token');
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                };
+
+                axios.post('/api/admin/setting/login_credential', {
+                        _method: 'PUT',
+                        key,
+                        value
+                    }, config)
+                    .then(res => {
+                        if (res.data.status == "Success") {
+                            this.$toaster.success('Settings has been updated successfully')
+                        } else if (res.data.status == 'Error') {
+                            this.$toaster.error(res.data.message)
+                        }
+
+                    })
+                    .catch(err => {
+                        if (err.response.data.status == 'Error') {
+                            this.$toaster.error(err.response.data.message)
+                        }
+                    })
+                    .finally(() => (this.$emit('updateLoadingState', false)));
+
             }
-
-            // console.log(key, value);
-
-            var token = localStorage.getItem('token');
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            };
-
-            axios.post('/api/admin/setting/login_credential', {
-                    _method: 'PUT',
-                    key,
-                    value
-                }, config)
-                .then(res => {
-                    if (res.data.status == "Success") {
-                        this.$toaster.success('Settings has been updated successfully')
-                    } else if (res.data.status == 'Error') {
-                        this.$toaster.error(res.data.message)
-                    }
-
-                })
-                .catch(err => {
-                    if (err.response.data.status == 'Error') {
-                        this.$toaster.error(err.response.data.message)
-                    }
-                })
-                .finally(() => (this.$emit('updateLoadingState', false)));
-
+        },
+        mounted() {
+            this.fetchSetting();
         }
-    },
-    mounted() {
-        this.fetchSetting();
-    }
-};
+    };
 </script>

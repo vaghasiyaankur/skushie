@@ -376,7 +376,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 d-flex justify-content-end pr-0 mt-3">
                       <button class="btn btn-primary" @click="addQuotation()">
                         Submit
                       </button>
@@ -788,5 +788,25 @@ export default {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px 0 rgb(34 41 47 / 18%);
     border-radius: 7px;
+}
+.confirm-delete{
+    background-color: rgb(240 101 72 / 22%);
+    color: #ff2c00;
+    padding: 10px;
+    border-radius: 5px;
+}
+</style>
+<style>
+.multiselect__tag{
+  background: #cfa5f9 !important;
+}
+.multiselect__tag-icon:focus, .multiselect__tag-icon:hover{
+  background-color: transparent !important;
+}
+.multiselect__tag-icon:after{
+  color: #fff !important;
+}
+.multiselect__option--highlight {
+  background: #cfa5f9 !important;
 }
 </style>

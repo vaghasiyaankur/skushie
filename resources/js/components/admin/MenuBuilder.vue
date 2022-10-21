@@ -31,7 +31,7 @@
                     </div>
                     <div class="icons d-flex">
                       <button
-                        class="btn ml-2 p-0 kt_notes_panel_toggle"
+                        class="btn ml-2 p-0 kt_notes_panel_toggle btn-outline-black"
                         data-toggle="tooltip"
                         title=""
                         data-placement="right"
@@ -39,23 +39,14 @@
                       >
                         <span
                           class="
-                            bg-secondary
-                            h-30px
-                            font-size-h5
-                            w-30px
-                            d-flex
-                            align-items-center
-                            justify-content-center
-                            rounded-circle
-                            shadow-sm
-                          "
+                          h-30px font-size-h5 bg-white w-30px d-flex align-items-center justify-content-center shadow-sm"
                           v-on:click="display_form = !display_form"
                         >
                           <svg
                             width="25px"
                             height="25px"
                             viewBox="0 0 16 16"
-                            class="bi bi-plus white"
+                            class="bi bi-plus"
                             fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -66,58 +57,64 @@
                           </svg>
                         </span>
                       </button>
-                      <button @click="genrateCatalog()">
+                      <button @click="genrateCatalog()" class="catalog_btn">
                         Generate Catalog
                       </button>
-                      <button @click="updateSetting()">Update</button>
+                      <button @click="updateSetting()" class="update_btn">Update</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row ">
               <div class="col-12">
                 <div class="card card-custom gutter-b bg-white border-0">
                   <div class="card-body">
-                    <vue-nestable v-model="nestableItems" @input="changeJson()">
+                    <vue-nestable v-model="nestableItems" @input="changeJson()" class="px-4">
                       <vue-nestable-handle
                         slot-scope="{ item, index, isChild }"
                         :item="item"
                       >
                         <div
-                          class="row"
-                          style="
-                            background: #ADB5BD;
-                            color: white;
-                            margin-top: 4px;
+                          class="row align-items-center py-2"
+                          style="                            
+                          margin-top: 4px;
                           "
-                        >
-                          <div class="col-12">
+                          
+                          >
+                          <!-- background: #ADB5BD; -->
+                          <!-- <div class="col-12">
+                            color: white;
                             <br />
-                          </div>
+                          </div> -->
                           <div class="col-8">
                             <span>{{ item.name[0] }}</span>
                           </div>
-                          <div class="col-1">
+                          <div class="col-2">
                             <a
-                              class=""
+                              class="btn btn-outline-danger text-nowrap waves-effect p-2"
                               href="#"
                               @click="deleteObject(index, item, isChild)"
-                              ><i class="fa fa-trash"></i
-                            ></a>
+                              >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25">
+                                <line x1="18" y1="6" x2="6" y2="18"></line> <line x1="6" y1="6" x2="18" y2="18"></line>
+                              </svg>
+                              <span>Delete</span>
+                            </a>
                           </div>
-                          <div class="col-1">
+                          <div class="col-2">
                             <a
-                              class=""
+                              class="click-edit btn btn-outline-primary text-nowrap waves-effect p-2"
                               href="#"
                               @click="editObject(index, item, isChild)"
-                              ><i class="fa fa-edit"></i
-                            ></a>
+                              ><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                              <span class="pl-2">Edit</span>
+                            </a>
                           </div>
-                          <div class="col-2"></div>
-                          <div class="col-12">
+                          <!-- <div class="col-2"></div> -->
+                          <!-- <div class="col-12">
                             <br />
-                          </div>
+                          </div> -->
                         </div>
                       </vue-nestable-handle>
                     </vue-nestable>
@@ -350,7 +347,7 @@
             </div>
           </div>
         </div>
-        <button type="button" @click="addMenu()" class="btn btn-primary">
+        <button type="button" @click="addMenu()" class="btn btn-primary w-100">
           Submit
         </button>
       </form>
@@ -723,3 +720,24 @@ export default {
   },
 };
 </script>
+<style scoped>
+button.update_btn {
+  outline: none;
+  border: none;
+  background-color: #33d67c;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px 16px;
+  box-shadow: inset 0 -3px 0 0 rgb(34 41 47 / 20%);
+}
+button.catalog_btn{
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px 16px;
+  background-color: #ff9f43;
+  box-shadow: inset 0 -3px 0 0 rgb(34 41 47 / 20%); 
+  margin: 0 10px;
+}
+</style>

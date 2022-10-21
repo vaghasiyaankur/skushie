@@ -123,7 +123,7 @@
                           </div>
                           <table
                             id="productUnitTable"
-                            class="display dataTable no-footer"
+                            class="display dataTable no-footer order--table"
                             role="grid"
                           >
                             <thead class="text-body">

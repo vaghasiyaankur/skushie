@@ -95,7 +95,7 @@
                           </div>
                           <table
                             id="purchase"
-                            class="display dataTable no-footer"
+                            class="display dataTable no-footer order--table"
                             purchase="grid"
                           >
                             <thead class="text-body">

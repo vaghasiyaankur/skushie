@@ -127,7 +127,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 d-flex justify-content-end mt-3">
                                       <button class="btn btn-primary" @click="addstock()">Submit</button>
                                     </div>
                                 </div>

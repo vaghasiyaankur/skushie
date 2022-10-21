@@ -72,7 +72,7 @@
                           </div>
                           <table
                             id="sale"
-                            class="display dataTable no-footer"
+                            class="display dataTable no-footer order--table"
                             sale="grid"
                           >
                             <thead class="text-body">
@@ -131,7 +131,7 @@
                               </tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm m-0 float-right">
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
                             <li
                               v-bind:class="[
                                 { disabled: !pagination.prev_page_url },

@@ -188,9 +188,9 @@
                       </div>
                       <div class="modal-footer">
                         <button
-                          type="button"
-                          class="btn btn-light"
-                          data-dismiss="modal"
+                          type="button" 
+                          class="btn btn-outline-dark border_radius_10"
+                          data-dismiss="modal"  style="padding:8px 16px;"
                           @click="toggleModal()"
                         >
                           <span class="">Close</span>
@@ -585,5 +585,12 @@ export default {
   background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
   box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
   color: #fff !important;
+}
+.icons .btn-danger:hover{
+  box-shadow: 0 8px 25px -8px #ea5455;
+}
+.modal-dialog .modal-footer .btn-outline-dark:hover{
+  background-color: rgba(75, 75, 75, 0.04) !important;
+  color: #4b4b4b !important;
 }
 </style>

@@ -112,7 +112,7 @@
                           </div>
                           <table
                             id="sale"
-                            class="display dataTable no-footer"
+                            class="display dataTable no-footer order--table"
                             sale="grid"
                           >
                             <thead class="text-body">

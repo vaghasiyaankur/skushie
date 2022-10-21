@@ -11,22 +11,26 @@
                 </div>
                 <div class="card-body">
                     <ol class="dd-list">
-                    <draggable v-model="elements" :group="elements" @start="drag=true" @end="drag=false" draggable=".moving-card">
-                        <li style="cursor:pointer;" class="dd-item" v-for="(element,index) in elements" :key="element.id" :class="element.class">
-                            <div class="dd-handle">{{element.name}}</div>
-                            <div class="inner-content">
-                                <button style="margin-right: 30px !important;" class="btn btn-primary" v-if="element.multiple == true"  @click="toggleModal(element.name,index)">Choose</button>
-                                    <div class="custom-control switch custom-switch-info custom-switch custom-control-inline mr-0">
-                                        <input type="checkbox" class="custom-control-input" :checked="element.display == true" :id="'customSwitchcolor'+element.id" @change="toggleDisplay(index)">
-                                        <label class="custom-control-label mr-1" :for="'customSwitchcolor'+element.id" style="vertical-align: middle !important;">
-                                        </label>
-                                    </div>
-                                
-                            </div>
-                            <img :src="element.image"/>
-                        </li>
-
-                    </draggable>
+                        <draggable v-model="elements" class="d-flex flex-wrap" :group="elements" @start="drag=true" @end="drag=false" draggable=".moving-card" >                             
+                                <li style="cursor:pointer;" class="dd-item" v-for="(element,index) in elements" :key="element.id" :class="element.class">
+                                    <div class="card h-100">
+                                        <div class="card-header">
+                                            <div class="dd-handle">{{element.name}}</div>                                            
+                                        </div>
+                                        <div class="inner-content">
+                                            <button style="margin-right: 30px !important;" class="btn btn-primary" v-if="element.multiple == true"  @click="toggleModal(element.name,index)">Choose</button>
+                                                <div class="custom-control switch custom-switch-info custom-switch custom-control-inline mr-0">
+                                                    <input type="checkbox" class="custom-control-input" :checked="element.display == true" :id="'customSwitchcolor'+element.id" @change="toggleDisplay(index)">
+                                                    <label class="custom-control-label mr-1" :for="'customSwitchcolor'+element.id" style="vertical-align: middle !important;">
+                                                    </label>
+                                                </div>                                        
+                                        </div>
+                                        <div class="card-body">
+                                            <img :src="element.image"/>
+                                        </div>                                        
+                                    </div>                                    
+                                </li>
+                        </draggable>
                     </ol>
                 </div>
             </div>
@@ -486,3 +490,42 @@ export default {
      }
 };
 </script>
+<style scoped>
+.dd-item{
+    flex-basis: 50% !important;
+    max-width: 50% !important;
+    padding-right: 20px !important;
+    margin-bottom: 15px !important;
+}
+.dd-list .dd-item .card{
+    background: #fff;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    border-radius: 8px;
+    transition: all 0.5s ease;
+}
+.dd-list .dd-item .card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 25px 0 rgb(34 41 47 / 25%);
+}
+.dd-list .dd-item .card-body img{
+    width: 100%;
+    object-fit: cover;
+}
+.dd-handle {
+    height: auto !important;
+    padding: 0px 0px !important;
+    padding-left: 0px !important;
+    box-shadow: none !important;   
+    border: none !important;
+}
+.inner-content{
+    padding: 15px 0 !important;
+}
+@media screen and (max-width:1299px) {
+    .dd-item{
+        flex-basis: 100% !important;
+        max-width: 100% !important;
+
+    }
+}
+</style>

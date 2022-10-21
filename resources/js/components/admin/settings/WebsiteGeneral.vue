@@ -6,22 +6,25 @@
             <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.site_name_or_logo" ref="site_name_or_logo">
         </fieldset>
     </div> -->
-    <div class="col-md-6">
-        <label>Website Name</label>
-        <fieldset class="form-group mb-3">
-            <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.site_name" ref="site_name">
-        </fieldset>
+    <div class="col-12">
+        <div class="col-md-6 pl-0">
+            <label>Website Name</label>
+            <fieldset class="form-group mb-3">
+                <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.site_name" ref="site_name">
+            </fieldset>
+        </div>
     </div>
 
 	 <div class="col-md-6">
         <label>Website Logo</label>
         <fieldset class="form-group mb-3">
         <div class="form-group">
-            <button type="button" class="btn btn-primary" @click="toggleImageSelect()">Select Logo from gallary</button>
+            <button type="button" class="btn btn-primary w-100" @click="toggleImageSelect()">Select Logo from gallary</button>
             <small id="textHelp" class="form-text text-muted">Select Logo from gallary.</small>
             <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
-
-            <img v-if="webgeneral.site_logo != ''" :src="webgeneral.site_logo" style="width:100px;height:100px;"/>
+            <div class="website_logo_img">
+                <img v-if="webgeneral.site_logo != ''" :src="webgeneral.site_logo" style="width:100px;height:100px;"/>
+            </div>
         </div>
         </fieldset>
     </div>
@@ -30,57 +33,57 @@
         <label>FavIcon Logo</label>
         <fieldset class="form-group mb-3">
         <div class="form-group">
-            <button type="button" class="btn btn-primary" @click="toggleImageSelectIcon()">Select Favicon from gallary.</button>
+            <button type="button" class="btn btn-primary w-100" @click="toggleImageSelectIcon()">Select Favicon from gallary.</button>
             <small id="textHelp" class="form-text text-muted">Select Favicon from gallary.</small>
             <small class="form-text text-danger" v-if="errors.has('icon')" v-text="errors.get('icon')"></small>
-
-            <img v-if="webgeneral.favicon != ''" :src="webgeneral.favicon" style="width:100px;height:100px;"/>
+            <div class="website_logo_img">
+                <img v-if="webgeneral.favicon != ''" :src="webgeneral.favicon" style="width:100px;height:100px;"/>
+            </div>
         </div>
         </fieldset>
     </div>
+        <div class="col-md-6">
+            <label>Facebook URL</label>
+            <fieldset class="form-group mb-3">
+                <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.facebook_url" ref="facebook_url">
+            </fieldset>
+        </div>
 
-	<div class="col-md-6">
-        <label>Facebook URL</label>
-        <fieldset class="form-group mb-3">
-            <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.facebook_url" ref="facebook_url">
-        </fieldset>
-    </div>
+        <div class="col-md-6">
+            <label>Google URL</label>
+            <fieldset class="form-group mb-3">
+                <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.google_url" ref="google_url">
+            </fieldset>
+        </div>
 
-	<div class="col-md-6">
-        <label>Google URL</label>
-        <fieldset class="form-group mb-3">
-            <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.google_url" ref="google_url">
-        </fieldset>
-    </div>
+        <div class="col-md-6">
+            <label>Twitter URL</label>
+            <fieldset class="form-group mb-3">
+                <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.twitter_url" ref="twitter_url">
+            </fieldset>
+        </div>
 
-	<div class="col-md-6">
-        <label>Twitter URL</label>
-        <fieldset class="form-group mb-3">
-            <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.twitter_url" ref="twitter_url">
-        </fieldset>
-    </div>
+        <div class="col-md-6">
+            <label>Linked URL</label>
+            <fieldset class="form-group mb-3">
+                <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.linkedin_url" ref="linkedin_url">
+            </fieldset>
+        </div>
 
-	<div class="col-md-6">
-        <label>Linked URL</label>
-        <fieldset class="form-group mb-3">
-            <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.linkedin_url" ref="linkedin_url">
-        </fieldset>
-    </div>
-    <div class="col-md-6">
-        <label>Instagram URL</label>
-        <fieldset class="form-group mb-3">
-            <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.instagram_url" ref="instagram_url">
-        </fieldset>
-    </div>
+        <div class="col-md-6">
+            <label>Instagram URL</label>
+            <fieldset class="form-group mb-3">
+                <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.instagram_url" ref="instagram_url">
+            </fieldset>
+        </div>
 
-	<div class="col-md-6">
-        <label>Allow Cookies</label>
-		<fieldset class="form-group mb-3">
-            <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.allow_cookies" ref="allow_cookies">
-        </fieldset>
-    </div>
-
-    <div class="col-md-12">
+        <div class="col-md-6">
+            <label>Allow Cookies</label>
+            <fieldset class="form-group mb-3">
+                <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.allow_cookies" ref="allow_cookies">
+            </fieldset>
+        </div>
+    <div class="col-md-12 d-flex justify-content-end">
 		<br />
         <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
     </div>
@@ -201,3 +204,15 @@ export default {
     }
 };
 </script>
+<style scoped>
+.website_logo_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    border-radius: 10px;
+    margin-top: 10px;
+}
+</style>

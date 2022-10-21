@@ -7,8 +7,8 @@
     <div class="card-body">
 
         <div class="row">
-            <div class="col-md-3">
-                <ul class="nav flex-column nav-pills mb-3" id="v-pills-tab1" role="tablist" aria-orientation="vertical">
+            <div class="col-12">
+                <ul class="nav nav-pills mb-3" id="v-pills-tab1" role="tablist" aria-orientation="vertical">
                     <li class="nav-item">
                         <a class="nav-link" @click.prevent="setActive('general')" :class="{ active: isActive('general') }" href="#general">General</a>
                     </li>
@@ -26,7 +26,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-9">
+            <div class="col-12">
                 <div class="tab-content" id="v-pills-tabContent1">
                     <div class="tab-pane fade" :class="{ 'active show': isActive('general') }">
                         <WebsiteGeneral @updateLoadingState ="updateLoadingState" />
@@ -89,3 +89,16 @@ export default {
     }
 }
 </script>
+<style scoped>
+#v-pills-tab1 .nav-link {
+    padding: 8px 25px;
+    font-size: 16px;
+}
+ .nav .nav-link.active, .nav-pills .show > .nav-link {
+    background: #7367f0 !important;
+    color: #fff !important;
+    border-color: #7367f0 !important;
+    box-shadow: 0 4px 18px -4px rgb(115 103 240 / 65%);
+    border-radius: 0.358rem;
+}
+</style>

@@ -104,6 +104,7 @@
                                                                     <span >Delete</span>
                                                                 </a>
                                                             </td>
+                                                            <td v-else></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

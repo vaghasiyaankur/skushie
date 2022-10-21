@@ -548,7 +548,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-3" style="text-align:end">
                       <button
                         class="btn btn-primary"
                         @click="saveTransaction()"
