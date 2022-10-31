@@ -58,6 +58,18 @@
               </li>
             </ul>
           </div>
+          <!-- <div class="small_screen_view d-none">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                Dropdown button
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </div> -->
         </div>
       </div>
       <div class="row">
@@ -83,7 +95,7 @@
                   >
                 </div>
               </fieldset>
-              <div class="icons d-flex">
+              <div class="icons d-flex mt-sm-0 mt-3">
                 <button
                   type="button"
                   class="btn btn-danger ml-2 border_radius_10"
@@ -97,7 +109,7 @@
                 <button
                   type="button"
                   title="Add New"
-                  class="btn btn-primary white ml-2"
+                  class="btn btn-primary white ml-sm-2 ml-0"
                   data-toggle="modal"
                   data-target="#imagepopup"
                   @click="toggleModal()"
@@ -593,4 +605,32 @@ export default {
   background-color: rgba(75, 75, 75, 0.04) !important;
   color: #4b4b4b !important;
 }
+
+/*@media screen and (max-width:1180px) {
+  .small_screen_view{
+    display: block !important;
+  }
+  .gallary-categories{
+    display: none;
+  }  
+}
+.small_screen_view .dropdown{
+  width: 100%;
+  max-width:70%;
+  margin: 0 auto;
+} 
+.small_screen_view .btn{
+     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
+    box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
+    color: #fff !important;
+}
+.small_screen_view .dropdown-menu.show{
+  width: 100%;
+  border-radius: 10px; 
+}*/
 </style>

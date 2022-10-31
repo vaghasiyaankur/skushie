@@ -1,7 +1,7 @@
 <template>
 <div class="modal fade text-left" :class="{ 'show': showModal }" id="imagepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" :style="[showModal ? {'display': 'block !important'} : {'display': 'none'}]" style="overflow: scroll;">
     <div class="modal-dialog modal-xl " role="document">
-        <div class="modal-content">
+        <div class="modal-content border_radius_10">
             <div class="modal-header">
                 <button type="button" class="close rounded-pill btn btn-sm btn-icon btn-light btn-hover-primary m-0" data-dismiss="modal" aria-label="Close" @click="toggleModal()">
                     <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@
                         <div class="row">
 
                             <div class="col-12 ">
-                                <div id="generalgallary" class="gallary0 linked card card-custom gutter-b bg-white border-0">
+                                <div id="generalgallary" class="gallary0 linked card card-custom gutter-b bg-white border-0 border_radius_10 ">
                                     <div class="tab-content" id="v-pills-tabContent">
                                         <div class="tab-pane fade show active" id="All-center" role="tabpanel" aria-labelledby="All-tab-center">
                                             <div class="card-body">
@@ -55,7 +55,7 @@
                                                         <nav aria-label="navigation">
                                                             <div class="pagination d-flex justify-content-end align-items-center">
                                                                 <div class="mr-2 text-dark">(Showing result <span id="numbering">{{ meta.to }}</span> out of <span id="totalnumber">{{ meta.total }}</span> )</div>
-                                                                <a class="btn btn-secondary white" href="#" id="loadMore" @click="setLimit()">Load More</a>
+                                                                <a class="btn btn-secondary white border_radius_10" href="#" id="loadMore" @click="setLimit()">Load More</a>
                                                             </div>
                                                         </nav>
                                                     </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal" @click="toggleModal()">
+                <button type="button" class="btn btn-outline-success border_radius_10" data-dismiss="modal" @click="toggleModal()">
                     <span class="">Choose</span>
                 </button>
             </div>
@@ -173,3 +173,28 @@ export default {
     }
 };
 </script>
+<style scoped>
+.nav .nav-link.active, .nav-pills .show > .nav-link{
+    background: #7367f0 !important;
+    color: #fff !important;
+    border-color: #7367f0 !important;
+    box-shadow: 0 4px 18px -4px rgb(115 103 240 / 65%) !important;
+    border-radius: 0.358rem;
+}
+.nav .nav-link{
+    padding: 8px 25px;
+    background: #fff !important;
+    font-size: 16px;
+    border-radius: 0.358rem !important;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%) !important;
+}
+.btn-outline-success{
+    border: 1px solid #28c76f !important;
+    background-color: transparent !important;
+    color: #28c76f !important;
+}
+.btn-outline-success:hover:not(.disabled):not(:disabled) {
+    background-color: rgba(40, 199, 111, 0.04) !important;
+    color: #28c76f !important;
+}
+</style>

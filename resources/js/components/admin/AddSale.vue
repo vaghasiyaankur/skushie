@@ -1527,12 +1527,12 @@ export default {
 };
 </script>
 <style scoped>
-.cutom_table_effect{
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px 0 rgb(34 41 47 / 18%);
-  border-radius: 7px;
-}
-.cutom_table_effect tr, .cutom_table_effect td {
-  border-bottom: 1px solid #e9ecef;
-}
+  .cutom_table_effect{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px 0 rgb(34 41 47 / 18%);
+    border-radius: 7px;
+  }
+  .cutom_table_effect tr, .cutom_table_effect td {
+    border-bottom: 1px solid #e9ecef;
+  }
 </style>

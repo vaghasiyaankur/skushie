@@ -726,7 +726,7 @@ button.update_btn {
   border: none;
   background-color: #33d67c;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 8px 16px;
   box-shadow: inset 0 -3px 0 0 rgb(34 41 47 / 20%);
 }
@@ -734,7 +734,7 @@ button.catalog_btn{
   outline: none;
   border: none;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 8px 16px;
   background-color: #ff9f43;
   box-shadow: inset 0 -3px 0 0 rgb(34 41 47 / 20%); 

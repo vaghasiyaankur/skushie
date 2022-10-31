@@ -283,7 +283,7 @@
                                     $parent.permissions.includes(
                                       'slider-bannder-manage'
                                     )
-                                  "
+                                  " style="white-space:nowrap"
                                 >
                                   <a
                                     href="javascript:void(0)"
@@ -486,7 +486,7 @@
                 <label class="w-100"></label>
                 <button
                   type="button"
-                  class="btn btn-primary w-100 mt-2"
+                  class="btn btn-primary w-100 mt-2 mb-3"
                   @click="toggleImageSelect()"
                 >
                   Upload slider Media

@@ -177,7 +177,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 d-flex justify-content-end">
-            <button type="submit" class="btn btn-secondary white" @click="addUpdateRolePermissions">
+            <button type="submit" class="btn btn-secondary white border_radius_10" @click="addUpdateRolePermissions">
               Save Changes
             </button>
           </div>

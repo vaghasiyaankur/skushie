@@ -18,34 +18,33 @@
                             </div>
                         </div>
                     </div>
-                        <div class="col-lg-12 col-xl-12">
-                            <div class="card card-custom gutter-b bg-white border-0">
-                                <div class="card-body">
-                                    <div class="col-md-12">
-                                        <label>Email</label>
-                                        <div class="form-group">
-                                            <input type="email" readonly v-model="user.email" class="form-control"/>
-                                        </div>
+                    <div class="col-lg-12 col-xl-12">
+                        <div class="card card-custom gutter-b bg-white border-0">
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <label>Email</label>
+                                    <div class="form-group">
+                                        <input type="email" readonly v-model="user.email" class="form-control"/>
                                     </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label>Name</label>
+                                    <div class="form-group">
+                                        <input type="text" v-model="user.name"  class="form-control"/>
+                                        <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
+                                    </div>
+                                </div>
 
                                     <div class="col-md-12">
-                                        <label>Name</label>
-                                        <div class="form-group">
-                                            <input type="text" v-model="user.name"  class="form-control"/>
-                                            <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
-                                        </div>
+                                    <label>Password</label>
+                                    <div class="form-group">
+                                        <input type="text" v-model="user.password" class="form-control" />
                                     </div>
-
-                                     <div class="col-md-12">
-                                        <label>Password</label>
-                                        <div class="form-group">
-                                            <input type="text" v-model="user.password" class="form-control" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-12">
-                                        <button class="btn btn-primary" @click="updateProfile()">Submit</button>
-                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" @click="updateProfile()">Submit</button>
                                 </div>
                             </div>
                         </div>

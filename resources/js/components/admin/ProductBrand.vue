@@ -150,7 +150,6 @@
                             <small class="form-text text-danger" v-if="errors.has('brand_status')" v-text="errors.get('brand_status')"></small>
                         </fieldset>
                     </div>
-                    
                 </div>
             </div>
             <button type="button" @click="addUpdatebrand()" class="btn btn-primary w-100 mt-3">Submit</button>

@@ -103,7 +103,7 @@
                                                             <td>
                                                                 <img v-if="banner.gallary != null" class="img-thumbnail" :src='"/gallary/thumbnail"+banner.gallary.gallary_name' alt="image not found" />
                                                             </td>
-                                                            <td>
+                                                            <td style="white-space:nowrap;">
                                                                 <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editBanner(banner)">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                                                                     <span class="pl-2">Edit</span>
@@ -162,7 +162,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label> </label>
-                                <button type="button" class="btn btn-primary w-100 mt-2" @click="toggleImageSelect()">Upload Banner Media</button>
+                                <button type="button" class="btn btn-primary w-100 mt-2 mb-3" @click="toggleImageSelect()">Upload Banner Media</button>
                                 <div class="clearfix"></div>
                                 <small id="textHelp" class="form-text text-muted" v-if="gallary_path == null || gallary_path == ''">Select Image file from gallary.</small>
                                 <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
@@ -200,7 +200,7 @@
                             <div class="form-group">
                                 <label class="text-dark">Banner Navigation </label>
                                 <div class="clearfix"></div>
-                                <select v-model="banner.slider_navigation_id">
+                                <select v-model="banner.slider_navigation_id" class="w-100">
                                 <option value="">Select Banner Navigation</option>
                                 <option v-for="slider_navigation in slider_navigations" v-bind:value="slider_navigation.slider_navigation_id">
                                 {{ slider_navigation.slider_navigation_name }}
@@ -215,7 +215,7 @@
                             <div class="form-group" v-if="banner.slider_navigation_id == 1">
                                 <label class="text-dark">Category </label>
                                 <div class="clearfix"></div>
-                                <select v-model="banner.ref_id">
+                                <select v-model="banner.ref_id" class="w-100">
                                 <option value="">Select Category</option>
                                 <option v-for="category in categories" v-bind:value="category.id">
                                 {{ category.detail == null ? '' : category.detail[0].name }}

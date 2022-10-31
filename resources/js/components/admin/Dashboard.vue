@@ -237,7 +237,7 @@
          </div>
       </div>
       <div class="row" v-if="$parent.permissions.includes('dashboard')">
-        <div class="col-lg-6 col-xl-8">
+        <div class="col-xl-8">
           <div class="card card-custom gutter-b bg-white border-0">
              <div class="card-body">
                 <div>
