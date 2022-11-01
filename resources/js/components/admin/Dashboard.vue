@@ -10,7 +10,7 @@
          </div>
       </div>
       <div class="row" v-if="$parent.permissions.includes('dashboard')">
-         <div class="col-lg-6 col-xl-3">
+         <div class="col-sm-6 col-xl-3">
             <div
                class="
                card card-custom
@@ -66,7 +66,7 @@
                </div>
             </div>
          </div>
-         <div class="col-lg-6 col-xl-3">
+         <div class="col-sm-6 col-xl-3">
             <div
                class="
                card card-custom card_custom_effect
@@ -124,7 +124,7 @@
                </div>
             </div>
          </div>
-         <div class="col-lg-6 col-xl-3">
+         <div class="col-sm-6 col-xl-3">
             <div
                class="
                card card-custom card_custom_effect
@@ -182,7 +182,7 @@
                </div>
             </div>
          </div>
-         <div class="col-lg-6 col-xl-3">
+         <div class="col-sm-6 col-xl-3">
             <div
                class="
                card card-custom card_custom_effect
@@ -237,9 +237,9 @@
          </div>
       </div>
       <div class="row" v-if="$parent.permissions.includes('dashboard')">
-        <div class="col-xl-8">
-          <div class="card card-custom gutter-b bg-white border-0">
-             <div class="card-body">
+        <div class="col-xl-8 col-lg-7">
+          <div class="card card-custom gutter-b bg-white border-0 order_card">
+             <div class="card-body px-2">
                 <div>
                    <div class="kt-table-content table-responsive">
                       <Order />
@@ -268,7 +268,7 @@
             </div>
          </div> -->
          
-         <div class="col-lg-6 col-xl-4">
+         <div class="col-xl-4 col-lg-5">
             <div class="card card-custom gutter-b bg-white border-0">
                <div class="card-header align-items-center border-0">
                   <div class="card-title mb-0">
@@ -817,8 +817,19 @@
 .text__blue{
   color: #66b0ff !important;
 }
+@media screen and (min-width:992px) and (max-width:1125px) {
+   .order_card .dataTables_wrapper .dataTables_length {
+      float: none !important;
+      text-align: center !important;
+  }
+   .order_card .dataTables_wrapper .dataTables_filter {
+      float: none !important;
+      text-align: center !important;
+   }
+  }
 </style>
 <style scoped>
+
    .icon-wrapper svg {
    height: 50px;
    width: 50px;
@@ -873,4 +884,5 @@
   .card-custom .card-header{
     background-color: #f9f9f9;
   }
+ 
 </style>

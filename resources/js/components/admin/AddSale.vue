@@ -374,7 +374,7 @@
                       </div>
                     </div>
                     <div class="row justify-content-end">
-                      <div class="col-12 col-md-3">
+                      <div class="col-12 col-xl-3 col-lg-4">
                         <div>
                           <table class="table right-table mb-0 cutom_table_effect">
                             <tbody>

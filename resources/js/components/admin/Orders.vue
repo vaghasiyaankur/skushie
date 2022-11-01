@@ -463,4 +463,10 @@ export default {
 .page-link:focus{
   box-shadow: none !important;
 }
+@media screen and (max-width:380px) {
+  .pagination.pagination-sm li a{
+    
+    font-size: 13px;
+  } 
+}
 </style>

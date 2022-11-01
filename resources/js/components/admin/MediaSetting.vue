@@ -84,4 +84,15 @@ export default {
     box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
     color: #fff !important;
 }
+@media screen and (max-width:575px){
+    #v-pills-tab1 li a{
+        font-size: 14px;
+        padding: 8px 18px;
+    }
+}
+@media screen and (max-width:480px) {
+    #v-pills-tab1 li{
+        width: 100%;
+    }
+}
 </style>

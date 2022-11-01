@@ -26,7 +26,7 @@
               id="pills-tab"
               role="tablist"
             >
-              <li class="nav-item">
+              <li class="nav-item mb-sm-2 mb-0">
                 <a
                   class="nav-link btn-light-dark shadow-none"
                   :class="{ active: tag_id == '' }"
@@ -109,7 +109,7 @@
                 <button
                   type="button"
                   title="Add New"
-                  class="btn btn-primary white ml-sm-2 ml-0"
+                  class="btn btn-primary white ml-2"
                   data-toggle="modal"
                   data-target="#imagepopup"
                   @click="toggleModal()"
@@ -553,7 +553,7 @@ export default {
 </script>
 <style scoped>
 .gallary-categories ul li a {
-  width: 120px;
+  width: 100px;
   border-radius: 0px !important;
   text-align: center;
   background: #e9ecf1;
@@ -563,13 +563,13 @@ export default {
   transition: all 0.2s ease;
 }
 .gallary-categories ul li:first-child a{
-  border-top-left-radius: 25px !important;
-    border-bottom-left-radius: 25px !important;
+  border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
 }
 .gallary-categories ul li:last-child a {
   border-right: 0px;
-  border-top-right-radius: 25px !important;
-  border-bottom-right-radius: 25px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
 }
 .thumbnail{
   box-shadow: 0 4px 24px 0 rgb(177 177 177 / 50%);
@@ -633,4 +633,24 @@ export default {
   width: 100%;
   border-radius: 10px; 
 }*/
+@media screen and (max-width:575px) {
+  .gallary-categories ul li{
+    width: 100%;
+  }
+  .gallary-categories ul li:last-child a{
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+  .gallary-categories ul li a {
+    width: 100%;
+    border-radius: 0px !important;
+    text-align: left;
+    border-right:none;
+    
+  }
+    .gallary-categories ul li:first-child a {
+      border-top-left-radius: 0px !important;
+      border-bottom-left-radius: 0px !important;
+  }
+}
 </style>
