@@ -89,10 +89,9 @@ export default {
         font-size: 14px;
         padding: 8px 18px;
     }
-}
-@media screen and (max-width:480px) {
     #v-pills-tab1 li{
         width: 100%;
     }
+    
 }
 </style>

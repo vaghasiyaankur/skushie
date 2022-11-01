@@ -33,11 +33,12 @@
                 </fieldset>
             </li> -->
            
-            <div class="col-md-12 d-flex justify-content-end mt-3">
-                <br />
-                <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
-            </div>
+           
         </ul>
+        <div class="col-md-12 d-flex justify-content-end mt-3 submit_button px-0">
+            <br />
+            <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </div>
 
 </div>
@@ -140,5 +141,10 @@ export default {
     border:1px solid #ebe9f1 !important;
     padding: 10px;
     border-radius: 10px;
+}
+@media screen and (max-width:575px) {
+    .submit_button .btn{
+        width: 100%;
+    }
 }
 </style>

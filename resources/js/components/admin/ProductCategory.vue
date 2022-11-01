@@ -148,7 +148,7 @@
                         <small class="form-text text-danger" v-if="errors.has('description')" v-text="errors.get('description')"></small>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-lg-6 col-12">
                             <div class="form-group ">
                                 <label>Parent Category</label>
                                 <fieldset class="form-group mb-3">
@@ -163,7 +163,7 @@
                                 </fieldset>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-lg-6 col-12">
                             
                             <div class="form-group " >
                                 <label class="text-dark">Slug</label>
@@ -173,7 +173,7 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-6">
+                        <div class="col-lg-6 col-12">
                             <div class="form-group">
                                 <button type="button" class="btn btn-primary w-100" @click="toggleImageSelect()">Upload Category Media</button>
                                 <small id="textHelp" class="form-text text-muted my-2">Select Image file from gallary.</small>
@@ -182,7 +182,7 @@
                                 <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;" class="rounded"/>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-lg-6 col-12">
                             <div class="form-group">
                                 <button type="button" class="btn btn-primary w-100" @click="toggleImageSelectIcon()">Upload Category Icon</button>
                                 <small id="textHelp" class="form-text text-muted my-2">Select Image file from gallary.</small>
@@ -504,4 +504,5 @@ table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.st
   table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
     background-color: transparent;
   }
+ 
 </style>

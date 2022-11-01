@@ -83,9 +83,9 @@
                 <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.allow_cookies" ref="allow_cookies">
             </fieldset>
         </div>
-    <div class="col-md-12 d-flex justify-content-end">
+    <div class="col-md-12 d-flex justify-content-end submit_button">
 		<br />
-        <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
+        <button @click="updateSetting()" type="submit" class="btn btn-primary ">Submit</button>
     </div>
     <attach-image @toggleImageSelect="toggleImageSelect" :showModal="showModal" @setImage="setImage"/>
     <attach-image @toggleImageSelect="toggleImageSelectIcon" :showModal="showModalIcon" @setImage="setIcon"/>
@@ -214,5 +214,10 @@ export default {
     box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
     border-radius: 10px;
     margin-top: 10px;
+}
+@media screen and (max-width:575px) {
+    .submit_button .btn{
+        width: 100%;
+    }
 }
 </style>

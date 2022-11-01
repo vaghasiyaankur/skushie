@@ -34,7 +34,7 @@
                     </ol>
                 </div>
             </div>
-            <button @click="updateSetting()" type="submit" class="btn btn-primary" style="float: right;">Update Home Page Builder Settings</button>
+                <button @click="updateSetting()" type="submit" class="btn btn-primary update_page_btn" style="float: right;">Update Home Page Builder Settings</button>
             <br>
             <br>
             <br>
@@ -526,6 +526,11 @@ export default {
         flex-basis: 100% !important;
         max-width: 100% !important;
 
+    }
+}
+@media screen and (max-width:575px){
+    .update_page_btn.btn{
+        width: 100% !important;
     }
 }
 </style>

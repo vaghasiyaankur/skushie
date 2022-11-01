@@ -408,4 +408,9 @@ export default {
    box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
    color: #fff !important;
 }
+@media screen and (max-width:480px) {
+   .nav li.nav-item{
+      width: 100%;
+   }
+}
 </style>

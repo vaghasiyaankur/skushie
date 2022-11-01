@@ -20,12 +20,12 @@
                                 <div class="gallary-categories">
                                     <ul class="nav nav-pills justify-content-start  mb-0" id="pills-tab" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link  btn-light-dark shadow-none mr-4 mb-4" :class="{ 'active': tag_id == '' }" id="All-tab-center" data-toggle="pill" href="#All-center" role="tab" aria-controls="All-center" aria-selected="true" @click="gallaryByTagId('')">
+                                            <a class="nav-link  btn-light-dark shadow-none mr-4 mb-sm-4 mb-3" :class="{ 'active': tag_id == '' }" id="All-tab-center" data-toggle="pill" href="#All-center" role="tab" aria-controls="All-center" aria-selected="true" @click="gallaryByTagId('')">
                                                 All
                                             </a>
                                         </li>
                                         <li class="nav-item" v-for="tag in tags">
-                                            <a class="nav-link  btn-light-dark shadow-none mr-4 mb-4" :class="{ 'active': tag_id == tag.tag_id }" id="general-tab-center" data-toggle="pill" :href="'#'+tag.tag_name" role="tab" aria-controls="general" aria-selected="false" @click="gallaryByTagId(tag.tag_id)">
+                                            <a class="nav-link  btn-light-dark shadow-none mr-4 mb-sm-4 mb-3" :class="{ 'active': tag_id == tag.tag_id }" id="general-tab-center" data-toggle="pill" :href="'#'+tag.tag_name" role="tab" aria-controls="general" aria-selected="false" @click="gallaryByTagId(tag.tag_id)">
                                                 {{ tag.tag_name }}
                                             </a>
                                         </li>
@@ -42,7 +42,7 @@
                                         <div class="tab-pane fade show active" id="All-center" role="tabpanel" aria-labelledby="All-tab-center">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div v-for='gallary in gallaries' class="col-6 col-sm-4 col-md-3 col-lg-4  col-xl-3 loadingmore" style="display: block;" @click="setSelectedImages(gallary.id,gallary.gallary_name)">
+                                                    <div v-for='gallary in gallaries' class="col-6 col-sm-4 col-md-4 col-xl-3 loadingmore" style="display: block;" @click="setSelectedImages(gallary.id,gallary.gallary_name)">
                                                         <div class="thumbnail text-center  mb-4" :class="{ 'active': selectedImage == gallary.id}">
                                                             <div class="thumbnail-imges ">
                                                                 <a class="img-select d-block" href="javascript:void(0);">
@@ -196,5 +196,16 @@ export default {
 .btn-outline-success:hover:not(.disabled):not(:disabled) {
     background-color: rgba(40, 199, 111, 0.04) !important;
     color: #28c76f !important;
+}
+@media screen and (max-width:575px){
+    .nav li.nav-item{
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width:991px){
+    .thumbnail {
+        height: 115px !important;
+    }
 }
 </style>

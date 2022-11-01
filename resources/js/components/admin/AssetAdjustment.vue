@@ -151,12 +151,14 @@
                                     ></small>
                                   </fieldset>
                                 </div>
-                                <button
-                                  class="btn btn-primary"
-                                  @click="customValidator()"
-                                >
-                                  Submit
-                                </button>
+                                <div class="submit_button d-flex justify-content-end">
+                                  <button 
+                                    class="btn btn-primary"
+                                    @click="customValidator()"
+                                  >
+                                    Submit
+                                  </button>
+                                </div>
                               </div>
                               <div class="col-1"></div>
                             </div>
@@ -331,3 +333,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media screen and (max-width:767px) {
+  .submit_button .btn{
+    width: 100%;
+  }
+}
+</style>

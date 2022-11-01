@@ -125,7 +125,7 @@
               </div>
               <div class="col-lg-12 col-xl-12">
                 <div class="card card-custom card_custom_effect gutter-b bg-white border-0">
-                  <div class="card-body">
+                  <div class="card-body px-sm-3 px-0">
                     <div class="col-md-12">
                       <label class="text-body">Products</label>
                       <fieldset class="form-group mb-3 d-flex">
@@ -259,7 +259,7 @@
                         ></small>
                       </div>
                     </div>
-                    <div class="col-md-12 d-flex justify-content-end pr-0 mt-3">
+                    <div class="col-md-12 d-flex justify-content-end pr-0 mt-3 submit_button px-0">
                       <button
                         class="btn btn-primary"
                         @click="addstocktransfer()"
@@ -575,3 +575,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media screen and (max-width:575px) {
+  
+  .submit_button .btn{
+    width: 100%;
+  }
+}
+</style>

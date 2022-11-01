@@ -135,7 +135,7 @@
               </div>
               <div class="col-lg-12 col-xl-12">
                 <div class="card card-custom gutter-b card_custom_effect bg-white border-0">
-                  <div class="card-body">
+                  <div class="card-body px-sm-3 px-0">
                     <div class="col-md-12">
                       <label class="text-body">Products</label>
                       <fieldset class="form-group mb-3 d-flex">
@@ -531,7 +531,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-12 d-flex justify-content-end pr-0 mt-3">
+                    <div class="col-md-12 d-flex justify-content-end pr-0 mt-3 submit_button">
                       <button
                         class="btn btn-primary"
                         @click="saveTransaction()"
@@ -1272,5 +1272,10 @@ export default {
 }
 .cutom_table_effect tr,.cutom_table_effect td{
   border-bottom:1px solid #e9ecef;
+}
+@media screen and (max-width:575px){
+  .submit_button .btn{
+    width: 100%;
+  }
 }
 </style>

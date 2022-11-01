@@ -24,7 +24,7 @@
             </select>
         </fieldset>
     </div>
-    <div class="col-md-12 d-flex justify-content-end">
+    <div class="col-md-12 d-flex justify-content-end submit_button">
         <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
     </div>
 
@@ -118,3 +118,10 @@ export default {
     }
 };
 </script>
+<style scoped>
+@media screen and (max-width:575px){
+    .submit_button .btn{
+        width: 100%;
+    }
+}
+</style>

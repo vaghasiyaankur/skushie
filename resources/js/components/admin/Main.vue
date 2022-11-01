@@ -185,6 +185,12 @@ select:hover,select:focus{
 .btn-success:hover {
   box-shadow: 0 8px 25px -8px #28c76f;
 }
+@media screen and (max-width:991.98px){
+  .offcanvas {
+      width: 400px !important;
+      padding: 24px !important;
+  }
+}
 </style>
 <template>
   <div>

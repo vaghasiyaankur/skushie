@@ -19,10 +19,10 @@
                             </div>
                         </div>
                     </div>
-                        <div class="col-lg-12 col-xl-12">
+                        <div class="col-lg-12 col-xl-12 px-sm-3 px-0">
                             <div class="card card-custom card_custom_effect gutter-b bg-white border-0">
                                 <div class="card-body">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 px-sm-3 px-0">
                                         <label class="text-body">Products</label>
                                         <fieldset class="form-group mb-3 d-flex">
                                             <multiselect 
@@ -127,7 +127,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 d-flex justify-content-end mt-3">
+                                    <div class="col-md-12 d-flex justify-content-end mt-3 submit_button px-0">
                                       <button class="btn btn-primary" @click="addstock()">Submit</button>
                                     </div>
                                 </div>
@@ -147,7 +147,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 </template>
 
@@ -430,3 +429,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media screen and (max-width:575px) {
+  
+  .multiselect__option span{
+    font-size: 13px !important;
+  }
+
+  .submit_button .btn{
+    width: 100%;
+  }
+}
+</style>

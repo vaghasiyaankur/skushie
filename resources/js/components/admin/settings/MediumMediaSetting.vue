@@ -14,9 +14,9 @@
     </div>
 
 	 
-    <div class="col-md-12">
+    <div class="col-md-12" style="text-align:end;">
 		<br />
-        <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
+        <button @click="updateSetting()" type="submit" class="btn btn-primary submit_button">Submit</button>
     </div>
 
 </div>
@@ -109,3 +109,8 @@ export default {
     }
 };
 </script>
+<style scoped>
+.submit_button .btn{
+    width: 100%;
+}
+</style>

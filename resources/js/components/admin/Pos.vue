@@ -30,9 +30,9 @@
           </div>
           <div class="col-xl-5 col-lg-5 col-md-6 order-lg-last order-second">
             <div class="topbar justify-content-end">
-              <div class="dropdown mega-dropdown"></div>
+              <div class="dropdown mega-dropdown "></div>
               <div
-                class="dropdown mega-dropdown">
+                class="dropdown mega-dropdown mobile_select">
                 <div class="d-flex flex-column selectmain mr-3">
                   <select
                     class="arabic-select select-down"
@@ -2843,5 +2843,24 @@ export default {
 }
 .product-items{
   height: 515px !important;
+}
+@media screen and (max-width:575px) {
+  .select__option{
+    flex: 0 0 100%;
+    max-width: 100%;
+  } 
+}
+@media screen and (max-width:428px) {
+  .topbar{
+    height: 76px;
+    flex-wrap: wrap;
+  }
+    .topbar .mobile_select{
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .topbar .dropdown.mega-dropdown .selectmain {
+      width: 100%;
+    }
 }
 </style>

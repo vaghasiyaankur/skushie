@@ -92,4 +92,10 @@ export default {
     box-shadow: 0 4px 18px -4px rgb(115 103 240 / 65%);
     border-radius: 0.358rem;
 }
+@media screen and (max-width:575px) {
+    #v-pills-tab1 li.nav-item {
+        width: 100%;
+    }
+    
+}
 </style>

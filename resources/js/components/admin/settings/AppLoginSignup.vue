@@ -32,11 +32,12 @@
                     <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" name="authenticate_with_guest_checkout" id="webloginsignup6" @change="check($event)" v-bind:checked="apploginsignup.authenticate_with_guest_checkout == '1' ? 'checked':''"><label class="custom-control-label" for="webloginsignup6" >Guest Checkout</label></div>
                 </fieldset>
             </li>
-            <div class="col-md-12 d-flex justify-content-end">
-                <br />
-                <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
-            </div>
+          
         </ul>
+        <div class="col-md-12 d-flex justify-content-end submit_button px-0 mt-3">
+            <br />
+            <button @click="updateSetting()" type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </div>
 
 </div>
@@ -139,5 +140,10 @@ export default {
     border: 1px solid #ebe9f1 !important;
     padding: 10px;
     border-radius: 10px;
+}
+@media screen and (max-width:575px) {
+    .submit_button .bnt {
+        width: 100%;
+    }
 }
 </style>
