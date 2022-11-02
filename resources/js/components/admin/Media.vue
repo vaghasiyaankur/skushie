@@ -605,6 +605,14 @@ export default {
   background-color: rgba(75, 75, 75, 0.04) !important;
   color: #4b4b4b !important;
 }
+/*.gallary-categories ul li{
+  position: relative;
+}
+.gallary-categories ul li a{
+  background-color: transparent;
+  border-right: none;
+  position: relative;
+}*/
 
 /*@media screen and (max-width:1180px) {
   .small_screen_view{
