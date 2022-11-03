@@ -130,7 +130,7 @@
                       : { display: 'none' },
                   ]"
                 >
-                  <div class="modal-dialog" role="document">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h3 class="modal-title" id="myModalLabel1">
@@ -552,7 +552,7 @@ export default {
 };
 </script>
 <style scoped>
-.gallary-categories ul li a {
+/*.gallary-categories ul li a {
   width: 100px;
   border-radius: 0px !important;
   text-align: center;
@@ -561,8 +561,8 @@ export default {
   padding: 13px 15px !important;
   cursor: pointer;
   transition: all 0.2s ease;
-}
-.gallary-categories ul li:first-child a{
+}*/
+/*.gallary-categories ul li:first-child a{
   border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
 }
@@ -570,6 +570,19 @@ export default {
   border-right: 0px;
   border-top-right-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+}*/
+.gallary-categories ul li a{
+  width: 100px;
+  /* border-radius: 0px !important; */
+  text-align: center;
+  background: transparent;
+  border: 1px solid #8c83f2;
+  padding: 8px 15px !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 10px;
+  border-radius: 20px !important;
+  color: #8c83f2 !important;
 }
 .thumbnail{
   box-shadow: 0 4px 24px 0 rgb(177 177 177 / 50%);
@@ -597,6 +610,8 @@ export default {
   background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
   box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
   color: #fff !important;
+  border-color: #8c83f2 !important;
+ 
 }
 .icons .btn-danger:hover{
   box-shadow: 0 8px 25px -8px #ea5455;

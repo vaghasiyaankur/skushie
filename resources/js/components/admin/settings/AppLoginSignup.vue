@@ -146,4 +146,29 @@ export default {
         width: 100%;
     }
 }
+.custom-control-label{
+    padding-left: 10px;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #7367f0;
+    color: #fff;
+    border-color: #7367f0;
+    box-shadow: 0 2px 4px 0 rgb(115 103 240 / 40%);
+}
+.custom-control-label::before {
+    position: absolute;
+    top: 0rem;
+    left: -1.8rem;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+    content: "";
+    background-color: #fff;
+    border: #adb5bd solid 1px;
+    margin-bottom: 10px;
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+    background-size: 105%;
+}
 </style>

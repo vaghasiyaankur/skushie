@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="card card-custom gutter-b bg-white border-0">
+  <div class="card card-custom gutter-b bg-transparent border-0">
     <div class="card-header border-0 align-items-center">
       <h3 class="card-label mb-0 font-weight-bold text-body">
         Seo
@@ -27,7 +27,7 @@
   </div>
   <div class="row">
     <div class="col-12 d-flex justify-content-between">
-      <a href="#" data-toggle="pill" @click.prevent="setActive('ad-info-tab')" :class="{ active: isActive('ad-info-tab') }" class="btn btn-outline-primary swipe-to-top cta border_radius_10 ">
+      <a href="#" data-toggle="pill" @click.prevent="setActive('ad-info-tab')" :class="{ active: isActive('ad-info-tab') }" class="btn btn-primary swipe-to-top cta border_radius_10 ">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         Back</a>
       <a href="#" data-toggle="pill" @click.prevent="addProduct()" class="btn btn-primary  ml-2">
@@ -90,5 +90,8 @@ border-color: var(--artical-background-primary) !important;
 #pills-tabContent .tab-pane a.btn:hover{
   box-shadow: 0 8px 25px -8px #7367f0;
 
+}
+#pills-tabContent .card{
+  box-shadow: none;
 }
 </style>

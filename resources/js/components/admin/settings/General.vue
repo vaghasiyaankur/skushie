@@ -156,3 +156,8 @@ export default {
     }
 };
 </script>
+<style>
+#v-pills-tabContent1 .form-group label{
+    font-size: 16px;
+}
+</style>

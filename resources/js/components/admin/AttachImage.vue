@@ -1,47 +1,53 @@
 <template>
-<div class="modal fade text-left" :class="{ 'show': showModal }" id="imagepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" :style="[showModal ? {'display': 'block !important'} : {'display': 'none'}]" style="overflow: scroll;">
-    <div class="modal-dialog modal-xl " role="document">
+<div class="modal fade text-left" :class="{ 'show': showModal }" id="imagepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" :style="[showModal ? {'display': 'block !important'} : {'display': 'none'}]" >
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content border_radius_10">
-            <div class="modal-header">
-                <button type="button" class="close rounded-pill btn btn-sm btn-icon btn-light btn-hover-primary m-0" data-dismiss="modal" aria-label="Close" @click="toggleModal()">
+            <div class="modal-header justify-content-between pl-5">
+                <div class="gallary-categories">
+                    <ul class="nav nav-pills justify-content-start mb-0" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link btn-light-dark shadow-none mr-4 mb-3 mt-3" :class="{ 'active': tag_id == '' }" id="All-tab-center" data-toggle="pill" href="#All-center" role="tab" aria-controls="All-center" aria-selected="true" @click="gallaryByTagId('')">
+                                All
+                            </a>
+                        </li>
+                        <li class="nav-item" v-for="tag in tags">
+                            <a class="nav-link btn-light-dark shadow-none mr-4 mb-3 mt-3" :class="{ 'active': tag_id == tag.tag_id }" id="general-tab-center" data-toggle="pill" :href="'#'+tag.tag_name" role="tab" aria-controls="general" aria-selected="false" @click="gallaryByTagId(tag.tag_id)">
+                                {{ tag.tag_name }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button  type="button" data-dismiss="modal" @click="toggleModal()" aria-label="Close" class="close btn btn-sm btn-icon btn-light btn-hover-primary m-0">
+                    <svg  width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-x"><path  fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg></button>
+                <!-- <button type="button" class="btn btn-outline-success border_radius_10" data-dismiss="modal" @click="toggleModal()">
+                    <span class="">Close</span>
+                </button> -->
+                <!-- <button type="button" class="close rounded-pill btn btn-sm btn-icon btn-light btn-hover-primary m-0" data-dismiss="modal" aria-label="Close" @click="toggleModal()">
                     <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
                     </svg>
-                </button>
+                </button> -->
 
             </div>
-            <div class="modal-body">
+            <div class="modal-body pb-4">
                 <div class="d-flex flex-column-fluid">
                     <!--begin::Container-->
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">
 
-                                <div class="gallary-categories">
-                                    <ul class="nav nav-pills justify-content-start  mb-0" id="pills-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link  btn-light-dark shadow-none mr-4 mb-sm-4 mb-3" :class="{ 'active': tag_id == '' }" id="All-tab-center" data-toggle="pill" href="#All-center" role="tab" aria-controls="All-center" aria-selected="true" @click="gallaryByTagId('')">
-                                                All
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" v-for="tag in tags">
-                                            <a class="nav-link  btn-light-dark shadow-none mr-4 mb-sm-4 mb-3" :class="{ 'active': tag_id == tag.tag_id }" id="general-tab-center" data-toggle="pill" :href="'#'+tag.tag_name" role="tab" aria-controls="general" aria-selected="false" @click="gallaryByTagId(tag.tag_id)">
-                                                {{ tag.tag_name }}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                               
 
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row ">
 
-                            <div class="col-12 ">
+                            <div class="col-12 pr-2">
                                 <div id="generalgallary" class="gallary0 linked card card-custom gutter-b bg-white border-0 border_radius_10 ">
                                     <div class="tab-content" id="v-pills-tabContent">
                                         <div class="tab-pane fade show active" id="All-center" role="tabpanel" aria-labelledby="All-tab-center">
                                             <div class="card-body">
-                                                <div class="row">
+                                                <div class="row modal_content_inner">
                                                     <div v-for='gallary in gallaries' class="col-6 col-sm-4 col-md-4 col-xl-3 loadingmore" style="display: block;" @click="setSelectedImages(gallary.id,gallary.gallary_name)">
                                                         <div class="thumbnail text-center  mb-4" :class="{ 'active': selectedImage == gallary.id}">
                                                             <div class="thumbnail-imges ">
@@ -50,16 +56,15 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <nav aria-label="navigation">
-                                                            <div class="pagination d-flex justify-content-end align-items-center">
-                                                                <div class="mr-2 text-dark">(Showing result <span id="numbering">{{ meta.to }}</span> out of <span id="totalnumber">{{ meta.total }}</span> )</div>
-                                                                <a class="btn btn-secondary white border_radius_10" href="#" id="loadMore" @click="setLimit()">Load More</a>
-                                                            </div>
-                                                        </nav>
-                                                    </div>
-
+                                                    </div>                                                    
+                                                </div>
+                                                <div class="col-12">
+                                                    <nav aria-label="navigation">
+                                                        <div class="pagination d-flex justify-content-between align-items-center pt-3">
+                                                            <div class="mr-2 text-dark">(Showing result <span id="numbering">{{ meta.to }}</span> out of <span id="totalnumber">{{ meta.total }}</span> )</div>
+                                                            <a class="btn btn-secondary white border_radius_10" href="#" id="loadMore" @click="setLimit()">Load More</a>
+                                                        </div>
+                                                    </nav>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,11 +78,11 @@
 
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-outline-success border_radius_10" data-dismiss="modal" @click="toggleModal()">
                     <span class="">Choose</span>
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -174,6 +179,29 @@ export default {
 };
 </script>
 <style scoped>
+.modal-content {
+    box-shadow: 0 5px 20px 0 rgb(34 41 47 / 10%);
+    background: #fff;
+    border: 0 solid rgba(34, 41, 47, 0.2);
+
+}
+.card-custom.gutter-b{
+    height: 100% !important;
+    margin-bottom: 0 !important;
+    margin-top: 5px;
+}
+.modal_content_inner{
+    height: calc(100vh - 276px);
+    overflow: auto;
+}
+.modal_content_inner::-webkit-scrollbar{
+    width: 3px;
+    background-color: transparent;
+}
+.modal_content_inner::-webkit-scrollbar-thumb{
+    background-color:#b1b1b1ab;
+    border-radius: 10px;
+}
 .nav .nav-link.active, .nav-pills .show > .nav-link{
     background: #7367f0 !important;
     color: #fff !important;
@@ -197,15 +225,57 @@ export default {
     background-color: rgba(40, 199, 111, 0.04) !important;
     color: #28c76f !important;
 }
-@media screen and (max-width:575px){
-    .nav li.nav-item{
-        width: 100%;
+button.close.btn.btn-icon{
+    transform: translate(18px, -10px);
+    padding: 0.5rem;
+    box-shadow: 0 5px 20px 0 rgb(34 41 47 / 10%);
+    border-radius: 0.357rem;
+    background-color: #fff;
+    opacity: 1;
+    transition: all 0.23s ease 0.1s;
+    position: relative;
+}
+.btn.btn-hover-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-hover-primary:focus:not(.btn-text), .btn.btn-hover-primary.focus:not(.btn-text) {
+    color: #000 !important;
+    background-color: #fff !important;
+    border-color: transparent !important;
+}
+button.close.btn:hover {
+    transform: translate(15px, -2px) !important;
+    opacity: 1 !important;
+}
+@media screen and (max-width:1199px) {
+    .modal_content_inner{
+        height: calc(100vh - 329px);
     }
 }
-
 @media (min-width: 768px) and (max-width:991px){
     .thumbnail {
         height: 115px !important;
     }
+    .modal_content_inner{
+        height: calc(100vh - 397px) !important;
+    }
 }
+@media screen and (min-width:576px) and (max-width:767px){
+    .modal_content_inner{
+        height: calc(100vh - 444px) !important;
+    }
+}
+@media screen and (max-width:575px){
+    .nav li.nav-item{
+        width: 50%;
+    }
+    /*.modal-dialog {
+        margin: 1.75rem auto;
+    }*/
+    .nav .nav-link{
+        margin-right: 12px !important;
+        
+    }
+    .modal_content_inner{
+        height: calc(100vh - 445px) !important;
+    }
+}
+
 </style>

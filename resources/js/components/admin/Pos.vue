@@ -979,7 +979,7 @@
       tabindex="-1"
       :class="discountModel == 1 ? 'd-block' : 'd-none'"
     >
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title h4">
@@ -989,7 +989,7 @@
               type="button"
               class="
                 close
-                rounded-pill
+               
                 btn btn-sm btn-icon btn-light btn-hover-primary
                 m-0
               "
@@ -1059,7 +1059,7 @@
       tabindex="-1"
       :class="taxModel == 1 ? 'd-block' : 'd-none'"
     >
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title h4">
@@ -1069,7 +1069,6 @@
               type="button"
               class="
                 close
-                rounded-pill
                 btn btn-sm btn-icon btn-light btn-hover-primary
                 m-0
               "
@@ -1139,7 +1138,7 @@
       tabindex="-1"
       :class="draftModel == 1 ? 'd-block' : 'd-none'"
     >
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title h4">
@@ -1149,7 +1148,6 @@
               type="button"
               class="
                 close
-                rounded-pill
                 btn btn-sm btn-icon btn-light btn-hover-primary
                 m-0
               "
@@ -1256,7 +1254,7 @@
       tabindex="-1"
       :class="customerModel == 1 ? 'd-block' : 'd-none'"
     >
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title h4">
@@ -1266,7 +1264,6 @@
               type="button"
               class="
                 close
-                rounded-pill
                 btn btn-sm btn-icon btn-light btn-hover-primary
                 m-0
               "
@@ -1289,7 +1286,7 @@
               </svg>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body pb-5 px-sm-5">
             <form>
               <div class="form-group row">
                 <div class="col-md-6">
@@ -1395,7 +1392,7 @@
       tabindex="-1"
       :class="customerAddressModel == 1 ? 'd-block' : 'd-none'"
     >
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title h4">
@@ -1407,7 +1404,6 @@
               type="button"
               class="
                 close
-                rounded-pill
                 btn btn-sm btn-icon btn-light btn-hover-primary
                 m-0
               "
@@ -1430,7 +1426,7 @@
               </svg>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body pb-5 px-sm-5">
             <form>
               <div class="form-group row">
                 <!-- country_id
@@ -2843,6 +2839,31 @@ export default {
 }
 .product-items{
   height: 515px !important;
+}
+.modal-content{
+    background: #FFF !important;
+    box-shadow: 0 5px 20px 0 rgb(34 41 47 / 10%);
+    border-radius: 0.357rem !important;
+}
+button.close.btn.btn-icon {
+  transform: translate(18px, -10px);
+  padding: 0.5rem;
+  box-shadow: 0 5px 20px 0 rgb(34 41 47 / 10%);
+  border-radius: 0.357rem;
+  background-color: #fff;
+  opacity: 1;
+  transition: all 0.23s ease 0.1s;
+  position: relative;
+
+}
+button.close.btn:hover {
+  transform: translate(15px, -2px) !important;
+  opacity: 1 !important;
+}
+.btn.btn-hover-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-hover-primary:focus:not(.btn-text),  .btn.btn-hover-primary.focus:not(.btn-text){
+  color: #000 !important;
+  background-color:#fff !important;
+  border-color: transparent !important;
 }
 @media screen and (max-width:575px) {
   .select__option{

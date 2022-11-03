@@ -18,26 +18,34 @@
 	 <div class="col-md-6">
         <label>Website Logo</label>
         <fieldset class="form-group mb-3">
-        <div class="form-group">
-            <button type="button" class="btn btn-primary w-100" @click="toggleImageSelect()">Select Logo from gallary</button>
-            <small id="textHelp" class="form-text text-muted">Select Logo from gallary.</small>
-            <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
-            <div class="website_logo_img">
-                <img v-if="webgeneral.site_logo != ''" :src="webgeneral.site_logo" style="width:100px;height:100px;"/>
+            <div class="form-group row align-items-center">
+                <div class="col-lg-5">
+                    <button type="button" class="btn btn-outline-primary w-100" @click="toggleImageSelect()">Select Logo </button>
+                    <!-- <small id="textHelp" class="form-text text-muted">Select Logo from gallary.</small> -->
+                    <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
+                </div>
+                <div class="col-lg-7">
+                    <div class="website_logo_img">
+                        <img v-if="webgeneral.site_logo != ''" :src="webgeneral.site_logo" style="width:100px;height:100px;"/>
+                    </div>
+                </div>
             </div>
-        </div>
         </fieldset>
     </div>
 
 	<div class="col-md-6">
         <label>FavIcon Logo</label>
         <fieldset class="form-group mb-3">
-        <div class="form-group">
-            <button type="button" class="btn btn-primary w-100" @click="toggleImageSelectIcon()">Select Favicon from gallary.</button>
-            <small id="textHelp" class="form-text text-muted">Select Favicon from gallary.</small>
-            <small class="form-text text-danger" v-if="errors.has('icon')" v-text="errors.get('icon')"></small>
-            <div class="website_logo_img">
-                <img v-if="webgeneral.favicon != ''" :src="webgeneral.favicon" style="width:100px;height:100px;"/>
+        <div class="form-group row align-items-center">
+            <div class="col-lg-5">
+                <button type="button" class="btn  w-100 btn-outline-primary" @click="toggleImageSelectIcon()">Select Favicon </button>
+                <!-- <small id="textHelp" class="form-text text-muted">Select Favicon from gallary.</small> -->
+                <small class="form-text text-danger" v-if="errors.has('icon')" v-text="errors.get('icon')"></small>
+            </div>
+            <div class="col-lg-7">
+                <div class="website_logo_img">
+                    <img v-if="webgeneral.favicon != ''" :src="webgeneral.favicon" style="width:100px;height:100px;"/>
+                </div>
             </div>
         </div>
         </fieldset>

@@ -34,11 +34,14 @@
 #pills-tabContent .swipe-to-top.cta{
   padding: 8px 30px !important;
 }
+#pills-tabContent .card{
+  box-shadow: none;
+}
 </style>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <template>
   <div>
-    <div class="card card-custom gutter-b bg-white border-0">
+    <div class="card card-custom gutter-b bg-transparent border-0">
       <div class="card-header border-0 align-items-center">
         <h3 class="card-label mb-0 font-weight-bold text-body">
           General Information
@@ -48,7 +51,7 @@
         <div class="row">
           <div class="col-md-6 col-12">
             <div class="slide-v" v-if="gallary_detail_path.length > 0">
-              <div class="slide">
+              <div class="slide mb-3">
                 <img
                   :src="gallary_detail_path[currentSelectedImg]"
                   style="width: 80%"
@@ -63,7 +66,7 @@
                 v-key="index"
               >
 
-                <div class="col-2 float-left" v-if="gallary_detail != ''">
+                <div class="col-2 float-left mb-3" v-if="gallary_detail != ''">
                   <img
                     :src="gallary_detail"
                     alt="..."
