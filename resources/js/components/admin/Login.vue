@@ -1,7 +1,7 @@
 <template>
 	<div class="login h-100">
 		<div class="logo-img">
-			<img src="/assets/images/misc/logo.png" alt="logo" class="img-fluid">
+			<img src="/assets/images/misc/logo.png" alt="logo" class="img-fluid"> 
 		</div>
 		<div class="row h-100 ">
 			<div class="col-lg-8 d-none d-lg-block">
