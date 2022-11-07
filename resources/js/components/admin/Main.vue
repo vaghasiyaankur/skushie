@@ -185,6 +185,28 @@ select:hover,select:focus{
 .btn-success:hover {
   box-shadow: 0 8px 25px -8px #28c76f;
 }
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+  border-color: #7367f0;
+}
+
+.custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 8px 25px -8px #7367f0;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  background-color: rgb(115 103 240) !important;
+  border-color: rgb(115 103 240) !important;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+  background-color: #7367f01f !important;
+  border-color: #7367f0 !important;
+}
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 8px 25px -8px #7367f0;
+}
+.btn-outline-primary:focus {
+  background-color: #7367f01f !important;  
+  border-color: #7367f0 !important;
+}
 @media screen and (max-width:991.98px){
   .offcanvas {
       width: 400px !important;

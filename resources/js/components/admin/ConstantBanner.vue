@@ -250,7 +250,7 @@
                                 <td v-if="$parent.permissions.includes('constant-bannder-manage')">
                                   <a
                                     href="javascript:void(0)"
-                                    class=" click-edit btn btn-outline-primary text-nowrap  waves-effect p-2"
+                                    class=" click-edit btn btn-outline-primary text-nowrap waves-effect p-2"
                                     id="click-edit1"
                                     data-toggle="tooltip"
                                     title=""

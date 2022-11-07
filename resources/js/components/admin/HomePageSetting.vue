@@ -42,20 +42,25 @@
             <br>
         </div>
     </div>
-    <div class="modal fade text-left" :class="{ 'show': toggleModel }" style="overflow:auto" id="imagepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" :style="[toggleModel ? {'display': 'block !important'} : {'display': 'none'}]">
-    <div class="modal-dialog " role="document">
+    <div class="modal fade text-left" :class="{ 'show': toggleModel }"  id="imagepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" :style="[toggleModel ? {'display': 'block !important'} : {'display': 'none'}]">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
+            <div class="modal-header justify-content-end">
+                <button type="button" class="close btn btn-sm btn-icon btn-light btn-hover-primary m-0" data-dismiss="modal" @click="toggleModal()">
+                    <svg data-v-32346d9b="" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-x"><path data-v-32346d9b="" fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg>
+                </button>
+            </div>    
             <div class="modal-body" >
                 <div v-for="(modelRenderImage, index) in modelRenderImagesArray" style="width:100%;" >
                     <img  :src="modelRenderImage[1]" style="width:100%;" :style="selectedItem== modelRenderImage[1] || modelRenderImage[2] == 'selected' ? 'border:4px solid green' :'border:4px solid #E8E8E8' " @click="setSelectedItem(modelRenderImage[1],modelRenderImage[0], index)"/>
                     <hr />
                 </div>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal" @click="toggleModal()">
                     <span class="">Close</span>
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -520,6 +525,33 @@ export default {
 }
 .inner-content{
     padding: 15px 0 !important;
+}
+button.close.btn.btn-icon {
+    transform: translate(18px, -17px);
+    padding: 0.5rem;
+    box-shadow: 0 5px 20px 0 rgb(34 41 47 / 10%);
+    border-radius: 0.357rem;
+    background-color: #fff;
+    opacity: 1;
+    transition: all 0.23s ease 0.1s;
+    position: relative;
+}
+.btn.btn-hover-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    color: #000 !important;
+    background-color: #fff !important;
+    border-color: transparent !important;
+}
+button.close.btn:hover {
+    transform: translate(9px, -6px) !important;
+    opacity: 1 !important;
+}
+.modal-dialog-scrollable .modal-content{
+    overflow: inherit;
+}
+.modal-content {
+    box-shadow: 0 5px 20px 0 rgb(34 41 47 / 10%);
+    background: #fff;
+    border: 0 solid rgba(34, 41, 47, 0.2);
 }
 @media screen and (max-width:1299px) {
     .dd-item{

@@ -63,7 +63,7 @@
                 >
                   <li class="nav-item" v-for="permission in permissions" v-if="permission.parent_id == '0'">
                     <a
-                      class="nav-link"
+                      class="nav-link font-size-h4"
                       :id="permission.value+'-a-tab'"
                       data-toggle="pill"
                       :href="'#'+permission.value+'-a'"

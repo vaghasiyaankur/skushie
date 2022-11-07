@@ -155,6 +155,11 @@ export default {
     border-color: #7367f0;
     box-shadow: 0 2px 4px 0 rgb(115 103 240 / 40%);
 }
+.custom-control{
+    min-height: 2.5rem;
+    padding-left: 2.5rem;
+
+}
 .custom-control-label::before {
     position: absolute;
     top: 0rem;
