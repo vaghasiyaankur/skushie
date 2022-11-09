@@ -41,7 +41,7 @@
           <div class="calculator-row-5">
           <div class="calculator-item" @click="operate(0)">0</div>
           <div class="calculator-item" @click="operate('.')">.</div>
-          <div class="calculator-item" @click="equal()">=</div>
+          <div class="calculator-item calculator_equal" @click="equal()">=</div>
           </div>
         </div>
       </div>
@@ -104,8 +104,8 @@ export default {
 /*vue*/
 [v-cloak] { display: none; }	
 .calculator .calculator-border .calculator-display{
-  border: 0.15rem solid #b9b4b4;
-  background-color: #f5f8f8;
+  border: 0.15rem solid #edeff2;
+  background-color: #fff;
   margin:1rem;
   /*width: 24rem;*/
   height: 7rem;
@@ -116,9 +116,10 @@ export default {
   -moz-border-radius: 0.4rem;
   -ms-border-radius: 0.4rem;
   -o-border-radius: 0.4rem;
-  border-radius: 0.4rem;: 
-  -webkit-box-shadow: 1rem 1rem 0.5rem #b55858;
-  box-shadow: 0.1rem 0.1rem 0.5rem #b55858;
+  border-radius: 0.4rem; 
+}
+.calculator .calculator-border .calculator-display:hover{
+  box-shadow: 0 0 10px rgb(174 105 245 / 22%) !important;
 }
 .calculator .calculator-border .calculator-formula{
   /*border: 1px solid red;*/
@@ -138,7 +139,7 @@ export default {
   height: 57.1%;
   text-align: right;
   box-sizing: border-box;
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 1rem;
   color: #2A363B;
   text-overflow: ellipsis;
   white-space:nowrap;
@@ -161,7 +162,7 @@ export default {
   width: 100%
 }
 .calculator .calculator-border .calculator-items .calculator-item{
-  border: 0.1rem solid #6610f2;
+  border: 0.1rem solid #e9ecef;
   width: 16.666%;
   height: 4rem;
   display: inline-block;
@@ -174,17 +175,21 @@ export default {
   -moz-border-radius: 0.5rem;
   -ms-border-radius: 0.5rem;
   -o-border-radius: 0.5rem;
-  border-radius: 0.5rem;: 
-  background-color: rgba(244, 135, 135, 0.78);
-  -webkit-box-shadow: 0.1rem 0.1rem 0.3rem rgb(85, 65, 65);
-  box-shadow: 0.1rem 0.1rem 0.3rem rgb(85, 65, 65);
+  border-radius: 0.5rem;
+  background-color: #fff;
+  -webkit-box-shadow: transparent;
+  box-shadow: transparent;
   transition: all 0.1s;
   -webkit-transition: all 0.1s;
 }
 .calculator .calculator-border .calculator-items .calculator-item:hover{
-  color: #6610f2;
-  -webkit-box-shadow: 0.3rem 0.3rem 0.5rem #6610f2;
-  box-shadow: 0.3rem 0.3rem 0.5rem #6610f2;
+  color: #ae69f5;
+  -webkit-box-shadow: 0 0 10px rgb(174 105 245 / 22%);
+  box-shadow: 0 0 10px rgb(174 105 245 / 22%) !important;
+}
+.calculator .calculator-border .calculator-items .calculator-item.calculator_equal{
+  border: 0.1rem solid rgb(174 105 245);
+  color: #ae69f5;
 }
 .calculator .calculator-border .calculator-items .calculator-item:active{
   transform: translate(0.05rem,0.05rem);

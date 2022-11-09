@@ -6,8 +6,8 @@
             <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.site_name_or_logo" ref="site_name_or_logo">
         </fieldset>
     </div> -->
-    <div class="col-12">
-        <div class="col-md-6 pl-0">
+    <div class="col-12 mb-3">
+        <div class="col-md-6  pl-0">
             <label>Website Name</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.site_name" ref="site_name">
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-	 <div class="col-md-6">
+	 <div class="col-md-6 mb-3">
         <label>Website Logo</label>
         <fieldset class="form-group mb-3">
             <div class="form-group row align-items-center">
@@ -33,7 +33,7 @@
         </fieldset>
     </div>
 
-	<div class="col-md-6">
+	<div class="col-md-6 mb-3">
         <label>FavIcon Logo</label>
         <fieldset class="form-group mb-3">
         <div class="form-group row align-items-center">
@@ -50,42 +50,42 @@
         </div>
         </fieldset>
     </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Facebook URL</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.facebook_url" ref="facebook_url">
             </fieldset>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Google URL</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.google_url" ref="google_url">
             </fieldset>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Twitter URL</label>
             <fieldset class="form-group mb-3">
                 <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.twitter_url" ref="twitter_url">
             </fieldset>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Linked URL</label>
             <fieldset class="form-group mb-3">
                 <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.linkedin_url" ref="linkedin_url">
             </fieldset>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Instagram URL</label>
             <fieldset class="form-group mb-3">
                 <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.instagram_url" ref="instagram_url">
             </fieldset>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Allow Cookies</label>
             <fieldset class="form-group mb-3">
                 <input type="email" class="form-control border-dark" placeholder="" v-model="webgeneral.allow_cookies" ref="allow_cookies">

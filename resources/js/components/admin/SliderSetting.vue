@@ -287,7 +287,7 @@
                                 >
                                   <a
                                     href="javascript:void(0)"
-                                    class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2"
+                                    class="click-edit btn btn-outline-primary text-nowrap waves-effect p-2 mr-3"
                                     id="click-edit1"
                                     data-toggle="tooltip"
                                     title=""
@@ -486,7 +486,7 @@
                 <label class="w-100"></label>
                 <button
                   type="button"
-                  class="btn btn-primary w-100 mt-2 mb-3"
+                  class="btn btn-outline-primary w-100 mt-2 mb-3 py-2"
                   @click="toggleImageSelect()"
                 >
                   Upload slider Media

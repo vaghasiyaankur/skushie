@@ -117,12 +117,18 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><a class="page-link" href="#" @click="fetchBanners(pagination.prev_page_url)">Previous</a></li>
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
+                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchunits(pagination.prev_page_url)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                                                        </button>
+                                                    </li>
 
-                                                    <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
+                                                    <li class="disabled" v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" href="#">{{ n }}</button></li>
 
-                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click="fetchBanners(pagination.next_page_url)">Next</a></li>
+                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchunits(pagination.next_page_url)">
+                                                        next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                                        </svg>
+                                                    </button></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -135,7 +141,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel" v-if="display_form" :class="display_form ? 'offcanvas-on' : ''">
         <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
             <h4 class="font-size-h4 font-weight-bold m-0">{{ edit ? "Edit" :"Add" }} Banner</h4>
@@ -507,3 +513,29 @@ export default {
     }
 };
 </script>
+<style scoped>
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+    background-color: transparent;
+  }
+  table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+    background-color: transparent;
+  }
+  .pagination.pagination-sm li button{
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    margin: 0 10px;
+}
+.offcanvas_backdrop{
+        position: fixed;
+        top: 0;
+        right: auto;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        bottom: 0;
+        left: 0;  
+        z-index: 99;
+    }
+</style>

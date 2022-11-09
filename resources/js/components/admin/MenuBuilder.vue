@@ -724,7 +724,7 @@ export default {
 button.update_btn {
   outline: none;
   border: none;
-  background-color: #33d67c;
+  background-color: #ae69f5;
   color: #fff;
   border-radius: 10px;
   padding: 8px 16px;

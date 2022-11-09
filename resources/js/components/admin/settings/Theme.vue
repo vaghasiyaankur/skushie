@@ -1,6 +1,6 @@
 <template>
 <div class="form-group row">
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Header Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.header_style'>
@@ -20,7 +20,7 @@
 
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Slider Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.slider_style'>
@@ -32,7 +32,7 @@
             </select>
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Banner</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.banner_style'>
@@ -59,7 +59,7 @@
 
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Footer</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.Footer_style'>
@@ -77,7 +77,7 @@
 
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Card Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.card_style'>
@@ -106,7 +106,7 @@
 
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Card Page Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.cart_page'>
@@ -128,7 +128,7 @@
         </fieldset>
     </div> -->
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Blog Page Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.blog'>
@@ -138,7 +138,7 @@
 
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Contact Us Page Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.contact_us'>
@@ -149,7 +149,7 @@
         </fieldset>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Login Page Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.login'>
@@ -160,7 +160,7 @@
         </fieldset>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Product Page Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.product_detail'>
@@ -174,7 +174,7 @@
         </fieldset>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Shop Page Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.shop'>
@@ -188,7 +188,7 @@
         </fieldset>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Website Color Scheme</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='theme.color'>

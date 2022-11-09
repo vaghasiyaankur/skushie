@@ -74,7 +74,7 @@
                     @click="toggleImageSelect(index)"
                     style="cursor:pointer;"
                   />
-                 <button v-if="index != currentSelectedImg" class="btn btn-block btn-danger btn-xs py-0" @click="removeImage(index)">-</button>
+                 <button v-if="index != currentSelectedImg" class="btn btn-block btn-danger btn-xs py-0 remove_img_btn" @click="removeImage(index)">-</button>
                 </div>
               </template>
             </div>
@@ -165,7 +165,7 @@
                     <h6 class="text-body">
                       Product Name ( {{ language.language_name }} )
                     </h6>
-                    <fieldset class="form-group mb-3">
+                    <fieldset class="form-group mb-4">
                       <input
                         type="text"
                         :name="'name' + index"
@@ -216,7 +216,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12 col-12 mt-3">
+              <div class="col-md-12 col-12 mt-4">
                 <div class="form-group">
                   <label class="text-dark">Video URL</label>
                   <input
@@ -424,5 +424,16 @@ export default {
   background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, 0.7)) !important;
   box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%) !important;
   color: #fff !important;
+}
+.remove_img_btn{
+  position: absolute;
+    top: -4px;
+    right: 9px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 </style>

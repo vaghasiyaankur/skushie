@@ -1,12 +1,12 @@
 <template>
 <div class="form-group row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label class="fontsize-16">Medium Height</label>
         <fieldset class="form-group mb-3">
             <input type="number" class="form-control border-dark" placeholder="" v-model="gallary_setting.medium_height" ref="medium_height">
         </fieldset>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label class="fontsize-16">Medium Width</label>
         <fieldset class="form-group mb-3">
             <input type="number" class="form-control border-dark" placeholder="" v-model="gallary_setting.medium_width" ref="medium_width">

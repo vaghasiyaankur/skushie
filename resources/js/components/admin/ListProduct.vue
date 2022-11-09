@@ -73,7 +73,7 @@
                           id="product_wrapper"
                           class="dataTables_wrapper no-footer"
                         >
-                          <div class="dataTables_length" id="product_length">
+                          <div class="dataTables_length mb-3" id="product_length">
                             <label
                               >Show
                               <select
@@ -95,7 +95,7 @@
                             >
                           </div>
 
-                          <div id="product_filter" class="dataTables_filter">
+                          <div id="product_filter" class="dataTables_filter mb-3">
                             <label
                               >Search:<input
                                 type="text"
@@ -365,7 +365,12 @@
                                 </td>
                                 
                                 <td>
-                                  {{ product.product_status }}
+                                  <span :class=" product.product_status == 'active' ? 'active-status' : 'deactive-status'">
+                                    <span class="badge" :class=" product.product_status == 'active' ? 'badge-light-success' : 'badge-light-danger'" >
+                                       {{  product.product_status }} 
+                                    </span>
+                                </span>
+                                  <!-- {{ product.product_status }} -->
                                 </td>
 
                                 <td
@@ -381,7 +386,7 @@
                                       path:
                                         '/admin/product/' + product.product_id,
                                     }"
-                                    class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2"
+                                    class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2 mr-3"
                                     id="click-edit1"
                                     data-toggle="tooltip"
                                     title=""
@@ -400,41 +405,19 @@
                               </tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.prev_page_url },
-                              ]"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="fetchproducts(pagination.prev_page_url)"
-                                >Previous</a
-                              >
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
+                            <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchunits(pagination.prev_page_url)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                                </button>
                             </li>
 
-                            <li class="disabled">
-                              <a class="page-link text-dark" href="#"
-                                >Page {{ pagination.current_page }} of
-                                {{ pagination.last_page }}</a
-                              >
-                            </li>
+                            <li class="disabled" v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" href="#">{{ n }}</button></li>
 
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.next_page_url },
-                              ]"
-                              class="page-item"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="fetchproducts(pagination.next_page_url)"
-                                >Next</a
-                              >
-                            </li>
-                          </ul>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchunits(pagination.next_page_url)">
+                                next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button></li>
+                        </ul>
                         </div>
                       </div>
                     </div>
@@ -705,16 +688,37 @@ export default {
   props: ["loading"],
 };
 </script>
-<style>
+<style scoped>
 .pagination.pagination-sm li button{
   padding: 6px 12px;
-  border-radius: 50px;
+  border-radius: 5px;
   font-size: 15px;
+  border: none;
+  margin: 0 10px;
 }
 table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
   background-color: transparent;
 }
 table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
   background-color: transparent;
+}
+.active-status .badge ,.deactive-status .badge{
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  border-radius: 0.358rem;
+  font-size: 13px !important;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  display: inline-block;
+}
+.active-status .badge.badge-light-success {
+  background-color: rgba(40,199,111,.12);
+  color: #28c76f!important;
+}
+.deactive-status .badge.badge-light-danger {
+  background-color: rgba(234, 84, 85, 0.12);
+  color: #ea5455 !important;
 }
 </style>

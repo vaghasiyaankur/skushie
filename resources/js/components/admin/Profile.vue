@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-12">
+                                <div class="col-md-12 text-right submit_button">
                                     <button class="btn btn-primary" @click="updateProfile()">Submit</button>
                                 </div>
                             </div>
@@ -135,3 +135,10 @@ export default {
     }
 };
 </script>
+<style scoped>
+@media screen and (max-width:575px){
+    .submit_button .btn{
+        width: 100%;
+    }
+}
+</style>

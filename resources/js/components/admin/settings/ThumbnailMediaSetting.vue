@@ -1,12 +1,12 @@
 <template>
 <div class="form-group row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label class="fontsize-16">Thumbnail Height</label>
         <fieldset class="form-group mb-3">
             <input type="number" class="form-control border-dark" placeholder="" v-model="gallary_setting.thumbnail_height" ref="thumbnail_height">
         </fieldset>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label class="fontsize-16">Thumbnail Width</label>
         <fieldset class="form-group mb-3">
             <input type="number" class="form-control border-dark" placeholder="" v-model="gallary_setting.thumbnail_width" ref="thumbnail_width">

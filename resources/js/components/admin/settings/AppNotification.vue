@@ -1,19 +1,19 @@
 <template>
 <div class="form-group row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label>Title</label>
         <fieldset class="form-group mb-3">
             <input type="email" class="form-control border-dark" placeholder="" v-model="appnotification.title" ref="title">
         </fieldset>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label>Detail</label>
         <fieldset class="form-group mb-3">
             <textarea type="email" class="form-control border-dark" placeholder="" v-model="appnotification.detail" ref="detail"></textarea>
         </fieldset>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Notification Duration</label>
         <fieldset class="form-group mb-3">
             <select  class="form-control border-dark" v-model="appnotification.notification_duration" ref="notification_duration">

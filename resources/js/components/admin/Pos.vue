@@ -376,8 +376,8 @@
                           data-target="#choosecustomer"
                           @click="showCustomerModel()"
                         >
-                        <span class="h-20px font-size-h5 bg-white w-20px d-flex align-items-center justify-content-center shadow-sm  rounded-circle">
-                          <svg data-v-90508010="" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-plus"><path data-v-90508010="" fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path></svg>
+                        <span class="h-14px font-size-h5 bg-white w-14px d-flex align-items-center justify-content-center shadow-sm  rounded-circle">
+                          <svg data-v-90508010="" width="14px" height="14px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-plus"><path data-v-90508010="" fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path></svg>
                         </span>
                       </span>
                       </label>
@@ -417,8 +417,8 @@
                           data-target="#choosecustomer"
                           @click="showCustomerAddressModel()"
                         >
-                        <span class="h-20px font-size-h5 bg-white w-20px d-flex align-items-center justify-content-center shadow-sm  rounded-circle">
-                          <svg data-v-90508010="" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-plus"><path data-v-90508010="" fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path></svg>
+                        <span class="h-14px w-14px font-size-h5 bg-white d-flex align-items-center justify-content-center shadow-sm  rounded-circle">
+                          <svg data-v-90508010="" width="14px" height="14px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-plus"><path data-v-90508010="" fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path></svg>
                         </span>
                         </span>
                       </label>
@@ -2834,9 +2834,6 @@ export default {
   flex: 0 0 50%;
   max-width: 50%;
 }
-.btn-outline-secondary:hover {
-  background-color: #ffb85a1f !important;
-}
 .product-items{
   height: 515px !important;
 }
@@ -2864,6 +2861,25 @@ button.close.btn:hover {
   color: #000 !important;
   background-color:#fff !important;
   border-color: transparent !important;
+}
+.selectmain .arabic-select{
+  appearance: none;
+  background-image: url(/images/down-arrow.png?86fc837…);
+  background-repeat: no-repeat;
+  background-position: 94%;
+  background-size: 15px;
+}
+.selectmain .arabic-select.select-down {
+  background-position: 98%;
+}
+#orderTable thead th {
+  background-color: #f3f2f7;
+  padding: 10px;
+  border-bottom: 1px solid #ebe9f1;
+}
+#orderTable tr td {
+  padding: 10px !important;
+  border-bottom: 1px solid #ebe9f1;
 }
 @media screen and (max-width:575px) {
   .select__option{

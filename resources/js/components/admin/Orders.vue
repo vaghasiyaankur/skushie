@@ -35,7 +35,7 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <div class="card card-custom gutter-b bg-white border-0">
+                <div class="card gutter-b bg-white border-0">
                   <div class="card-body">
                     <div>
                       <div class="table-responsive" id="printableTable">
@@ -43,7 +43,7 @@
                           id="sale_wrapper"
                           class="dataTables_wrapper no-footer"
                         >
-                          <div class="dataTables_length" id="sale_length">
+                          <div class="dataTables_length mb-3" id="sale_length">
                             <label
                               >Show
                               <select
@@ -61,7 +61,7 @@
                             >
                           </div>
 
-                          <div id="sale_filter" class="dataTables_filter">
+                          <div id="sale_filter" class="dataTables_filter mb-3">
                             <label
                               >Search:<input
                                 type="test"
@@ -175,7 +175,7 @@
                                 <td class="white__nowrap">
                                   <a
                                     :href="'/admin/order/' + order.order_id"
-                                    class="click-edit click-edit btn btn-outline-primary text-nowrap  waves-effect p-2"
+                                    class="click-edit click-edit btn btn-outline-primary text-nowrap waves-effect p-2 mr-3"
                                     id="click-edit1"
                                     data-toggle="tooltip"
                                     title=""
@@ -186,41 +186,19 @@
                               </tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.prev_page_url },
-                              ]"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="fetchorders(pagination.prev_page_url)"
-                                >Previous</a
-                              >
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2 mb-3">
+                            <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchunits(pagination.prev_page_url)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                                </button>
                             </li>
 
-                            <li class="disabled">
-                              <a class="page-link text-dark" href="#"
-                                >Page {{ pagination.current_page }} of
-                                {{ pagination.last_page }}</a
-                              >
-                            </li>
+                            <li class="disabled" v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" href="#">{{ n }}</button></li>
 
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.next_page_url },
-                              ]"
-                              class="page-item"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="fetchorders(pagination.next_page_url)"
-                                >Next</a
-                              >
-                            </li>
-                          </ul>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchunits(pagination.next_page_url)">
+                                next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button></li>
+                        </ul>
                         </div>
                       </div>
                     </div>
@@ -448,25 +426,37 @@ export default {
   props: ["loading"],
 };
 </script>
-<style>
+<style scoped>
 
-
-.pagination.pagination-sm li a{
+.pagination.pagination-sm li button{
   padding: 6px 12px;
-  border-radius: 50px;
+  border-radius: 5px;
   font-size: 15px;
+  border: none;
+  margin: 0 10px;
 }
-.pagination-sm .page-item:last-child .page-link {
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-.page-link:focus{
-  box-shadow: none !important;
-}
+.offcanvas_backdrop{
+      position: fixed;
+      top: 0;
+      right: auto;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      bottom: 0;
+      left: 0;  
+      z-index: 99;
+  }
+
+
 @media screen and (max-width:380px) {
   .pagination.pagination-sm li a{
     
     font-size: 13px;
   } 
+}
+</style>
+<style>
+.page-link:focus{
+  box-shadow: none !important;
 }
 </style>

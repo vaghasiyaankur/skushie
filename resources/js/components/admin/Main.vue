@@ -23,10 +23,33 @@ html,body{
   padding: 8px 30px;
 }
 .btn-primary:hover {
-  box-shadow: 0 8px 25px -8px #7367f0;
+  box-shadow: 0 8px 16px -8px #7367f0;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+.btn-outline-secondary {
+  border: 1px solid #82868b !important;
+  background-color: transparent;
+  color: #82868b;
+}
+.btn-outline-secondary:hover{
+  background-color: rgba(130, 134, 139, 0.04) !important;
+  color: #82868b !important;
+  border-color:#82868b !important;
+}
+.btn.btn-outline-purple{
+  border: 1px solid #ae69f5;
+  color: #ae69f5;
+}
+.btn.btn-outline-purple:hover {
+  background: #ae69f51a;
 }
 .border_radius_10{
   border-radius: 10px !important;
+}
+.border_radius_5{
+  border-radius: 5.7px !important;
 }
 .form-control{
   display: block;
@@ -60,21 +83,55 @@ html,body{
 .fontsize-16{
   font-size: 16px;
 }
-.order--table tbody tr:nth-of-type(odd) {
+/*.order--table tbody tr:nth-of-type(odd) {
   background-color: #f3f2f7 !important;
 }
 .order--table tbody tr:nth-of-type(even) {
   background-color: #ffffff !important;
+}*/
+.order--table th, .order--table td {
+ /* border: 1px solid #ebe9f1;*/
+  font-size: 15px !important;
+}
+.order--table th{
+  background-color: #f3f2f7;
+}
+.dataTables_length label{
+  font-size: 15px !important;
+}
+.dataTables_filter label{
+  font-size: 15px !important;
+}
+.dataTables_wrapper .dataTables_length select {
+  border-radius: 5px;
+  padding: 5px;
+  padding: 8px 20px 8px 8px;
+  margin: 0 5px;
+}
+.modal{
+  background-color: rgba(0,0,0,0.5);
+}
+/*table.dataTable.no-footer{
+  border-bottom: none;
+}
+table.dataTable thead th, table.dataTable thead td {
+  border-bottom: 1px solid #ebe9f1;
+}
+table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
+  border-top: none;
+}
+.order--table th:not(:last-child), .order--table td:not(:last-child){
+  border-right: 0px;
 }
 .order--table tbody tr:hover{
   background-color:#fafafc !important ;
-}
+}*/
 .dataTables_wrapper .dataTables_filter input {
-  border: 1px solid;
-  border-radius: 10px;
-  padding: 5px 10px;
-  background: #f3f2f7 !important;
-  border-color: #f3f2f7 !important;
+  padding: 0.438rem 1rem;
+  background-color: #fff !important;
+  background-clip: padding-box;
+  border: 1px solid #d8d6de;
+  border-radius: 0.357rem;
 }
 .dataTables_wrapper .dataTables_filter button{
   outline: none;

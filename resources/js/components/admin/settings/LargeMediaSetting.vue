@@ -1,12 +1,12 @@
 <template>
 <div class="form-group row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label class="fontsize-16">Large Height</label>
         <fieldset class="form-group mb-3">
             <input type="number" class="form-control" placeholder="" v-model="gallary_setting.large_height" ref="large_height">
         </fieldset>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
         <label class="fontsize-16">Large Width</label>
         <fieldset class="form-group mb-3">
             <input type="number" class="form-control" placeholder="" v-model="gallary_setting.large_width" ref="large_width">

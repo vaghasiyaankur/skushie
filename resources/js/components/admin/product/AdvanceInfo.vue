@@ -541,7 +541,7 @@
           data-toggle="pill"
           @click.prevent="setActive('info-tab')"
           :class="{ active: isActive('info-tab') }"
-          class="btn btn-primary swipe-to-top cta border_radius_10 show "
+          class="btn btn-outline-secondary swipe-to-top cta border_radius_10 show "
           >
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           Back</a
@@ -1100,7 +1100,9 @@ border-color: var(--artical-background-primary) !important;
 }
 #pills-tabContent .tab-pane a.cta:hover{
   box-shadow: 0 8px 25px -8px #7367f0;
-
+}
+#pills-tabContent .tab-pane a.cta.btn-outline-secondary:hover{
+  box-shadow: none !important;
 }
 #pills-tabContent .custom_select_box{
   font-size: 15px;

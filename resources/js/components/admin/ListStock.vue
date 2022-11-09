@@ -119,7 +119,12 @@
 
 
                                                             <td>
-                                                                {{ stock.stock_status }}
+                                                                <span :class="stock.stock_status == 'active' ? 'active-status' : 'deactive-status'">
+                                                                    <span class="badge" :class="stock.stock_status == 'active' ? 'badge-light-success' : 'badge-light-danger'" >
+                                                                       {{ stock.stock_status }} 
+                                                                    </span>
+                                                                </span>
+                                                                <!-- {{ stock.stock_status }} -->
                                                             </td>
                                                             <td>
                                                                 {{ stock.qty }}

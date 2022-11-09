@@ -1,26 +1,26 @@
 <template>
 <div class="form-group row">
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>SEO Title</label>
         <fieldset class="form-group mb-3">
             <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.seo_title" ref="seo_title">
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>SEO Meta-Tag</label>
         <fieldset class="form-group mb-3">
             <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.seo_meta_tags" ref="seo_meta_tags">
         </fieldset>
     </div>
 
-	 <div class="col-md-6">
+	 <div class="col-md-6 mb-3">
         <label>SEO Keyword</label>
         <fieldset class="form-group mb-3">
             <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.seo_keywords" ref="seo_keywords">
         </fieldset>
     </div>
 
-	<div class="col-md-6">
+	<div class="col-md-6 mb-3">
         <label>SEO Description</label>
         <fieldset class="form-group mb-3">
             <input type="text" class="form-control border-dark" placeholder="" v-model="webgeneral.seo_description" ref="seo_description">

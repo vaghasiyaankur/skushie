@@ -238,14 +238,14 @@
       </div>
       <div class="row" v-if="$parent.permissions.includes('dashboard')">
         <div class="col-xl-8 col-lg-7">
-          <div class="card card-custom gutter-b bg-white border-0 order_card">
-             <div class="card-body px-2">
-                <div>
-                   <div class="kt-table-content table-responsive">
-                      <Order />
-                   </div>
-                </div>
-             </div>
+          <div class="card gutter-b bg-white border-0 order_card" style="box-shadow:none;">
+               <div class="card-body px-2">
+                  <div>
+                     <div class="kt-table-content table-responsive">
+                        <Order />
+                     </div>
+                  </div>
+               </div>
           </div>
        </div>
          <!-- <div class="col-lg-6 col-xl-8">
@@ -817,6 +817,16 @@
 .text__blue{
   color: #66b0ff !important;
 }
+.apexcharts-menu-item{
+   padding: 6px 7px;
+    font-size: 12px;
+    text-align: left !important;
+    cursor: pointer;
+    white-space: nowrap !important;
+  }
+  .card-custom.order_card{
+   box-shadow: none !important;
+  }
 @media screen and (min-width:992px) and (max-width:1125px) {
    .order_card .dataTables_wrapper .dataTables_length {
       float: none !important;
@@ -884,5 +894,6 @@
   .card-custom .card-header{
     background-color: #f9f9f9;
   }
+  
  
 </style>

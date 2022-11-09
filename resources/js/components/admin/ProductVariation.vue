@@ -38,18 +38,19 @@
                                         
                                             <div id="productvariationTable_wrapper" class="dataTables_wrapper no-footer">
 
-                                            <div class="dataTables_length" id="productvariationTable_length"><label>Show 
-                                            <select name="productvariationTable_length"  class="" v-model="limit" v-on:change="fetchvariations()">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                            <option value="200">200</option>
-                                            <option value="500">500</option>
-                                            <option value="1000">1000</option>
-                                            </select> entries</label></div>
+                                            <div class="dataTables_length mb-3" id="productvariationTable_length"><label>Show 
+                                                <select name="productvariationTable_length"  class="" v-model="limit" v-on:change="fetchvariations()">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="200">200</option>
+                                                <option value="500">500</option>
+                                                <option value="1000">1000</option>
+                                                </select> entries</label>
+                                            </div>
 
-                                            <div id="productvariationTable_filter" class="dataTables_filter">
+                                            <div id="productvariationTable_filter" class="dataTables_filter mb-3">
                                                 <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchvariations()"></label>
                                                 <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
                                             </div>
@@ -82,7 +83,7 @@
                                                                 {{ variation.attribute == null ? '' : (variation.attribute.detail[0] ? variation.attribute.detail[0].name : '') }}
                                                             </td>
                                                             <td v-if="$parent.permissions.includes('product-variation-manage')" class="white__nowrap">
-                                                            <a href="javascript:void(0)" class=" click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editvariation(variation)"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span class="pl-2">Edit</span>
+                                                            <a href="javascript:void(0)" class=" click-edit btn btn-outline-primary text-nowrap  waves-effect p-2 mr-3" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editvariation(variation)"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg><span class="pl-2">Edit</span>
                                                             </a>
                                                             <a class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deletevariation(variation.id)"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Delete</span>
                                                             </a>
@@ -90,12 +91,18 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchvariations(pagination.prev_page_url)">Previous</button></li>
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
+                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchunits(pagination.prev_page_url)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                                                        </button>
+                                                    </li>
 
-                                                    <li class="disabled"><button class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</button></li>
+                                                    <li class="disabled" v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" href="#">{{ n }}</button></li>
 
-                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchvariations(pagination.next_page_url)">Next</button></li>
+                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchunits(pagination.next_page_url)">
+                                                        next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                                        </svg>
+                                                    </button></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -108,48 +115,49 @@
             </div>
         </div>
     </div>
-
-    <div class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel" v-if="display_form" :class="display_form ? 'offcanvas-on' : ''">
-        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
-            <h4 class="font-size-h4 font-weight-bold m-0">Add variation</h4>
-            <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" v-on:click="clearForm()">
-                <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg>
-            </a>
-        </div>
-        <form id="myform">
-            <div class="row">
-                <div class="col-12">
-                    <div class="tabslang mb-3">
-                    <div v-for="language in languages" class="tablang" :class="language.id == selectedLanguage ?'active':''" @click="setSelectedLanguage(language.id)">
-                        {{ language.language_name }}
-                    </div>
-                    </div>
-                   <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
-                        <label class="text-dark">Name ( {{ language.language_name }} ) </label>
-                        <input type="text" :name="'name'+index" v-model="variation.name[index]" class="form-control" />
-                        <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
-                    </div>
-                    <div class="form-group">
-                        <label>Attribute</label>
-                        <fieldset class="form-group mb-3">
-                            <select class="js-example-basic-single js-states form-control bg-transparent" v-model='variation.attribute_id' >
-                                <option value="">Select Attribute</option>
-                                <option 
-                                v-for='attribute in attributes' :value='attribute.attribute_id'
-                                v-bind:selected="variation.attribute_id == attribute.attribute_id"
-                                v-bind:key="attribute.attribute_id">{{ attribute.detail == null ? '' : (attribute.detail[0] ? attribute.detail[0].name : '') }}</option>
-                            </select>
-                            <small class="form-text text-danger" v-if="errors.has('attribute_id')" v-text="errors.get('attribute_id')"></small>
-                        </fieldset>
-                    </div>
-                </div>
-
-                
+    <div class="offcanvas_backdrop" v-if="display_form">
+        <div class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"  :class="display_form ? 'offcanvas-on' : ''">
+            <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+                <h4 class="font-size-h4 font-weight-bold m-0">Add variation</h4>
+                <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" v-on:click="clearForm()">
+                    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                    </svg>
+                </a>
             </div>
-            <button type="button" @click="addUpdatevariation()" class="btn btn-primary w-100 mt-3">Submit</button>
-        </form>
+            <form id="myform">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tabslang mb-3">
+                        <div v-for="language in languages" class="tablang" :class="language.id == selectedLanguage ?'active':''" @click="setSelectedLanguage(language.id)">
+                            {{ language.language_name }}
+                        </div>
+                        </div>
+                    <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
+                            <label class="text-dark">Name ( {{ language.language_name }} ) </label>
+                            <input type="text" :name="'name'+index" v-model="variation.name[index]" class="form-control" />
+                            <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Attribute</label>
+                            <fieldset class="form-group mb-3">
+                                <select class="js-example-basic-single js-states form-control bg-transparent" v-model='variation.attribute_id' >
+                                    <option value="">Select Attribute</option>
+                                    <option 
+                                    v-for='attribute in attributes' :value='attribute.attribute_id'
+                                    v-bind:selected="variation.attribute_id == attribute.attribute_id"
+                                    v-bind:key="attribute.attribute_id">{{ attribute.detail == null ? '' : (attribute.detail[0] ? attribute.detail[0].name : '') }}</option>
+                                </select>
+                                <small class="form-text text-danger" v-if="errors.has('attribute_id')" v-text="errors.get('attribute_id')"></small>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <button type="button" @click="addUpdatevariation()" class="btn btn-primary w-100 mt-3">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
 </template>
@@ -371,6 +379,24 @@ export default {
 };
 </script>
 <style scoped>
+.pagination.pagination-sm li button{
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    margin: 0 10px;
+}
+.offcanvas_backdrop{
+        position: fixed;
+        top: 0;
+        right: auto;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        bottom: 0;
+        left: 0;  
+        z-index: 99;
+    }
 table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
     background-color: transparent;
   }

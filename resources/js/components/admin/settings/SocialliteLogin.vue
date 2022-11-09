@@ -5,37 +5,37 @@
                 <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" name="sociallite_login" id="sociallite_login"  @change="check($event)" v-bind:checked="loginCredential.sociallite_login == '1' ? 'checked':'' "><label class="custom-control-label" for="sociallite_login">SocialLite Allow</label></div>
             </fieldset>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Facebook Client Id</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="loginCredential.facebook_client_id" ref="site_name">
             </fieldset>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Facebook Client Secret</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="loginCredential.facebook_client_secret" ref="site_name">
             </fieldset>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Facebook Redirect</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="loginCredential.facebook_redirect" ref="site_name">
             </fieldset>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Google Client Id</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="loginCredential.google_client_id" ref="site_name">
             </fieldset>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Google Client Secret</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="loginCredential.google_client_secret" ref="site_name">
             </fieldset>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
             <label>Google Redirect</label>
             <fieldset class="form-group mb-3">
                 <input type="text" class="form-control border-dark" placeholder="" v-model="loginCredential.google_redirect" ref="site_name">

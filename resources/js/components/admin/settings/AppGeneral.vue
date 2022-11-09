@@ -1,6 +1,6 @@
 <template>
 <div class="form-group row">
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Home Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='appgeneral.home_style'>
@@ -17,7 +17,7 @@
 
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Card Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='appgeneral.card_style'>
@@ -27,7 +27,7 @@
             </select>
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Banner Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='appgeneral.banner_style'>
@@ -40,7 +40,7 @@
 
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>Category Style</label>
         <fieldset class="form-group mb-3">
             <select class="js-example-basic-single js-states form-control bg-transparent" v-model='appgeneral.category_style'>
@@ -54,13 +54,13 @@
             </select>
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>App Name</label>
         <fieldset class="form-group mb-3">
             <input type="email" class="form-control border-dark" placeholder="" v-model="appgeneral.app_name" ref="app_name">
         </fieldset>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
         <label>IOS App Url</label>
         <fieldset class="form-group mb-3">
             <input type="email" class="form-control border-dark" placeholder="" v-model="appgeneral.ios_app_url" ref="ios_app_url">

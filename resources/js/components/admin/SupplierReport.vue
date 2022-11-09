@@ -37,7 +37,7 @@
               <div class="col-12">
                 <div class="card card-custom gutter-b bg-white border-0">
                   <div class="card-body">
-                    <div class="row mb-3">
+                    <div class="row mb-3 align-items-center">
                       <div class="col-md-3">
                         <label>Supplier</label>
                         <select class="form-control" v-model="supplier_id">
@@ -56,9 +56,10 @@
                       </div>
 
                       <div class="col-md-3">
+                        <label class="w-100"></label>
                         <button
-                          style="margin-top: 20px"
-                          class="btn btn-success border_radius_10"
+                          style="padding:7px 20px;"
+                          class="btn btn-outline-purple border_radius_5 mt-2"
                           @click="fetchPurchases('')"
                         >
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
