@@ -113,18 +113,19 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
+                                                        <tr v-if="units.length == 0" class="text-center font-size-16"><td colspan="4">No Order Found</td></tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="units.length != 0">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchunits(pagination.prev_page_url)">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
                                                         </button>
                                                     </li>
 
-                                                    <li class="disabled" v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" href="#">{{ n }}</button></li>
+                                                    <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
                                                     <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchunits(pagination.next_page_url)">
-                                                        next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                                        Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
                                                         </svg>
                                                     </button></li>
                                                 </ul>
@@ -241,8 +242,10 @@ export default {
             this.$parent.loading = true;
             let vm = this;
             page_url = page_url || "/api/admin/unit";
+            if(Number.isInteger(page_url)){
+                page_url ="/api/admin/unit?page="+page_url;
+            }
             var arr = page_url.split('?');
-            
             if (arr.length > 1) {
                 page_url += '&limit='+this.limit;
             }
@@ -405,23 +408,6 @@ export default {
         left: 0;  
         z-index: 99;
     }
-/*.offcanvas_backdrop{
-position: absolute;
-    top: -139px;
-    right: auto;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,0,0,0.5);
-    bottom: 0;
-    left: -300px;
-    z-index: 99999;
-}*/
-/*.order--table tbody tr:nth-of-type(odd) {
-    background-color: rgba(0,0,0,.05) !important;
-  }
-  .order--table tbody tr:nth-of-type(even) {
-    background-color: #ffffff !important;
-  }*/
  table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
     background-color: transparent;
   }

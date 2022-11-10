@@ -37,7 +37,7 @@
               <div class="col-12">
                 <div class="card card-custom gutter-b bg-white border-0">
                   <div class="card-body">
-                    <div class="row mb-3">
+                    <div class="row mb-3 align-items-center">
 
                       <div class="col-md-3">
                         <label>Customer</label>
@@ -53,9 +53,10 @@
                       </div>
 
                       <div class="col-md-3">
+                        <label class="w-100"></label>
                         <button
-                          style="margin-top: 20px"
-                          class="btn btn-success border_radius_10"
+                        style="padding:7px 20px;"
+                        class="btn btn-outline-purple border_radius_5 mt-2"
                           @click="fetchorders('')"
                         >
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
@@ -69,7 +70,7 @@
                           id="sale_wrapper"
                           class="dataTables_wrapper no-footer"
                         >
-                          <div class="dataTables_length" id="sale_length">
+                          <div class="dataTables_length mb-3" id="sale_length">
                             <label
                               >Show
                               <select
@@ -214,43 +215,22 @@
                                   </a>
                                 </td>
                               </tr>
+                              <tr v-if="orders.length == 0" class="text-center font-size-16"><td colspan="7">No Order Found</td></tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.prev_page_url },
-                              ]"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="fetchorders(pagination.prev_page_url)"
-                                >Previous</a
-                              >
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="orders.length != 0">
+                            <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchorders(pagination.prev_page_url)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                </button>
                             </li>
 
-                            <li class="disabled">
-                              <a class="page-link text-dark" href="#"
-                                >Page {{ pagination.current_page }} of
-                                {{ pagination.last_page }}</a
-                              >
-                            </li>
+                            <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.next_page_url },
-                              ]"
-                              class="page-item"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="deleteOrders(pagination.next_page_url)"
-                                >Next</a
-                              >
-                            </li>
-                          </ul>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchorders(pagination.next_page_url)">
+                                Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button></li>
+                        </ul>
                         </div>
                       </div>
                     </div>
@@ -414,6 +394,9 @@ export default {
       this.$parent.loading = true;
       let vm = this;
       page_url = page_url || "/api/admin/order";
+      if(Number.isInteger(page_url)){
+        page_url ="/api/admin/order?page="+page_url;
+      }
       var arr = page_url.split("?");
 
       if (arr.length > 1) {
@@ -491,3 +474,23 @@ export default {
   props: ["loading"],
 };
 </script>
+<style scoped>
+.pagination.pagination-sm li button{
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  margin: 0 10px;
+}
+.offcanvas_backdrop{
+      position: fixed;
+      top: 0;
+      right: auto;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      bottom: 0;
+      left: 0;  
+      z-index: 99;
+  }
+</style>

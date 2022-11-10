@@ -91,7 +91,7 @@
                           class="dataTables_wrapper no-footer"
                         >
                           <div
-                            class="dataTables_length"
+                            class="dataTables_length mb-3"
                             id="productaccountTable_length"
                           >
                             <label
@@ -117,7 +117,7 @@
 
                           <div
                             id="productaccountTable_filter"
-                            class="dataTables_filter"
+                            class="dataTables_filter mb-3"
                           >
                             <label
                               >Search:<input
@@ -237,43 +237,22 @@
                                                                         <a class="dropdown-item" href="#" @click="deleteaccount(account.id)"><i class="fa fa-trash"></i></a>
                                                             </td> -->
                               </tr>
+                              <tr v-if="accounts.length == 0" class="text-center font-size-16"><td colspan="5">No Order Found</td></tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.prev_page_url },
-                              ]"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="fetchaccounts(pagination.prev_page_url)"
-                                >Previous</a
-                              >
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="accounts.length != 0">
+                            <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchaccounts(pagination.prev_page_url)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                </button>
                             </li>
 
-                            <li class="disabled">
-                              <a class="page-link text-dark" href="#"
-                                >Page {{ pagination.current_page }} of
-                                {{ pagination.last_page }}</a
-                              >
-                            </li>
+                            <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.next_page_url },
-                              ]"
-                              class="page-item"
-                            >
-                              <a
-                                class="page-link"
-                                href="#"
-                                @click="fetchaccounts(pagination.next_page_url)"
-                                >Next</a
-                              >
-                            </li>
-                          </ul>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchaccounts(pagination.next_page_url)">
+                                Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button></li>
+                        </ul>
                         </div>
                       </div>
                     </div>
@@ -285,123 +264,123 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"
-      v-if="display_form"
-      :class="display_form ? 'offcanvas-on' : ''"
-    >
+    <div class="offcanvas_backdrop" v-if="display_form">
       <div
-        class="
-          offcanvas-header
-          d-flex
-          align-items-center
-          justify-content-between
-          pb-3
-        "
+        class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"
+        :class="display_form ? 'offcanvas-on' : ''"
       >
-        <h4 class="font-size-h4 font-weight-bold m-0">Add account</h4>
-        <a
-          href="#"
+        <div
           class="
-            btn btn-sm btn-icon btn-light btn-hover-primary
-            kt_notes_panel_close
+            offcanvas-header
+            d-flex
+            align-items-center
+            justify-content-between
+            pb-3
           "
-          v-on:click="clearForm()"
         >
-          <svg
-            width="20px"
-            height="20px"
-            viewBox="0 0 16 16"
-            class="bi bi-x"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+          <h4 class="font-size-h4 font-weight-bold m-0">Add account</h4>
+          <a
+            href="#"
+            class="
+              btn btn-sm btn-icon btn-light btn-hover-primary
+              kt_notes_panel_close
+            "
+            v-on:click="clearForm()"
           >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-            ></path>
-          </svg>
-        </a>
-      </div>
-      <form id="myform">
-        <div class="row">
-          <div class="col-12">
-            <div class="form-group">
-              <label class="text-dark">Name </label>
-              <input
-                type="text"
-                name="name"
-                v-model="account.name"
-                class="form-control"
-              />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('name')"
-                v-text="errors.get('name')"
-              ></small>
-            </div>
-            <div class="form-group">
-              <label>Account Type</label>
-              <fieldset class="form-group mb-3">
+            <svg
+              width="20px"
+              height="20px"
+              viewBox="0 0 16 16"
+              class="bi bi-x"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <form id="myform">
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label class="text-dark">Name </label>
+                <input
+                  type="text"
+                  name="name"
+                  v-model="account.name"
+                  class="form-control"
+                />
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('name')"
+                  v-text="errors.get('name')"
+                ></small>
+              </div>
+              <div class="form-group">
+                <label>Account Type</label>
+                <fieldset class="form-group mb-3">
+                  <select
+                    class="
+                      js-example-basic-single js-states
+                      form-control
+                      bg-transparent
+                    "
+                    v-model="account.parent"
+                    @change="appendChild($event, 'select')"
+                  >
+                    <option value="" disabled selected v-bind:key="0">
+                      Select account
+                    </option>
+                    <option
+                      v-for="parent in account_dropdowns"
+                      :value="parent.id"
+                      v-bind:selected="account.parent == parent.id"
+                      v-bind:key="parent.id"
+                      v-if="parent.parent_id == 0"
+                    >
+                      {{ parent.name }}
+                    </option>
+                  </select>
+                </fieldset>
+              </div>
+              <div
+                class="form-group child"
+                v-for="(child, index) in childToAppend"
+              >
                 <select
                   class="
                     js-example-basic-single js-states
                     form-control
                     bg-transparent
                   "
-                  v-model="account.parent"
-                  @change="appendChild($event, 'select')"
+                  @change="appendChild($event, 'select' + index)"
                 >
                   <option value="" disabled selected v-bind:key="0">
                     Select account
                   </option>
                   <option
-                    v-for="parent in account_dropdowns"
-                    :value="parent.id"
-                    v-bind:selected="account.parent == parent.id"
-                    v-bind:key="parent.id"
-                    v-if="parent.parent_id == 0"
+                    v-for="childern in child.data"
+                    :value="childern.id"
+                    v-bind:key="childern.id"
                   >
-                    {{ parent.name }}
+                    {{ childern.name }}
                   </option>
                 </select>
-              </fieldset>
-            </div>
-            <div
-              class="form-group child"
-              v-for="(child, index) in childToAppend"
-            >
-              <select
-                class="
-                  js-example-basic-single js-states
-                  form-control
-                  bg-transparent
-                "
-                @change="appendChild($event, 'select' + index)"
-              >
-                <option value="" disabled selected v-bind:key="0">
-                  Select account
-                </option>
-                <option
-                  v-for="childern in child.data"
-                  :value="childern.id"
-                  v-bind:key="childern.id"
-                >
-                  {{ childern.name }}
-                </option>
-              </select>
+              </div>
             </div>
           </div>
-        </div>
-        <button
-          type="button"
-          @click="addUpdateaccount()"
-          class="btn btn-primary w-100"
-        >
-          Submit
-        </button>
-      </form>
+          <button
+            type="button"
+            @click="addUpdateaccount()"
+            class="btn btn-primary w-100"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -441,6 +420,7 @@ export default {
     accountdropdowns(page_url) {
       this.$parent.loading = true;
       page_url = page_url || "/api/admin/account";
+
       axios
         .get(page_url, this.token)
         .then((res) => {
@@ -452,6 +432,9 @@ export default {
       this.$parent.loading = true;
       let vm = this;
       page_url = page_url || "/api/admin/account";
+      if(Number.isInteger(page_url)){
+        page_url ="/api/admin/account?page="+page_url;
+      }
       var arr = page_url.split("?");
 
       if (arr.length > 1) {
@@ -615,3 +598,29 @@ export default {
   },
 };
 </script>
+<style scoped>
+.pagination.pagination-sm li button{
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  margin: 0 10px;
+}
+.offcanvas_backdrop{
+      position: absolute;
+      top: -139px;
+      right: auto;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      bottom: 0;
+      left: -300px;  
+      z-index: 99;
+  }
+  table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+    background-color: transparent;
+  }
+  table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+    background-color: transparent;
+  }
+</style>

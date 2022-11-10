@@ -54,7 +54,7 @@
                                         
                                             <div id="productblogTable_wrapper" class="dataTables_wrapper no-footer">
 
-                                            <div class="dataTables_length" id="productblogTable_length"><label>Show 
+                                            <div class="dataTables_length mb-3" id="productblogTable_length"><label>Show 
                                             <select name="productblogTable_length"  class="" v-model="limit" v-on:change="fetchblogs()">
                                             <option value="10">10</option>
                                             <option value="25">25</option>
@@ -65,7 +65,7 @@
                                             <option value="1000">1000</option>
                                             </select> entries</label></div>
 
-                                            <div id="productblogTable_filter" class="dataTables_filter">
+                                            <div id="productblogTable_filter mb-3" class="dataTables_filter">
                                                 <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchblogs()"></label>
                                                 <button
                                                 v-if="this.searchParameter != ''"
@@ -99,6 +99,7 @@
                                                                 Action
                                                             </th>
                                                         </tr>
+                                                        
                                                     </thead>
                                                     <tbody class="kt-table-tbody text-dark">
                                                         <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="blog in blogs" v-bind:key="blog.blog_id">
@@ -119,7 +120,7 @@
                                                                 {{ blog.detail[0].description }}
                                                             </td>
                                                             <td v-if="$parent.permissions.includes('blog-manage')" class="white__nowrap">
-                                                            <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editblog(blog)">
+                                                            <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2 mr-3" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editblog(blog)">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                                                                 <span class="pl-2">Edit</span>
 
@@ -132,15 +133,22 @@
                                                             </a>
                                                             </td>
                                                         </tr>
+                                                        <tr v-if="blogs.length == 0" class="text-center font-size-16"><td colspan="6">No Order Found</td></tr>
                                                     </tbody>
                                                 </table>
                                                 
-                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link"  @click="fetchcategorys(pagination.prev_page_url)">Previous</button></li>
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="blogs.length != 0">
+                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchcategorys(pagination.prev_page_url)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                                        </button>
+                                                    </li>
 
-                                                    <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
+                                                    <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link"  @click="fetchblogs(pagination.next_page_url)">Next</button></li>
+                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchcategorys(pagination.next_page_url)">
+                                                        Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                                        </svg>
+                                                    </button></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -153,86 +161,89 @@
             </div>
         </div>
     </div>
-
-    <div class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel" v-if="display_form" :class="display_form ? 'offcanvas-on' : ''">
-        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
-            <h4 class="font-size-h4 font-weight-bold m-0">{{ this.edit ? "Edit Blog" : "Add blog" }}</h4>
-            <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" v-on:click="clearForm()">
-                <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg>
-            </a>
-        </div>
-        <form id="myform">
-            <div class="row">
-                <div class="col-12">
-                    <div class="tabslang">
-                        <div v-for="language in languages" class="tablang" :class="language.id == selectedLanguage ?'active':''" @click="setSelectedLanguage(language.id)">
-                            {{ language.language_name }}
-                        </div>
-                    </div>
-                    <br />
-                    <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
-                        <label class="text-dark">Name ( {{ language.language_name }} ) </label>
-                        <input type="text" :name="'name'+index" v-model="blog.name[index]" class="form-control" />
-                        <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
-                    </div>
-                    <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
-                        <label class="text-dark">Description ( {{ language.language_name }} ) </label>
-                        <!-- <input type="text" :name="'desc'+index" v-model="blog.desc[index]" class="form-control" /> -->
-                        <vue-editor v-model="blog.desc[index]"></vue-editor>
-                        <small class="form-text text-danger" v-if="errors.has('desc')" v-text="errors.get('desc')"></small>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Blog Category</label>
-                                <fieldset class="form-group mb-3">
-                                    <select class="js-example-basic-single js-states form-control bg-transparent" v-model='blog.blog_category_id' >
-                                        <option value="">Select Category</option>
-                                        <option 
-                                        v-for='category in categories' :value='category.blog_category_id'
-                                        v-bind:key="category.blog_category_id" :selected='blog.blog_category_id === category.blog_category_id'>{{ category.blog_detail ? category.blog_detail[0].name : '' }}</option>
-                                    </select>
-                                    <small class="form-text text-danger" v-if="errors.has('blog_category_id')" v-text="errors.get('blog_category_id')"></small>
-                                    
-                                </fieldset>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group " >
-                                <label class="text-dark">Slug</label>
-                                <input type="text" :name="blog.slug" v-model="blog.slug" class="form-control" />
-                                <small class="form-text text-danger" v-if="errors.has('slug')" v-text="errors.get('slug')"></small>
-                            </div>
-                        </div>
-                    </div>                                        
-                    <div class="row">
-                        <div class="col-6">                            
-                            <div class="form-group">
-                                <label class="text-dark">Is Featured </label>
-                                <select v-model="blog.is_featured">
-                                    <option :selected="blog.is_featured == 1" value="1">Yes</option>
-                                    <option :selected="blog.is_featured == 0" value="0">no</option>
-                                </select>
-                                <small class="form-text text-danger" v-if="errors.has('is_active')" v-text="errors.get('is_active')"></small>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="w-100"></label>
-                                <button type="button" class="btn btn-primary mt-2 w-100" @click="toggleImageSelect()">Upload blog Media</button>
-                                <small id="textHelp" class="form-text text-muted">Select Image file from gallary.</small>
-                                <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
-        
-                                <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
+    <div class="offcanvas_backdrop" v-if="display_form">
+        <div class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel" v-if="display_form" :class="display_form ? 'offcanvas-on' : ''">
+            <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+                <h4 class="font-size-h4 font-weight-bold m-0">{{ this.edit ? "Edit Blog" : "Add blog" }}</h4>
+                <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" v-on:click="clearForm()">
+                    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                    </svg>
+                </a>
             </div>
-            <button type="button" @click="addUpdateblog()" class="btn btn-primary w-100">Submit</button>
-        </form>
+            <form id="myform">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tabslang">
+                            <div v-for="language in languages" class="tablang" :class="language.id == selectedLanguage ?'active':''" @click="setSelectedLanguage(language.id)">
+                                {{ language.language_name }}
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
+                            <label class="text-dark">Name ( {{ language.language_name }} ) </label>
+                            <input type="text" :name="'name'+index" v-model="blog.name[index]" class="form-control" />
+                            <small class="form-text text-danger" v-if="errors.has('name')" v-text="errors.get('name')"></small>
+                        </div>
+                        <div class="form-group " v-for="(language,index) in languages" v-if="language.id == selectedLanguage">
+                            <label class="text-dark">Description ( {{ language.language_name }} ) </label>
+                            <!-- <input type="text" :name="'desc'+index" v-model="blog.desc[index]" class="form-control" /> -->
+                            <vue-editor v-model="blog.desc[index]"></vue-editor>
+                            <small class="form-text text-danger" v-if="errors.has('desc')" v-text="errors.get('desc')"></small>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Blog Category</label>
+                                    <fieldset class="form-group mb-3">
+                                        <select class="js-example-basic-single js-states form-control bg-transparent" v-model='blog.blog_category_id' >
+                                            <option value="">Select Category</option>
+                                            <option 
+                                            v-for='category in categories' :value='category.blog_category_id'
+                                            v-bind:key="category.blog_category_id" :selected='blog.blog_category_id === category.blog_category_id'>{{ category.blog_detail ? category.blog_detail[0].name : '' }}</option>
+                                        </select>
+                                        <small class="form-text text-danger" v-if="errors.has('blog_category_id')" v-text="errors.get('blog_category_id')"></small>
+                                        
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="w-100"></label> 
+                                    <button type="button" class="btn btn-outline-primary mt-2 w-100 py-2" @click="toggleImageSelect()">Upload blog Media</button>
+                                    <small id="textHelp" class="form-text text-muted">Select Image file from gallary.</small>
+                                    <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
+            
+                                    <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
+                                </div>
+                            </div>
+                            
+                        </div>                                        
+                        <div class="row">
+                            <div class="col-6">                            
+                                <div class="form-group">
+                                    <label class="text-dark">Is Featured </label>
+                                    <select v-model="blog.is_featured">
+                                        <option :selected="blog.is_featured == 1" value="1">Yes</option>
+                                        <option :selected="blog.is_featured == 0" value="0">no</option>
+                                    </select>
+                                    <small class="form-text text-danger" v-if="errors.has('is_active')" v-text="errors.get('is_active')"></small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group " >
+                                    <label class="text-dark">Slug</label>
+                                    <input type="text" :name="blog.slug" v-model="blog.slug" class="form-control" />
+                                    <small class="form-text text-danger" v-if="errors.has('slug')" v-text="errors.get('slug')"></small>
+                                </div>
+                            </div>
+                           
+                        </div>                    
+                    </div>
+                </div>
+                <button type="button" @click="addUpdateblog()" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
     </div>
     <attach-image @toggleImageSelect="toggleImageSelect" :showModal="showModal" @setImage="setImage"/>
 </div>
@@ -462,6 +473,9 @@ export default {
             this.$parent.loading = true;
             let vm = this;
             page_url = page_url || "/api/admin/blog_category";
+            if(Number.isInteger(page_url)){
+                page_url ="/api/admin/blog_category?page="+page_url;
+            }
             page_url += '?getDetail=1&onlyActive=1';
             axios.get(page_url, this.token).then(res => {
                 this.categories = res.data.data;
@@ -492,4 +506,28 @@ export default {
     padding: 8px 16px;
     border-radius: 5px;
 }
+.pagination.pagination-sm li button{
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    margin: 0 10px;
+}
+.offcanvas_backdrop{
+        position: absolute;
+        top: -139px;
+        right: auto;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        bottom: 0;
+        left: -300px;  
+        z-index: 99;
+    }
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+    background-color: transparent;
+  }
+  table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+    background-color: transparent;
+  }
 </style>

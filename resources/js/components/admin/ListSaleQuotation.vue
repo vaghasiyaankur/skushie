@@ -38,7 +38,7 @@
                                         
                                             <div id="sale_wrapper" class="dataTables_wrapper no-footer">
 
-                                            <div class="dataTables_length" id="sale_length"><label>Show 
+                                            <div class="dataTables_length mb-3" id="sale_length"><label>Show 
                                             <select name="sale_length" aria-controls="sale" class="" v-model="limit" v-on:change="fetchsale_quotations()">
                                             <option value="10">10</option>
                                             <option value="25">25</option>
@@ -137,14 +137,21 @@
                                                                 </router-link>
                                                             </td>
                                                         </tr>
+                                                        <tr v-if="sale_quotations.length == 0" class="text-center font-size-16"><td colspan="9">No Order Found</td></tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><a class="page-link" href="#" @click="fetchsale_quotations(pagination.prev_page_url)">Previous</a></li>
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="sale_quotations.length != 0">
+                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchsale_quotations(pagination.prev_page_url)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                                        </button>
+                                                    </li>
 
-                                                    <li class="disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
+                                                    <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click="fetchsale_quotations(pagination.next_page_url)">Next</a></li>
+                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchsale_quotations(pagination.next_page_url)">
+                                                        Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                                        </svg>
+                                                    </button></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -190,6 +197,9 @@ export default {
             this.$parent.loading = true;
             let vm = this;
             page_url = page_url || "/api/admin/sale_quotation";
+            if(Number.isInteger(page_url)){
+                page_url ="/api/admin/sale_quotation?page="+page_url;
+            }
             var arr = page_url.split('?');
             
             if (arr.length > 1) {
@@ -242,3 +252,23 @@ export default {
     props: ['loading'],
 };
 </script>
+<style scoped> 
+.pagination.pagination-sm li button{
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 15px;
+    border: none;
+    margin: 0 10px;
+}
+.offcanvas_backdrop{
+        position: absolute;
+        top: -139px;
+        right: auto;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        bottom: 0;
+        left: -300px;  
+        z-index: 99;
+    }
+</style>

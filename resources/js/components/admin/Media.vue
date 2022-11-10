@@ -136,7 +136,10 @@
                         <h3 class="modal-title" id="myModalLabel1">
                           Add File Here
                         </h3>
-                        <button
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close btn btn-sm btn-icon btn-light btn-hover-primary m-0" @click="toggleModal()">
+                          <svg width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="bi bi-x"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path></svg>
+                        </button>
+                        <!-- <button
                           type="button"
                           class="
                             close
@@ -161,7 +164,7 @@
                               d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
                             ></path>
                           </svg>
-                        </button>
+                        </button> -->
                       </div>
                       <div class="modal-body">
                         <p>
@@ -618,6 +621,25 @@ export default {
 .modal-dialog .modal-footer .btn-outline-dark:hover{
   background-color: rgba(75, 75, 75, 0.04) !important;
   color: #4b4b4b !important;
+}
+button.close.btn.btn-icon {
+  transform: translate(18px, -10px);
+  padding: 0.5rem;
+  box-shadow: 0 5px 20px 0 rgb(34 41 47 / 10%);
+  border-radius: 0.357rem;
+  background-color: #fff;
+  opacity: 1;
+  transition: all 0.23s ease 0.1s;
+  position: relative;
+}
+.btn.btn-hover-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-hover-primary:focus:not(.btn-text), .btn.btn-hover-primary.focus:not(.btn-text) {
+  color: #000 !important;
+  background-color: #fff !important;
+  border-color: transparent !important;
+}
+button.close.btn:hover {
+  transform: translate(15px, -2px) !important;
+  opacity: 1 !important;
 }
 /*.gallary-categories ul li{
   position: relative;

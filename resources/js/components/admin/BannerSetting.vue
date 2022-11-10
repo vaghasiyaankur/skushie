@@ -104,7 +104,7 @@
                                                                 <img v-if="banner.gallary != null" class="img-thumbnail" :src='"/gallary/thumbnail"+banner.gallary.gallary_name' alt="image not found" />
                                                             </td>
                                                             <td style="white-space:nowrap;">
-                                                                <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editBanner(banner)">
+                                                                <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap waves-effect p-2 mr-3" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editBanner(banner)">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                                                                     <span class="pl-2">Edit</span>
                                                                 </a>
@@ -115,18 +115,19 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
+                                                        <tr v-if="banners.length == 0" class="text-center font-size-16"><td colspan="6">No Order Found</td></tr>
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="banners.length != 0">
                                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchunits(pagination.prev_page_url)">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
                                                         </button>
                                                     </li>
 
-                                                    <li class="disabled" v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" href="#">{{ n }}</button></li>
+                                                    <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
                                                     <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchunits(pagination.next_page_url)">
-                                                        next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                                        Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
                                                         </svg>
                                                     </button></li>
                                                 </ul>
@@ -141,116 +142,117 @@
             </div>
         </div>
     </div>
-    
-    <div class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel" v-if="display_form" :class="display_form ? 'offcanvas-on' : ''">
-        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
-            <h4 class="font-size-h4 font-weight-bold m-0">{{ edit ? "Edit" :"Add" }} Banner</h4>
-            <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" v-on:click="clearForm()">
-                <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg>
-            </a>
-        </div>
-        <form id="myform">
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group ">
-                        <label class="text-dark">Banner Name</label>
-                        <input type="text"  v-model="banner.title" class="form-control" />
-                        <small class="form-text text-danger" v-if="errors.has('title')" v-text="errors.get('title')"></small>
-                    </div>
-                    <div class="form-group ">
-                        <label class="text-dark">Description</label>
-                        <input type="text"  v-model="banner.description" class="form-control" />
-                        <small class="form-text text-danger" v-if="errors.has('description')" v-text="errors.get('description')"></small>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label> </label>
-                                <button type="button" class="btn btn-primary w-100 mt-2 mb-3" @click="toggleImageSelect()">Upload Banner Media</button>
-                                <div class="clearfix"></div>
-                                <small id="textHelp" class="form-text text-muted" v-if="gallary_path == null || gallary_path == ''">Select Image file from gallary.</small>
-                                <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
-
-                                <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="text-dark">Status </label>
-                                <div class="clearfix"></div>
-                                <select v-model="banner.status" class="w-100">
-                                    <option value="">Select Status</option>
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                                <small class="form-text text-danger" v-if="errors.has('status')" v-text="errors.get('status')"></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="text-dark w-100">Language </label>
-                                <select v-model="banner.language_id" class="w-100">
-                                <option value="">Select Language </option>
-                                <option v-for="language in languages" :selected="banner.language_id == language.id" v-bind:value="language.id">
-                                {{ language.language_name }}
-                                </option>
-                                </select>
-                                <small class="form-text text-danger" v-if="errors.has('language_id')" v-text="errors.get('language_id')"></small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="text-dark">Banner Navigation </label>
-                                <div class="clearfix"></div>
-                                <select v-model="banner.slider_navigation_id" class="w-100">
-                                <option value="">Select Banner Navigation</option>
-                                <option v-for="slider_navigation in slider_navigations" v-bind:value="slider_navigation.slider_navigation_id">
-                                {{ slider_navigation.slider_navigation_name }}
-                                </option>
-                                </select>
-                                <small class="form-text text-danger" v-if="errors.has('slider_navigation_id')" v-text="errors.get('slider_navigation_id')"></small>
-                            </div>
-                        </div>
-                    </div>   
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="form-group" v-if="banner.slider_navigation_id == 1">
-                                <label class="text-dark">Category </label>
-                                <div class="clearfix"></div>
-                                <select v-model="banner.ref_id" class="w-100">
-                                <option value="">Select Category</option>
-                                <option v-for="category in categories" v-bind:value="category.id">
-                                {{ category.detail == null ? '' : category.detail[0].name }}
-                                </option>
-                                </select>
-                                <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group" v-if="banner.slider_navigation_id == 2">
-                                <label class="text-dark">Products </label>
-                                <div class="clearfix"></div>
-                                <select v-model="banner.ref_id">
-                                <option value="">Select Product</option>
-                                <option v-for="product in products" v-bind:value="product.product_id">
-                                {{ product.detail == null ? '' : product.detail[0].title }}
-                                </option>
-                                </select>
-                                <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
-                            </div>  
-                        </div>
-                    </div>                                
-                   
-
-                                                      
-                </div>
+    <div class="offcanvas_backdrop" v-if="display_form">
+        <div class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel" v-if="display_form" :class="display_form ? 'offcanvas-on' : ''">
+            <div class="offcanvas-header d-flex align-items-center justify-content-between pb-3">
+                <h4 class="font-size-h4 font-weight-bold m-0">{{ edit ? "Edit" :"Add" }} Banner</h4>
+                <a href="#" class="btn btn-sm btn-icon btn-light btn-hover-primary kt_notes_panel_close" v-on:click="clearForm()">
+                    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                    </svg>
+                </a>
             </div>
-            <button type="button" @click="addUpdateBanner()" class="btn btn-primary w-100">Submit</button>
-        </form>
+            <form id="myform">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group ">
+                            <label class="text-dark">Banner Name</label>
+                            <input type="text"  v-model="banner.title" class="form-control" />
+                            <small class="form-text text-danger" v-if="errors.has('title')" v-text="errors.get('title')"></small>
+                        </div>
+                        <div class="form-group ">
+                            <label class="text-dark">Description</label>
+                            <input type="text"  v-model="banner.description" class="form-control" />
+                            <small class="form-text text-danger" v-if="errors.has('description')" v-text="errors.get('description')"></small>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label> </label>
+                                    <button type="button" class="btn btn-outline-primary w-100 mt-2 mb-3 py-2 border_radius_5" @click="toggleImageSelect()">Upload Banner Media</button>
+                                    <div class="clearfix"></div>
+                                    <small id="textHelp" class="form-text text-muted" v-if="gallary_path == null || gallary_path == ''">Select Image file from gallary.</small>
+                                    <small class="form-text text-danger" v-if="errors.has('gallary_id')" v-text="errors.get('gallary_id')"></small>
+
+                                    <img v-if="gallary_path != ''" :src="gallary_path" style="width:100px;height:100px;"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">Status </label>
+                                    <div class="clearfix"></div>
+                                    <select v-model="banner.status" class="w-100">
+                                        <option value="">Select Status</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                    <small class="form-text text-danger" v-if="errors.has('status')" v-text="errors.get('status')"></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark w-100">Language </label>
+                                    <select v-model="banner.language_id" class="w-100">
+                                    <option value="">Select Language </option>
+                                    <option v-for="language in languages" :selected="banner.language_id == language.id" v-bind:value="language.id">
+                                    {{ language.language_name }}
+                                    </option>
+                                    </select>
+                                    <small class="form-text text-danger" v-if="errors.has('language_id')" v-text="errors.get('language_id')"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-dark">Banner Navigation </label>
+                                    <div class="clearfix"></div>
+                                    <select v-model="banner.slider_navigation_id" class="w-100">
+                                    <option value="">Select Banner Navigation</option>
+                                    <option v-for="slider_navigation in slider_navigations" v-bind:value="slider_navigation.slider_navigation_id">
+                                    {{ slider_navigation.slider_navigation_name }}
+                                    </option>
+                                    </select>
+                                    <small class="form-text text-danger" v-if="errors.has('slider_navigation_id')" v-text="errors.get('slider_navigation_id')"></small>
+                                </div>
+                            </div>
+                        </div>   
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group" v-if="banner.slider_navigation_id == 1">
+                                    <label class="text-dark">Category </label>
+                                    <div class="clearfix"></div>
+                                    <select v-model="banner.ref_id" class="w-100">
+                                    <option value="">Select Category</option>
+                                    <option v-for="category in categories" v-bind:value="category.id">
+                                    {{ category.detail == null ? '' : category.detail[0].name }}
+                                    </option>
+                                    </select>
+                                    <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" v-if="banner.slider_navigation_id == 2">
+                                    <label class="text-dark">Products </label>
+                                    <div class="clearfix"></div>
+                                    <select v-model="banner.ref_id" style="width:100%;">
+                                    <option value="">Select Product</option>
+                                    <option v-for="product in products" v-bind:value="product.product_id">
+                                    {{ product.detail == null ? '' : product.detail[0].title }}
+                                    </option>
+                                    </select>
+                                    <small class="form-text text-danger" v-if="errors.has('ref_id')" v-text="errors.get('ref_id')"></small>
+                                </div>  
+                            </div>
+                        </div>                                
+                    
+
+                                                        
+                    </div>
+                </div>
+                <button type="button" @click="addUpdateBanner()" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
     </div>
     <attach-image @toggleImageSelect="toggleImageSelect" :showModal="showModal" @setImage="setImage"/>
 </div>
@@ -371,6 +373,9 @@ export default {
             this.$parent.loading = true;
             let vm = this;
             page_url = page_url || "/api/admin/banner";
+            if(Number.isInteger(page_url)){
+                page_url ="/api/admin/banner?page="+page_url;
+            }
             var arr = page_url.split('?');
 
             if (arr.length > 1) {

@@ -38,9 +38,9 @@
               <div class="col-12">
                 <div class="card card-custom gutter-b bg-white border-0">
                   <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
+                    <div class="row align-items-center">
+                      <div class="col-md-3 mb-3">
+                        <div class="form-group mb-0">
                           <label>Warehouse Id</label>
                           <select class="form-control" v-model="warehouse_id">
                             <option value="">all</option>
@@ -54,7 +54,7 @@
                         </div>
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-3 mb-3">
                         <label>Product Id</label>
                         <select class="form-control" v-model="product_id">
                           <option value="">all</option>
@@ -67,10 +67,11 @@
                         </select>
                       </div>
 
-                      <div class="col-md-3">
+                      <div class="col-md-3 mb-3">
+                        <label class="w-100"></label> 
                         <button
-                          style="margin-top: 20px"
-                          class="btn btn-success border_radius_10"
+                          class="btn btn-outline-purple border_radius_5 mt-2" 
+                          style="padding: 7px 20px;"
                           @click="purchasReports('')"
                         >
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
@@ -84,7 +85,7 @@
                           id="sale_wrapper"
                           class="dataTables_wrapper no-footer"
                         >
-                          <div class="dataTables_length" id="sale_length">
+                          <div class="dataTables_length mb-3" id="sale_length">
                             <label
                               >Show
                               <select
@@ -164,48 +165,21 @@
                                   {{ purchase.qty}}
                                 </td>                               
                               </tr>
+                              <tr v-if="purchases.length == 0" class="text-center font-size-16"><td colspan="3">No Order Found</td></tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.prev_page_url },
-                              ]"
-                            >
-                              <button
-                                class="page-link"
-                                href="#"
-                                @click="
-                                  purchasReports(pagination.prev_page_url)
-                                "
-                              >
-                                Previous
-                              </button>
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="purchases.length != 0">
+                            <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="purchasReports(pagination.prev_page_url)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                </button>
                             </li>
 
-                            <li class="disabled">
-                              <button class="page-link text-dark" href="#">
-                                Page {{ pagination.current_page }} of
-                                {{ pagination.last_page }}
-                              </button>
-                            </li>
+                            <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.next_page_url },
-                              ]"
-                              class="page-item"
-                            >
-                              <button
-                                class="page-link"
-                                href="#"
-                                @click="
-                                  purchasReports(pagination.next_page_url)
-                                "
-                              >
-                                Next
-                              </button>
-                            </li>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="purchasReports(pagination.next_page_url)">
+                                Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button></li>
                           </ul>
                         </div>
                       </div>
@@ -254,6 +228,9 @@ export default {
       this.$parent.loading = true;
       let vm = this;
       page_url = page_url || "/api/admin/reports/purchase-report";
+      if(Number.isInteger(page_url)){
+        page_url ="/api/admin/reports/purchase-report?page="+page_url;
+      }
       var arr = page_url.split("?");
 
       if (arr.length > 1) {
@@ -389,3 +366,18 @@ export default {
   props: ["loading"],
 };
 </script>
+<style scoped>
+.pagination.pagination-sm li button{
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  margin: 0 10px;
+}
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+  background-color: transparent;
+}
+table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+  background-color: transparent;
+}
+</style>

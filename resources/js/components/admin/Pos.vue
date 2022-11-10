@@ -33,9 +33,9 @@
               <div class="dropdown mega-dropdown "></div>
               <div
                 class="dropdown mega-dropdown mobile_select">
-                <div class="d-flex flex-column selectmain mr-3">
+                <div class="d-flex flex-column selectmain mr-3" style="width:180px;">
                   <select
-                    class="arabic-select select-down"
+                    class="arabic-select select-down w-100"
                     v-model="selectedWarehouse"
                     @change="taxApply()"
                   >
@@ -256,10 +256,10 @@
           <div class="col-xl-3 order-xl-first order-last">
             <div class="card card-custom gutter-b bg-white border-0">
               <div class="card-body">
-                <div class="d-flex justify-content-between colorfull-select">
+                <div class="colorfull-select">
                   <div class="selectmain">
                     <select
-                      class="arabic-select w-150px bag-primary"
+                      class="arabic-select bag-primary w-100"
                       v-model="select_category"
                       @change="getProduct()"
                     >
@@ -320,35 +320,19 @@
                 </div>
               </div>
               <div class="pb-3 px-3 border-0">
-                <ul class="pagination pagination-sm m-0 w-100 float-right justify-content-between">
-                  <li v-bind:class="[{ disabled: !pagination.prev_page_url }]">
-                    <a
-                      class="page-link"
-                      href="javascript:;"
-                      @click="getProduct(pagination.prev_page_url)"
-                      >Previous</a
-                    >
+                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
+                  <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="getProduct(pagination.prev_page_url)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                      </button>
                   </li>
 
-                  <li class="disabled">
-                    <a class="page-link text-dark" href="javascript:;"
-                      >Page {{ pagination.current_page }} of
-                      {{ pagination.last_page }}</a
-                    >
-                  </li>
+                  <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                    <li
-                      v-bind:class="[{ disabled: !pagination.next_page_url }]"
-                      class="page-item"
-                    >
-                      <a
-                        class="page-link"
-                        href="javascript:;"
-                        @click="getProduct(pagination.next_page_url)"
-                        >Next</a
-                      >
-                    </li>
-                </ul>
+                  <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="getProduct(pagination.next_page_url)">
+                      next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                  </button></li>
+              </ul>
 
               </div>
               
@@ -1428,7 +1412,7 @@
           </div>
           <div class="modal-body pb-5 px-sm-5">
             <form>
-              <div class="form-group row">
+              <div class="form-group row mb-0">
                 <!-- country_id
                 state_id
                 latlong -->
@@ -1512,13 +1496,13 @@
                   </fieldset>
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row mb-0">
                 <div class="col-md-6">
                   <label class="text-dark">Country </label>
                   <fieldset class="form-group mb-3">
                     <select
                       v-model="customer_address_fields.country_id"
-                      @change="fetchStates()" class="w-100"
+                      @change="fetchStates()" class="w-100 select__arrow"
                     >
                       <option
                         v-for="country in countries"
@@ -1537,7 +1521,7 @@
                 <div class="col-md-6">
                   <label class="text-body">State </label>
                   <fieldset class="form-group mb-3">
-                    <select v-model="customer_address_fields.state_id" class="w-100">
+                    <select v-model="customer_address_fields.state_id" class="w-100 select__arrow">
                       <option v-for="state in states" :value="state.id">
                         {{ state.name }}
                       </option>
@@ -1550,7 +1534,7 @@
                   </fieldset>
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row mb-0">
                 <div class="col-md-6">
                   <label class="text-body">Street Address</label>
                   <fieldset class="form-group mb-3">
@@ -1591,7 +1575,7 @@
                 </div>
               </div>
 
-              <div class="form-group row">
+              <div class="form-group row mb-0">
                 <div class="col-md-6">
                   <label class="text-body">Lat Lng</label>
                   <fieldset class="form-group mb-3">
@@ -2138,6 +2122,9 @@ export default {
       this.loading = true;
       let vm = this;
       page_url = page_url || "/api/admin/product";
+      if(Number.isInteger(page_url)){
+        page_url ="/api/admin/product?page="+page_url;
+      }
       var arr = page_url.split("?");
 
       if (arr.length > 1) {
@@ -2817,6 +2804,10 @@ export default {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+  box-shadow: 0.7rem 0.7rem 0.5rem #ccc;
+}
+.calculator{
+  box-shadow: none !important;
 }
 .kt_notes_panel_toggle span {
   border: 1px solid rgb(174 105 245);
@@ -2833,9 +2824,6 @@ export default {
 .select__option{
   flex: 0 0 50%;
   max-width: 50%;
-}
-.product-items{
-  height: 515px !important;
 }
 .modal-content{
     background: #FFF !important;
@@ -2880,6 +2868,23 @@ button.close.btn:hover {
 #orderTable tr td {
   padding: 10px !important;
   border-bottom: 1px solid #ebe9f1;
+}
+.pagination.pagination-sm li button{
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  margin: 0 10px;
+}
+.modal .select__arrow{
+    appearance: none;
+    background-image: url(/images/down-arrow.png?86fc837…);
+    background-repeat: no-repeat;
+    background-position: 98%;
+    background-size: 15px;
+}
+.table-contentpos .table-datapos{
+  height: 381px !important;
 }
 @media screen and (max-width:575px) {
   .select__option{

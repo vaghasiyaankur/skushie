@@ -126,231 +126,232 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"
-      v-if="display_form"
-      :class="display_form ? 'offcanvas-on' : ''"
-    >
+    <div class="offcanvas_backdrop" v-if="display_form">
       <div
-        class="
-          offcanvas-header
-          d-flex
-          align-items-center
-          justify-content-between
-          pb-3
-        "
+        class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"
+        v-if="display_form"
+        :class="display_form ? 'offcanvas-on' : ''"
       >
-        <h4 class="font-size-h4 font-weight-bold m-0">Add Menu Builder</h4>
-        <a
-          href="#"
+        <div
           class="
-            btn btn-sm btn-icon btn-light btn-hover-primary
-            kt_notes_panel_close
+            offcanvas-header
+            d-flex
+            align-items-center
+            justify-content-between
+            pb-3
           "
-          v-on:click="clearForm()"
         >
-          <svg
-            width="20px"
-            height="20px"
-            viewBox="0 0 16 16"
-            class="bi bi-x"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+          <h4 class="font-size-h4 font-weight-bold m-0">Add Menu Builder</h4>
+          <a
+            href="#"
+            class="
+              btn btn-sm btn-icon btn-light btn-hover-primary
+              kt_notes_panel_close
+            "
+            v-on:click="clearForm()"
           >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-            ></path>
-          </svg>
-        </a>
-      </div>
-      <form id="myform">
-        <div class="row">
-          <div class="col-12">
-            <div class="tabslang">
+            <svg
+              width="20px"
+              height="20px"
+              viewBox="0 0 16 16"
+              class="bi bi-x"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <form id="myform">
+          <div class="row">
+            <div class="col-12">
+              <div class="tabslang">
+                <div
+                  v-for="language in languages"
+                  class="tablang"
+                  :class="language.id == selectedLanguage ? 'active' : ''"
+                  @click="setSelectedLanguage(language.id)"
+                >
+                  {{ language.language_name }}
+                </div>
+              </div>
               <div
-                v-for="language in languages"
-                class="tablang"
-                :class="language.id == selectedLanguage ? 'active' : ''"
-                @click="setSelectedLanguage(language.id)"
+                class="form-group"
+                v-for="(language, index) in languages"
+                v-if="language.id == selectedLanguage"
               >
-                {{ language.language_name }}
+                <label class="text-dark"
+                  >Name ( {{ language.language_name }} )
+                </label>
+                <input
+                  type="text"
+                  :name="'name' + index"
+                  v-model="menuObject.name[index]"
+                  class="form-control"
+                />
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('name')"
+                  v-text="errors.get('name')"
+                ></small>
+              </div>
+
+              <div class="form-group">
+                <label class="text-dark">Type </label>
+                <select
+                  required=""
+                  id="select_id"
+                  v-model="menuObject.type"
+                  class="form-control"
+                  name="type"
+                >
+                  <option value="" disabled>Select Type</option>
+                  <option value="exlink">External Link</option>
+                  <option value="link">Link</option>
+                  <option value="contentpage">Content Page</option>
+                  <option value="page">Page</option>
+                  <option value="category">Category</option>
+                  <option value="product">Product</option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('type')"
+                  v-text="errors.get('type')"
+                ></small>
+              </div>
+
+              <div class="form-group" v-if="menuObject.type == 'exlink'">
+                <label class="text-dark">External Link</label>
+                <input
+                  type="text"
+                  name="exlink"
+                  v-model="menuObject.exlink"
+                  class="form-control"
+                />
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('exlink')"
+                  v-text="errors.get('exlink')"
+                ></small>
+              </div>
+
+              <div class="form-group" v-if="menuObject.type == 'link'">
+                <label class="text-dark">Link</label>
+                <input
+                  type="text"
+                  name="link"
+                  v-model="menuObject.link"
+                  class="form-control"
+                />
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('link')"
+                  v-text="errors.get('link')"
+                ></small>
+              </div>
+              <div class="form-group" v-if="menuObject.type == 'page'">
+                <label class="text-dark">Page </label>
+                <select
+                  class="form-control"
+                  name="pages2"
+                  v-model="menuObject.page"
+                >
+                  <option value="/">Home</option>
+                  <option value="/shop">Shop</option>
+                  <option value="/blog">Blogs</option>
+                  <option value="/contact-us">Contact Us</option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('page')"
+                  v-text="errors.get('page')"
+                ></small>
+              </div>
+
+              <div class="form-group" v-if="menuObject.type == 'category'">
+                <label class="text-dark">Category </label>
+                <select
+                  class="
+                    js-example-basic-single js-states
+                    form-control
+                    bg-transparent
+                  "
+                  v-model="menuObject.category"
+                >
+                  <option
+                    v-for="category in categorys"
+                    :value="category.id"
+                    v-bind:key="category.id"
+                  >
+                    {{ category.detail[0].name }}
+                  </option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('category')"
+                  v-text="errors.get('category')"
+                ></small>
+              </div>
+
+              <div class="form-group" v-if="menuObject.type == 'product'">
+                <label class="text-dark">Product </label>
+                <select
+                  class="
+                    js-example-basic-single js-states
+                    form-control
+                    bg-transparent
+                  "
+                  v-model="menuObject.product"
+                >
+                  <option
+                    v-for="product in products"
+                    :value="product.product_slug"
+                    v-bind:key="product.id"
+                  >
+                    {{ product.detail[0].title }}
+                  </option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('product')"
+                  v-text="errors.get('product')"
+                ></small>
+              </div>
+
+              <div class="form-group" v-if="menuObject.type == 'contentpage'">
+                <label class="text-dark">Content Page </label>
+                <select
+                  class="
+                    js-example-basic-single js-states
+                    form-control
+                    bg-transparent
+                  "
+                  v-model="menuObject.contentpage"
+                >
+                  <option
+                    v-for="page in contentPages"
+                    :value="page.id"
+                    v-bind:key="page.slug"
+                  >
+                    {{ page.slug }}
+                  </option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('contentpage')"
+                  v-text="errors.get('contentpage')"
+                ></small>
               </div>
             </div>
-            <div
-              class="form-group"
-              v-for="(language, index) in languages"
-              v-if="language.id == selectedLanguage"
-            >
-              <label class="text-dark"
-                >Name ( {{ language.language_name }} )
-              </label>
-              <input
-                type="text"
-                :name="'name' + index"
-                v-model="menuObject.name[index]"
-                class="form-control"
-              />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('name')"
-                v-text="errors.get('name')"
-              ></small>
-            </div>
-
-            <div class="form-group">
-              <label class="text-dark">Type </label>
-              <select
-                required=""
-                id="select_id"
-                v-model="menuObject.type"
-                class="form-control"
-                name="type"
-              >
-                <option value="" disabled>Select Type</option>
-                <option value="exlink">External Link</option>
-                <option value="link">Link</option>
-                <option value="contentpage">Content Page</option>
-                <option value="page">Page</option>
-                <option value="category">Category</option>
-                <option value="product">Product</option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('type')"
-                v-text="errors.get('type')"
-              ></small>
-            </div>
-
-            <div class="form-group" v-if="menuObject.type == 'exlink'">
-              <label class="text-dark">External Link</label>
-              <input
-                type="text"
-                name="exlink"
-                v-model="menuObject.exlink"
-                class="form-control"
-              />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('exlink')"
-                v-text="errors.get('exlink')"
-              ></small>
-            </div>
-
-            <div class="form-group" v-if="menuObject.type == 'link'">
-              <label class="text-dark">Link</label>
-              <input
-                type="text"
-                name="link"
-                v-model="menuObject.link"
-                class="form-control"
-              />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('link')"
-                v-text="errors.get('link')"
-              ></small>
-            </div>
-            <div class="form-group" v-if="menuObject.type == 'page'">
-              <label class="text-dark">Page </label>
-              <select
-                class="form-control"
-                name="pages2"
-                v-model="menuObject.page"
-              >
-                <option value="/">Home</option>
-                <option value="/shop">Shop</option>
-                <option value="/blog">Blogs</option>
-                <option value="/contact-us">Contact Us</option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('page')"
-                v-text="errors.get('page')"
-              ></small>
-            </div>
-
-            <div class="form-group" v-if="menuObject.type == 'category'">
-              <label class="text-dark">Category </label>
-              <select
-                class="
-                  js-example-basic-single js-states
-                  form-control
-                  bg-transparent
-                "
-                v-model="menuObject.category"
-              >
-                <option
-                  v-for="category in categorys"
-                  :value="category.id"
-                  v-bind:key="category.id"
-                >
-                  {{ category.detail[0].name }}
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('category')"
-                v-text="errors.get('category')"
-              ></small>
-            </div>
-
-            <div class="form-group" v-if="menuObject.type == 'product'">
-              <label class="text-dark">Product </label>
-              <select
-                class="
-                  js-example-basic-single js-states
-                  form-control
-                  bg-transparent
-                "
-                v-model="menuObject.product"
-              >
-                <option
-                  v-for="product in products"
-                  :value="product.product_slug"
-                  v-bind:key="product.id"
-                >
-                  {{ product.detail[0].title }}
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('product')"
-                v-text="errors.get('product')"
-              ></small>
-            </div>
-
-            <div class="form-group" v-if="menuObject.type == 'contentpage'">
-              <label class="text-dark">Content Page </label>
-              <select
-                class="
-                  js-example-basic-single js-states
-                  form-control
-                  bg-transparent
-                "
-                v-model="menuObject.contentpage"
-              >
-                <option
-                  v-for="page in contentPages"
-                  :value="page.id"
-                  v-bind:key="page.slug"
-                >
-                  {{ page.slug }}
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('contentpage')"
-                v-text="errors.get('contentpage')"
-              ></small>
-            </div>
           </div>
-        </div>
-        <button type="button" @click="addMenu()" class="btn btn-primary w-100">
-          Submit
-        </button>
-      </form>
+          <button type="button" @click="addMenu()" class="btn btn-primary w-100">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -739,5 +740,16 @@ button.catalog_btn{
   background-color: #ff9f43;
   box-shadow: inset 0 -3px 0 0 rgb(34 41 47 / 20%); 
   margin: 0 10px;
+}
+.offcanvas_backdrop{
+  position: fixed;
+  top: 0;
+  right: auto;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  bottom: 0;
+  left: 0;  
+  z-index: 99;
 }
 </style>

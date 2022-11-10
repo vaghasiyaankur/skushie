@@ -76,7 +76,7 @@
                                                             </th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="kt-table-tbody text-dark">
+                                                    <!-- <tbody class="kt-table-tbody text-dark">
                                                         <tr class="kt-table-row kt-table-row-level-0 odd" role="row">
                                                             <td class="sorting_1">
                                                                 1
@@ -106,7 +106,6 @@
                                                                       gdgdfgdfg
                                                                     </span>
                                                                 </span>
-                                                                <!-- {{review.status}} -->
                                                             </td>
                                                             <td>
                                                             <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editreview(review)">
@@ -114,19 +113,24 @@
                                                                 <span class="pl-2">Edit</span>
                                                             </a>
                                                             </td>
-                                                        </tr>                                                       
+                                                        </tr>                                                    
+                                                    </tbody> -->
+                                                    <tbody>
+                                                        <tr v-if="reviews.length == 0" class="text-center font-size-16"><td colspan="8">No Order Found</td></tr>
+
                                                     </tbody>
                                                 </table>
-                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
-                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchunits(pagination.prev_page_url)">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> pre
+                                                <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="reviews.length != 0">
+                                                    <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchreviews(pagination.prev_page_url)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
                                                         </button>
                                                     </li>
 
-                                                    <li class="disabled" v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" href="#">{{ n }}</button></li>
+                                                    <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button>
+                                                    </li>
 
-                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchunits(pagination.next_page_url)">
-                                                        next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                                    <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchreviews(pagination.next_page_url)">
+                                                        Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
                                                         </svg>
                                                     </button></li>
                                                 </ul>
@@ -219,6 +223,9 @@ export default {
             this.$parent.loading = true;
             let vm = this;
             page_url = page_url || "/api/admin/review";
+            if(Number.isInteger(page_url)){
+                page_url ="/api/admin/review?page="+page_url;
+            }
             var arr = page_url.split('?');
             
             if (arr.length > 1) {

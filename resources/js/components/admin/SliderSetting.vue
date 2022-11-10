@@ -93,7 +93,7 @@
                           class="dataTables_wrapper no-footer"
                         >
                           <div
-                            class="dataTables_length"
+                            class="dataTables_length mb-3"
                             id="productsliderTable_length"
                           >
                             <label
@@ -117,7 +117,7 @@
                           </div>
 
                           <div
-                            id="productsliderTable_filter"
+                            id="productsliderTable_filter mb-3"
                             class="dataTables_filter"
                           >
                             <label>
@@ -311,43 +311,19 @@
                               </tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.prev_page_url },
-                              ]"
-                            >
-                              <button
-                                class="page-link"
-                                href="#"
-                                @click="fetchSliders(pagination.prev_page_url)"
-                              >
-                                Previous
-                              </button>
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
+                            <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchSliders(pagination.prev_page_url)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                </button>
                             </li>
 
-                            <li class="disabled">
-                              <button class="page-link text-dark" href="#">
-                                Page {{ pagination.current_page }} of
-                                {{ pagination.last_page }}
-                              </button>
-                            </li>
+                            <li v-for="n in pagination.last_page" :key="n" @click="fetchSliders(n)"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.next_page_url },
-                              ]"
-                              class="page-item"
-                            >
-                              <button
-                                class="page-link"
-                                href="#"
-                                @click="fetchSliders(pagination.next_page_url)"
-                              >
-                                Next
-                              </button>
-                            </li>
-                          </ul>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchSliders(pagination.next_page_url)">
+                                Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button></li>
+                        </ul>
                         </div>
                       </div>
                     </div>
@@ -359,302 +335,303 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"
-      v-if="display_form"
-      :class="display_form ? 'offcanvas-on' : ''"
-    >
+    <div class="offcanvas_backdrop" v-if="display_form">
       <div
-        class="
-          offcanvas-header
-          d-flex
-          align-items-center
-          justify-content-between
-          pb-3
-        "
+        class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"
+        v-if="display_form"
+        :class="display_form ? 'offcanvas-on' : ''"
       >
-        <h4 class="font-size-h4 font-weight-bold m-0">Add slider</h4>
-        <a
-          href="#"
+        <div
           class="
-            btn btn-sm btn-icon btn-light btn-hover-primary
-            kt_notes_panel_close
+            offcanvas-header
+            d-flex
+            align-items-center
+            justify-content-between
+            pb-3
           "
-          v-on:click="clearForm()"
         >
-          <svg
-            width="20px"
-            height="20px"
-            viewBox="0 0 16 16"
-            class="bi bi-x"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+          <h4 class="font-size-h4 font-weight-bold m-0">Add slider</h4>
+          <a
+            href="#"
+            class="
+              btn btn-sm btn-icon btn-light btn-hover-primary
+              kt_notes_panel_close
+            "
+            v-on:click="clearForm()"
           >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-            ></path>
-          </svg>
-        </a>
-      </div>
-      <form id="myform">
-        <div class="row">
-          <div class="col-12">
-            <div class="form-group">
-              <label class="text-dark">slider Name</label>
-              <input type="text" v-model="slider.title" class="form-control" />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('title')"
-                v-text="errors.get('title')"
-              ></small>
-            </div>
-            <div class="form-group">
-              <label class="text-dark">Description</label>
-              <input
-                type="text"
-                v-model="slider.description"
-                class="form-control"
-              />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('description')"
-                v-text="errors.get('description')"
-              ></small>
-            </div>
-
-            <div class="form-group">
-              <label class="text-dark">Position</label>
-              <select class="form-control" v-model="slider.position">
-                <option value="position-left">left</option>
-                <option value="position-right">right</option>
-                <option value="position-center">center</option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('position')"
-                v-text="errors.get('position')"
-              ></small>
-            </div>
-
-            <div class="form-group">
-              <label class="text-dark">Text Content Position</label>
-              <select class="form-control" v-model="slider.textcontent">
-                <option
-                  :selected="slider.textcontent == 'textcontent-left'"
-                  value="textcontent-left"
-                >
-                  left
-                </option>
-                <option
-                  :selected="slider.textcontent == 'textcontent-right'"
-                  value="textcontent-right"
-                >
-                  right
-                </option>
-                <option
-                  :selected="slider.textcontent == 'textcontent-center'"
-                  value="textcontent-center"
-                >
-                  center
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('textcontent')"
-                v-text="errors.get('description')"
-              ></small>
-            </div>
-
-            <div class="form-group">
-              <label class="text-dark">Text Color</label>
-              <select class="form-control" v-model="slider.text">
-                <option value="text-black">black</option>
-                <option value="text-white">white</option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('text')"
-                v-text="errors.get('description')"
-              ></small>
-            </div>
-            <div class="row mb-3">
-              <div class="col-md-6">
-                
+            <svg
+              width="20px"
+              height="20px"
+              viewBox="0 0 16 16"
+              class="bi bi-x"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <form id="myform">
+          <div class="row">
+            <div class="col-12">
               <div class="form-group">
-                <label class="w-100"></label>
-                <button
-                  type="button"
-                  class="btn btn-outline-primary w-100 mt-2 mb-3 py-2"
-                  @click="toggleImageSelect()"
-                >
-                  Upload slider Media
-                </button>
-                <div class="clearfix"></div>
-                <small
-                  id="textHelp"
-                  class="form-text text-muted"
-                  v-if="gallary_path == null || gallary_path == ''"
-                  >Select Image file from gallary.</small
-                >
+                <label class="text-dark">slider Name</label>
+                <input type="text" v-model="slider.title" class="form-control" />
                 <small
                   class="form-text text-danger"
-                  v-if="errors.has('gallary_id')"
-                  v-text="errors.get('gallary_id')"
+                  v-if="errors.has('title')"
+                  v-text="errors.get('title')"
                 ></small>
-
-                <img
-                  v-if="gallary_path != ''"
-                  :src="gallary_path"
-                  style="width: 100px; height: 100px"
+              </div>
+              <div class="form-group">
+                <label class="text-dark">Description</label>
+                <input
+                  type="text"
+                  v-model="slider.description"
+                  class="form-control"
                 />
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('description')"
+                  v-text="errors.get('description')"
+                ></small>
               </div>
+
+              <div class="form-group">
+                <label class="text-dark">Position</label>
+                <select class="form-control" v-model="slider.position">
+                  <option value="position-left">left</option>
+                  <option value="position-right">right</option>
+                  <option value="position-center">center</option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('position')"
+                  v-text="errors.get('position')"
+                ></small>
               </div>
-              <div class="col-md-6">
+
+              <div class="form-group">
+                <label class="text-dark">Text Content Position</label>
+                <select class="form-control" v-model="slider.textcontent">
+                  <option
+                    :selected="slider.textcontent == 'textcontent-left'"
+                    value="textcontent-left"
+                  >
+                    left
+                  </option>
+                  <option
+                    :selected="slider.textcontent == 'textcontent-right'"
+                    value="textcontent-right"
+                  >
+                    right
+                  </option>
+                  <option
+                    :selected="slider.textcontent == 'textcontent-center'"
+                    value="textcontent-center"
+                  >
+                    center
+                  </option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('textcontent')"
+                  v-text="errors.get('description')"
+                ></small>
+              </div>
+
+              <div class="form-group">
+                <label class="text-dark">Text Color</label>
+                <select class="form-control" v-model="slider.text">
+                  <option value="text-black">black</option>
+                  <option value="text-white">white</option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('text')"
+                  v-text="errors.get('description')"
+                ></small>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  
                 <div class="form-group">
-                  <label class="text-dark">Slider type </label>
-                  <select v-model="slider.slider_type_id" class="w-100">
-                    <option value="">Select Slider type</option>
-                    <option
-                      v-for="slider_type in slider_types"
-                      v-bind:value="slider_type.slider_type_id"
-                    >
-                      {{ slider_type.slider_type_name }}
-                    </option>
-                  </select>
-                  <small
-                    class="form-text text-danger"
-                    v-if="errors.has('slider_type_id')"
-                    v-text="errors.get('slider_type_id')"
-                  ></small>
-                </div>
-              </div>
-              
-            </div>
-            
-              
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="text-dark w-100">Language </label>
-                  <select v-model="slider.language_id" class="w-100">
-                    <option value="">Select Language</option>
-                    <option
-                      v-for="language in languages"
-                      v-bind:value="language.id"
-                    >
-                      {{ language.language_name }}
-                    </option>
-                  </select>
-                  <small
-                    class="form-text text-danger"
-                    v-if="errors.has('language_id')"
-                    v-text="errors.get('language_id')"
-                  ></small>
-                </div>
-    
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="text-dark">Slider Navigation </label>
+                  <label class="w-100"></label>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary w-100 mt-2 mb-3 py-2"
+                    @click="toggleImageSelect()"
+                  >
+                    Upload slider Media
+                  </button>
                   <div class="clearfix"></div>
-                  <select v-model="slider.slider_navigation_id" class="w-100">
-                    <option value="">Select Slider Navigation</option>
-                    <option
-                      v-for="slider_navigation in slider_navigations"
-                      v-bind:value="slider_navigation.slider_navigation_id"
-                    >
-                      {{ slider_navigation.slider_navigation_name }}
-                    </option>
-                  </select>
+                  <small
+                    id="textHelp"
+                    class="form-text text-muted"
+                    v-if="gallary_path == null || gallary_path == ''"
+                    >Select Image file from gallary.</small
+                  >
                   <small
                     class="form-text text-danger"
-                    v-if="errors.has('slider_navigation_id')"
-                    v-text="errors.get('slider_navigation_id')"
+                    v-if="errors.has('gallary_id')"
+                    v-text="errors.get('gallary_id')"
                   ></small>
+
+                  <img
+                    v-if="gallary_path != ''"
+                    :src="gallary_path"
+                    style="width: 100px; height: 100px"
+                  />
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-dark">Slider type </label>
+                    <select v-model="slider.slider_type_id" class="w-100">
+                      <option value="">Select Slider type</option>
+                      <option
+                        v-for="slider_type in slider_types"
+                        v-bind:value="slider_type.slider_type_id"
+                      >
+                        {{ slider_type.slider_type_name }}
+                      </option>
+                    </select>
+                    <small
+                      class="form-text text-danger"
+                      v-if="errors.has('slider_type_id')"
+                      v-text="errors.get('slider_type_id')"
+                    ></small>
+                  </div>
+                </div>
+                
+              </div>
+              
+                
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-dark w-100">Language </label>
+                    <select v-model="slider.language_id" class="w-100">
+                      <option value="">Select Language</option>
+                      <option
+                        v-for="language in languages"
+                        v-bind:value="language.id"
+                      >
+                        {{ language.language_name }}
+                      </option>
+                    </select>
+                    <small
+                      class="form-text text-danger"
+                      v-if="errors.has('language_id')"
+                      v-text="errors.get('language_id')"
+                    ></small>
+                  </div>
+      
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="text-dark">Slider Navigation </label>
+                    <div class="clearfix"></div>
+                    <select v-model="slider.slider_navigation_id" class="w-100">
+                      <option value="">Select Slider Navigation</option>
+                      <option
+                        v-for="slider_navigation in slider_navigations"
+                        v-bind:value="slider_navigation.slider_navigation_id"
+                      >
+                        {{ slider_navigation.slider_navigation_name }}
+                      </option>
+                    </select>
+                    <small
+                      class="form-text text-danger"
+                      v-if="errors.has('slider_navigation_id')"
+                      v-text="errors.get('slider_navigation_id')"
+                    ></small>
+                  </div>
                 </div>
               </div>
-            </div>
-           
-          
             
+            
+              
 
-            <div class="form-group" v-if="slider.slider_navigation_id == 1">
-              <label class="text-dark">Category </label>
-              <div class="clearfix"></div>
-              <select v-model="slider.ref_id">
-                <option value="">Select Category</option>
-                <option
-                  v-for="category in categories"
-                  v-bind:value="category.id"
-                >
-                  {{ category.detail == null ? "" : category.detail[0].name }}
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('ref_id')"
-                v-text="errors.get('ref_id')"
-              ></small>
-            </div>
+              <div class="form-group" v-if="slider.slider_navigation_id == 1">
+                <label class="text-dark">Category </label>
+                <div class="clearfix"></div>
+                <select v-model="slider.ref_id">
+                  <option value="">Select Category</option>
+                  <option
+                    v-for="category in categories"
+                    v-bind:value="category.id"
+                  >
+                    {{ category.detail == null ? "" : category.detail[0].name }}
+                  </option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('ref_id')"
+                  v-text="errors.get('ref_id')"
+                ></small>
+              </div>
 
-            <div class="form-group" v-if="slider.slider_navigation_id == 2">
-              <label class="text-dark">Products </label>
-              <div class="clearfix"></div>
-              <select v-model="slider.ref_id">
-                <option value="">Select Product</option>
-                <option
-                  v-for="product in products"
-                  v-bind:value="product.product_id"
-                >
-                  {{ product.detail == null ? "" : product.detail[0].title }}
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('ref_id')"
-                v-text="errors.get('ref_id')"
-              ></small>
-            </div>
+              <div class="form-group" v-if="slider.slider_navigation_id == 2">
+                <label class="text-dark">Products </label>
+                <div class="clearfix"></div>
+                <select v-model="slider.ref_id">
+                  <option value="">Select Product</option>
+                  <option
+                    v-for="product in products"
+                    v-bind:value="product.product_id"
+                  >
+                    {{ product.detail == null ? "" : product.detail[0].title }}
+                  </option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('ref_id')"
+                  v-text="errors.get('ref_id')"
+                ></small>
+              </div>
 
-            <div class="form-group" v-if="slider.slider_navigation_id == 3">
-              <label class="text-dark">Pages </label>
-              <div class="clearfix"></div>
-              <select v-model="slider.ref_id">
-                <option value="">Select Page</option>
-                <option v-for="page in pages" v-bind:value="page.id">
-                  {{ page.slug }}
-                </option>
-              </select>
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('ref_id')"
-                v-text="errors.get('ref_id')"
-              ></small>
-            </div>
+              <div class="form-group" v-if="slider.slider_navigation_id == 3">
+                <label class="text-dark">Pages </label>
+                <div class="clearfix"></div>
+                <select v-model="slider.ref_id">
+                  <option value="">Select Page</option>
+                  <option v-for="page in pages" v-bind:value="page.id">
+                    {{ page.slug }}
+                  </option>
+                </select>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('ref_id')"
+                  v-text="errors.get('ref_id')"
+                ></small>
+              </div>
 
-            <div class="form-group" v-if="slider.slider_navigation_id == 4">
-              <label class="text-dark">Link </label>
-              <div class="clearfix"></div>
-              <input type="text" :name="slider.url" v-model="slider.url" />
+              <div class="form-group" v-if="slider.slider_navigation_id == 4">
+                <label class="text-dark">Link </label>
+                <div class="clearfix"></div>
+                <input type="text" :name="slider.url" v-model="slider.url" class="w-100" />
 
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('url')"
-                v-text="errors.get('url')"
-              ></small>
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('url')"
+                  v-text="errors.get('url')"
+                ></small>
+              </div>
             </div>
           </div>
-        </div>
-        <button
-          type="button"
-          @click="addUpdateSlider()"
-          class="btn btn-primary w-100"
-        >
-          Submit
-        </button>
-      </form>
+          <button
+            type="button"
+            @click="addUpdateSlider()"
+            class="btn btn-primary w-100"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
     <attach-image
       @toggleImageSelect="toggleImageSelect"
@@ -810,6 +787,10 @@ export default {
       this.$parent.loading = true;
       let vm = this;
       page_url = page_url || "/api/admin/slider";
+      
+      if(Number.isInteger(page_url)){
+        page_url ="/api/admin/slider?page="+page_url;
+      }
       var arr = page_url.split("?");
 
       if (arr.length > 1) {
@@ -997,3 +978,30 @@ export default {
   },
 };
 </script>
+<style scoped>
+.pagination.pagination-sm li button{
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  margin: 0 10px;
+}
+.offcanvas_backdrop{
+      position: fixed;
+      top: 0;
+      right: auto;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      bottom: 0;
+      left: 0;  
+      z-index: 99;
+  }
+  table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+    background-color: transparent;
+  }
+  table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+    background-color: transparent;
+  }
+
+</style>

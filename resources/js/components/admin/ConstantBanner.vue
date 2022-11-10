@@ -53,12 +53,12 @@
                             <thead class="text-body">
                               <tr role="row">
                                 <th
-                                  class="no-sort sorting_disabled pl-0"
+                                  class="no-sort sorting_disabled"
                                   tabindex="0"
                                   
                                   style="width: 95.5288px"
                                 >
-                                  <select class="form-control" v-model="searchable_banner">
+                                  <select class="form-control py-2" v-model="searchable_banner">
                                     <option value="" disabled>choose style</option>
                                     <option value="banner1">
                                       Banner Style 1
@@ -133,7 +133,7 @@
                                   style="width: 95.5288px"
                                 >
                                   <select
-                                    class="form-control"
+                                    class="form-control py-2"
                                     v-model="searchable_language_id"
                                   >
                                     <option value="" disabled> choose Language</option>
@@ -555,3 +555,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+  background-color: transparent;
+}
+table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+  background-color: transparent;
+}
+</style>

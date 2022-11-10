@@ -1,6 +1,6 @@
 <style>
 html,body{
-  font-family: 'Montserrat', sans-serif !important
+  font-family: 'Montserrat', sans-serif !important;
 }
 .tabslang {
   display: flex;
@@ -263,6 +263,13 @@ select:hover,select:focus{
 .btn-outline-primary:focus {
   background-color: #7367f01f !important;  
   border-color: #7367f0 !important;
+}
+.pagination .page-link.active {
+  z-index: 2;
+  color: #ae69f5;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
 }
 @media screen and (max-width:991.98px){
   .offcanvas {

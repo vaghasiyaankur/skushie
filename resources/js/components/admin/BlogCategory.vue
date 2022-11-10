@@ -90,7 +90,7 @@
                           class="dataTables_wrapper no-footer"
                         >
                           <div
-                            class="dataTables_length"
+                            class="dataTables_length mb-3"
                             id="productcategoryTable_length"
                           >
                             <label
@@ -115,7 +115,7 @@
                           </div>
 
                           <div
-                            id="productcategoryTable_filter"
+                            id="productcategoryTable_filter mb-3"
                             class="dataTables_filter"
                           >
                             <label
@@ -250,7 +250,7 @@
                                 </td>
                                 <td class="white__nowrap">
                                   <a href="javascript:void(0)" 
-                                    class=" click-edit btn btn-outline-primary text-nowrap  waves-effect  p-2"
+                                    class=" click-edit btn btn-outline-primary text-nowrap  waves-effect  p-2 mr-3"
                                     id="click-edit1" 
                                     data-toggle="tooltip"
                                     title=""
@@ -275,47 +275,22 @@
                                   </a>
                                 </td>
                               </tr>
+                              <tr v-if="categorys.length == 0" class="text-center font-size-16"><td colspan="5">No Order Found</td></tr>
                             </tbody>
                           </table>
-                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-between align-items-center px-2">
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.prev_page_url },
-                              ]"
-                            >
-                              <button
-                                class="page-link"
-                                @click="
-                                  fetchcategorys(pagination.prev_page_url)
-                                "
-                              >
-                                Previous
-                              </button>
+                          <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="categorys.length != 0">
+                            <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchcategorys(pagination.prev_page_url)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                </button>
                             </li>
 
-                            <li class="disabled">
-                              <a class="page-link text-dark" href="#"
-                                >Page {{ pagination.current_page }} of
-                                {{ pagination.last_page }}</a
-                              >
-                            </li>
+                            <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                            <li
-                              v-bind:class="[
-                                { disabled: !pagination.next_page_url },
-                              ]"
-                              class="page-item"
-                            >
-                              <button
-                                class="page-link"
-                                @click="
-                                  fetchcategorys(pagination.next_page_url)
-                                "
-                              >
-                                Next
-                              </button>
-                            </li>
-                          </ul>
+                            <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchcategorys(pagination.next_page_url)">
+                                Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button></li>
+                        </ul>
                         </div>
                       </div>
                     </div>
@@ -327,154 +302,154 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"
-      v-if="display_form"
-      :class="display_form ? 'offcanvas-on' : ''"
-    >
+    <div class="offcanvas_backdrop" v-if="display_form">
       <div
-        class="
-          offcanvas-header
-          d-flex
-          align-items-center
-          justify-content-between
-          pb-3
-        "
+        class="offcanvas offcanvas-right kt-color-panel p-5 kt_notes_panel"      
+        :class="display_form ? 'offcanvas-on' : ''"
       >
-        <h4 class="font-size-h4 font-weight-bold m-0">{{ this.edit ? 'Edit Blog Category' : 'Add Blog Category' }}</h4>
-        <a
-          href="#"
+        <div
           class="
-            btn btn-sm btn-icon btn-light btn-hover-primary
-            kt_notes_panel_close
+            offcanvas-header
+            d-flex
+            align-items-center
+            justify-content-between
+            pb-3
           "
-          v-on:click="clearForm()"
         >
-          <svg
-            width="20px"
-            height="20px"
-            viewBox="0 0 16 16"
-            class="bi bi-x"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+          <h4 class="font-size-h4 font-weight-bold m-0">{{ this.edit ? 'Edit Blog Category' : 'Add Blog Category' }}</h4>
+          <a
+            href="#"
+            class="
+              btn btn-sm btn-icon btn-light btn-hover-primary
+              kt_notes_panel_close
+            "
+            v-on:click="clearForm()"
           >
-            <path
-              fill-rule="evenodd"
-              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-            ></path>
-          </svg>
-        </a>
-      </div>
-      <form id="myform">
-        <div class="row">
-          <div class="col-12">
-            <div class="tabslang">
-              <div
-                v-for="language in languages"
-                class="tablang"
-                :class="language.id == selectedLanguage ? 'active' : ''"
-                @click="setSelectedLanguage(language.id)"
-              >
-                {{ language.language_name }}
-              </div>
-            </div>
-            <br />
-            <div
-              class="form-group"
-              v-for="(language, index) in languages"
-              v-if="language.id == selectedLanguage"
+            <svg
+              width="20px"
+              height="20px"
+              viewBox="0 0 16 16"
+              class="bi bi-x"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <label class="text-dark"
-                >Name ( {{ language.language_name }} )
-              </label>
-              <input
-                type="text"
-                :name="'name' + index"
-                v-model="category.name[index]"
-                class="form-control"
-              />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('name')"
-                v-text="errors.get('name')"
-              ></small>
-            </div>
-
-            <div class="form-group">
-              <label class="text-dark">Slug </label>
-              <input
-                type="text"
-                v-model="category.blog_category_slug"
-                class="form-control"
-              />
-              <small
-                class="form-text text-danger"
-                v-if="errors.has('blog_category_slug')"
-                v-text="errors.get('blog_category_slug')"
-              ></small>
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <div class="form-group">
-                  <label class="w-100 "></label>
-                  <button
-                    type="button"
-                    class="btn btn-primary mt-2 w-100"
-                    @click="toggleImageSelect()"
-                  >
-                    Upload Category Media
-                  </button>
-                  <small id="textHelp" class="form-text text-muted my-2"
-                    >Select Image file from gallary.</small
-                  >
-                  <small
-                    class="form-text text-danger"
-                    v-if="errors.has('gallary_id')"
-                    v-text="errors.get('gallary_id')"
-                  ></small>
-  
-                  <img
-                    v-if="gallary_path != ''"
-                    :src="gallary_path"
-                    style="width: 100px; height: 100px" class="rounded"
-                  />
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label class="text-dark">Status </label>
-                  <select v-model="category.status">
-                    <option value="active" :selected="category.status == 'active'">
-                      Active
-                    </option>
-                    <option
-                      value="inactive"
-                      :selected="category.status == 'inactive'"
-                    >
-                      Inactive
-                    </option>
-                  </select>
-                  <small
-                    class="form-text text-danger"
-                    v-if="errors.has('status')"
-                    v-text="errors.get('status')"
-                  ></small>
-                </div>
-              </div>
-            </div>
-             
-             
-          </div>
+              <path
+                fill-rule="evenodd"
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              ></path>
+            </svg>
+          </a>
         </div>
-        <button
-          type="button"
-          @click="addUpdatecategory()"
-          class="btn btn-primary w-100"
-        >
-          Submit
-        </button>
-      </form>
+        <form id="myform">
+          <div class="row">
+            <div class="col-12">
+              <div class="tabslang">
+                <div
+                  v-for="language in languages"
+                  class="tablang"
+                  :class="language.id == selectedLanguage ? 'active' : ''"
+                  @click="setSelectedLanguage(language.id)"
+                >
+                  {{ language.language_name }}
+                </div>
+              </div>
+              <br />
+              <div
+                class="form-group"
+                v-for="(language, index) in languages"
+                v-if="language.id == selectedLanguage"
+              >
+                <label class="text-dark"
+                  >Name ( {{ language.language_name }} )
+                </label>
+                <input
+                  type="text"
+                  :name="'name' + index"
+                  v-model="category.name[index]"
+                  class="form-control"
+                />
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('name')"
+                  v-text="errors.get('name')"
+                ></small>
+              </div>
+
+              <div class="form-group">
+                <label class="text-dark">Slug </label>
+                <input
+                  type="text"
+                  v-model="category.blog_category_slug"
+                  class="form-control"
+                />
+                <small
+                  class="form-text text-danger"
+                  v-if="errors.has('blog_category_slug')"
+                  v-text="errors.get('blog_category_slug')"
+                ></small>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="w-100 "></label>
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary mt-2 w-100 py-2 border_radius_5"
+                      @click="toggleImageSelect()"
+                    >
+                      Upload Category Media
+                    </button>
+                    <small id="textHelp" class="form-text text-muted my-2"
+                      >Select Image file from gallary.</small
+                    >
+                    <small
+                      class="form-text text-danger"
+                      v-if="errors.has('gallary_id')"
+                      v-text="errors.get('gallary_id')"
+                    ></small>
+    
+                    <img
+                      v-if="gallary_path != ''"
+                      :src="gallary_path"
+                      style="width: 100px; height: 100px" class="rounded"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="text-dark">Status </label>
+                    <select v-model="category.status">
+                      <option value="active" :selected="category.status == 'active'">
+                        Active
+                      </option>
+                      <option
+                        value="inactive"
+                        :selected="category.status == 'inactive'"
+                      >
+                        Inactive
+                      </option>
+                    </select>
+                    <small
+                      class="form-text text-danger"
+                      v-if="errors.has('status')"
+                      v-text="errors.get('status')"
+                    ></small>
+                  </div>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+          <button
+            type="button"
+            @click="addUpdatecategory()"
+            class="btn btn-primary w-100"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
     <attach-image
       @toggleImageSelect="toggleImageSelect"
@@ -554,6 +529,9 @@ export default {
       this.$parent.loading = true;
       let vm = this;
       page_url = page_url || "/api/admin/blog_category";
+      if(Number.isInteger(page_url)){
+        page_url ="/api/admin/blog_category?page="+page_url;
+      }
       var arr = page_url.split("?");
 
       if (arr.length > 1) {
@@ -726,5 +704,29 @@ export default {
   width:100%;
   padding:8px 16px;
   border-radius:5px;
+}
+.pagination.pagination-sm li button{
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  margin: 0 10px;
+}
+.offcanvas_backdrop{
+      position: absolute;
+      top: -139px;
+      right: auto;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      bottom: 0;
+      left: -300px;  
+      z-index: 99;
+  }
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+  background-color: transparent;
+}
+table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1{
+  background-color: transparent;
 }
 </style>
