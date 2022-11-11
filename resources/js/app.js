@@ -9,6 +9,7 @@ import AttachImage from './Components/admin/AttachImage';
 import 'v-toaster/dist/v-toaster.css';
 import VueNestable from 'vue-nestable'
 
+
 import VueApexCharts from 'vue-apexcharts'
 // optional set default imeout, the default is 10000 (10 seconds).
 Vue.use(VueApexCharts)

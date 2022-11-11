@@ -364,7 +364,7 @@ export default {
         }
     },
     mounted() {
-
+        console.log(this.$route.name);
         var token = localStorage.getItem('token');
         this.token = {
             headers: {

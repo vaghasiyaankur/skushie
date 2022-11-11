@@ -25,6 +25,7 @@
 	<script src="{{asset('assets/js/plugin.bundle.min.js')}}"></script>
 	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 	<script src="{{asset('assets/js/script.bundle.js')}}"></script>
-
+	<script src="{{asset('assets/vendors/js/charts/apexcharts.min.js')}}"></script>
+	<script src="{{asset('assets/js/dashboard-ecommerce.js')}}"></script>
 </body>
 </html>
