@@ -54,6 +54,7 @@
 
 <script type="text/javascript">
 import ErrorHandling from './../../ErrorHandling'
+import Notification from './partials/Notification';
 	export default {
 		methods: {
 			login(){
@@ -85,7 +86,15 @@ import ErrorHandling from './../../ErrorHandling'
 
 						localStorage.setItem('name',res.data.user.name);
 						localStorage.setItem('permissions',res.data.user_permisions);
-						
+
+						const content = {
+							component: Notification,
+							props: {
+								message: "I'm a toast!",
+								type : 'success'
+							},
+						}
+						this.$toast(content);
 
 						this.$router.push('/admin/dashboard');
 					}

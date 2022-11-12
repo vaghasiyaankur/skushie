@@ -8,7 +8,7 @@
                  <div class="card-body p-4">
                      <h5 class="mb-3">Congratulations 🎉 John!</h5>
                      <p class="card-text font-small-3">You have won gold medal</p>
-                     <h3 class="mb-3 mt-3">
+                     <h3 class="mb-3 mt-3 pt-2">
                          <a href="#">$48.9k</a>
                      </h3>
                      <button type="button" class="btn btn-primary border_radius_5 waves-effect waves-float waves-light">View Sales</button>
@@ -93,7 +93,7 @@
          <!--/ Statistics Card -->
       </div>
       <!--========== Revenue Report ========= -->
-      <div class="row match-height">
+      <div class="row match-height mb-4">
          <div class="col-lg-4 col-12">
             <div class="row match-height">
                <!-- Bar Chart - Orders -->
@@ -320,9 +320,9 @@
                <!--/ Line Chart - Profit -->
                <!-- Earnings Card -->
                <div class="col-lg-12 col-md-6 col-12">
-                  <div class="card earnings-card">
+                  <div class="card earnings-card h-100">
                      <div class="card-body p-4">
-                        <div class="row">
+                        <div class="row h-100 align-items-center">
                            <div class="col-6">
                               <h4 class="card-title mb-3">Earnings</h4>
                               <div>This Month</div>
@@ -410,19 +410,19 @@
             </div>
          </div>
          <!-- Revenue Report Card -->
-         <div class="col-lg-8 col-12 mb-4 ">
+         <div class="col-lg-8 col-12">
             <div class="card card-revenue-budget h-100">
                <div class="row mx-0"> 
-                  <div class="col-md-8 col-12 revenue-report-wrapper p-5" style="position: relative;">
-                     <div class="d-sm-flex justify-content-between align-items-center mb-3">
+                  <div class="col-md-8 col-12 revenue-report-wrapper p-4" style="position: relative;">
+                     <div class="d-sm-flex justify-content-between align-items-center mb-5">
                         <h4 class="card-title mb-50 mb-sm-0">Revenue Report</h4>
                         <div class="d-flex align-items-center">
-                           <div class="d-flex align-items-center me-2">
-                              <span class="bullet bullet-primary font-small-3 me-50 cursor-pointer"></span>
+                           <div class="d-flex align-items-center mr-2">
+                              <span class="bullet bullet-primary font-small-3 mr-2 cursor-pointer"></span>
                               <span>Earning</span>
                            </div>
                            <div class="d-flex align-items-center ms-75">
-                              <span class="bullet bullet-warning font-small-3 me-50 cursor-pointer"></span>
+                              <span class="bullet bullet-warning font-small-3 mr-2 cursor-pointer"></span>
                               <span>Expense</span>
                            </div>
                         </div>
@@ -577,9 +577,9 @@
                         <div class="contract-trigger"></div>
                      </div>
                   </div>
-                  <div class="col-md-4 col-12 budget-wrapper p-5" style="position: relative;">
+                  <div class="col-md-4 col-12 budget-wrapper p-4" style="position: relative;">
                      <div class="btn-group"> 
-                        <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown waves-effect mb-4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown waves-effect mb-5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         2020
                         </button>
                         <div class="dropdown-menu">
@@ -664,226 +664,226 @@
 
 
    <div class="row">
-   <div class="col-lg-6">
-      <div class="row">
-         <div class="col-12 ">
-             <div class="card card-custom gutter-b bg-white border-0">
-                 <div class="card-body">
-                     <div>
-                         <div class=" table-responsive" id="printableTable">
-                             <div id="productUnitTable_wrapper" class="dataTables_wrapper no-footer">
-   
-                                 <div class="dataTables_length mb-3" id="productUnitTable_length"><label>Show
-                                         <select name="productUnitTable_length"  class="" v-model="limit" v-on:change="fetchcustomers()">
-                                             <option value="10">10</option>
-                                             <option value="25">25</option>
-                                             <option value="50">50</option>
-                                             <option value="100">100</option>
-                                             <option value="200">200</option>
-                                             <option value="500">500</option>
-                                             <option value="1000">1000</option>
-                                         </select> entries</label></div>
-   
-                                 <div id="productUnitTable_filter" class="dataTables_filter mb-3">
-                                 <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchcustomers()"></label>
-                                 <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
-                                 </div>
-                                 <table id="productUnitTable" class="display dataTable no-footer order--table" role="grid">
-                                     <thead class="text-body">
-                                         <tr role="row">
-                                             <th class="sorting_asc" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
-                                                 ID
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 95.5288px;" @click="sorting('first_name')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'first_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'first_name' ? 'sorting_desc' : 'sorting'">
-                                                 First Name
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending" style="width: 81.8109px;" @click="sorting('last_name')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'last_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'last_name' ? 'sorting_desc' : 'sorting'">
-                                                 Last Name
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 114.84px;">
-                                                 Status
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Is Seen: activate to sort column ascending" style="width: 158.462px;">
-                                                 Is Seen
-                                             </th>
-                                         </tr>
-                                     </thead>
-                                     <tbody class="kt-table-tbody text-dark">
-                                         <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="customer in customers" v-bind:key="customer.id">
-                                             <td class="sorting_1">
-                                                 {{customer.customer_id}}
-                                             </td>
-                                             <td>
-                                                 {{ customer.customer_first_name }}
-                                             </td>
-                                             <td>
-                                                 {{ customer.customer_last_name }}
-                                             </td>
-                                             <td>
-                                                 <span :class="customer.customer_status == '1' ? 'active-status' : 'deactive-status'">
-                                                     <span class="badge" :class="customer.customer_status == '1' ? 'badge-light-success' : 'badge-light-danger'" >
-                                                         {{ customer.customer_status == '1' ? 'Active' : 'InActive' }}
-                                                       </span>
-                                                 </span>
-                                                 <!-- {{ customer.customer_status == '1' ? 'Active' : 'Inactive' }} -->
-                                             </td>
-                                             <td>
-                                                 {{ customer.is_seen == '0' ? 'unseen' : 'seen' }}
-                                             </td>
-                                           
-                                         </tr>
-                                         <tr v-if="customers.length == 0" class="text-center font-size-16"><td colspan="6">No Customer Found</td></tr>
-                                     </tbody>
-                                 </table>
-                                 <!-- <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="customers.length != 0">
-                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchcustomers(pagination.prev_page_url)">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
-                                         </button>
-                                     </li>
-   
-                                     <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
-   
-                                     <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchcustomers(pagination.next_page_url)">
-                                         Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
-                                         </svg>
-                                     </button></li>
-                                 </ul> -->
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
-   </div>
-   <div class="col-lg-6">
-      <div class="row h-100">
-         <div class="col-12 ">
-             <div class="card card-custom gutter-b bg-white border-0">
-                 <div class="card-body">
-                     <div>
-                         <div class=" table-responsive" id="printableTable">
-                         
-                             <div id="productUnitTable_wrapper" class="dataTables_wrapper no-footer">
+      <div class="col-lg-6">
+         <div class="row">
+            <div class="col-12 ">
+               <div class="card card-custom gutter-b bg-white border-0">
+                  <div class="card-body">
+                        <div>
+                           <div class=" table-responsive" id="printableTable">
+                              <div id="productUnitTable_wrapper" class="dataTables_wrapper no-footer">
+      
+                                    <div class="dataTables_length mb-3" id="productUnitTable_length"><label>Show
+                                          <select name="productUnitTable_length"  class="" v-model="limit" v-on:change="fetchcustomers()">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="200">200</option>
+                                                <option value="500">500</option>
+                                                <option value="1000">1000</option>
+                                          </select> entries</label></div>
+      
+                                    <div id="productUnitTable_filter" class="dataTables_filter mb-3">
+                                    <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchcustomers()"></label>
+                                    <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
+                                    </div>
+                                    <table id="productUnitTable" class="display dataTable no-footer order--table" role="grid">
+                                       <thead class="text-body">
+                                          <tr role="row">
+                                                <th class="sorting_asc" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
+                                                   ID
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="First Name: activate to sort column ascending" style="width: 95.5288px;" @click="sorting('first_name')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'first_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'first_name' ? 'sorting_desc' : 'sorting'">
+                                                   First Name
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Last Name: activate to sort column ascending" style="width: 81.8109px;" @click="sorting('last_name')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'last_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'last_name' ? 'sorting_desc' : 'sorting'">
+                                                   Last Name
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 114.84px;">
+                                                   Status
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Is Seen: activate to sort column ascending" style="width: 158.462px;">
+                                                   Is Seen
+                                                </th>
+                                          </tr>
+                                       </thead>
+                                       <tbody class="kt-table-tbody text-dark">
+                                          <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="customer in customers" v-bind:key="customer.id">
+                                                <td class="sorting_1">
+                                                   {{customer.customer_id}}
+                                                </td>
+                                                <td>
+                                                   {{ customer.customer_first_name }}
+                                                </td>
+                                                <td>
+                                                   {{ customer.customer_last_name }}
+                                                </td>
+                                                <td>
+                                                   <span :class="customer.customer_status == '1' ? 'active-status' : 'deactive-status'">
+                                                      <span class="badge" :class="customer.customer_status == '1' ? 'badge-light-success' : 'badge-light-danger'" >
+                                                            {{ customer.customer_status == '1' ? 'Active' : 'InActive' }}
+                                                         </span>
+                                                   </span>
+                                                   <!-- {{ customer.customer_status == '1' ? 'Active' : 'Inactive' }} -->
+                                                </td>
+                                                <td>
+                                                   {{ customer.is_seen == '0' ? 'unseen' : 'seen' }}
+                                                </td>
+                                             
+                                          </tr>
+                                          <tr v-if="customers.length == 0" class="text-center font-size-16"><td colspan="6">No Customer Found</td></tr>
+                                       </tbody>
+                                    </table>
+                                    <!-- <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2" v-if="customers.length != 0">
+                                       <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchcustomers(pagination.prev_page_url)">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                          </button>
+                                       </li>
+      
+                                       <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
+      
+                                       <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchcustomers(pagination.next_page_url)">
+                                          Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                          </svg>
+                                       </button></li>
+                                    </ul> -->
+                              </div>
+                           </div>
+                        </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+      </div>
+      <div class="col-lg-6">
+         <div class="row h-100">
+            <div class="col-12 ">
+               <div class="card card-custom gutter-b bg-white border-0">
+                  <div class="card-body">
+                        <div>
+                           <div class="table-responsive" id="printableTable">
+                           
+                              <div id="productUnitTable_wrapper" class="dataTables_wrapper no-footer">
 
-                             <div class="dataTables_length mb-3" id="productUnitTable_length"><label>Show 
-                             <select name="productUnitTable_length"  class="" v-model="limit" v-on:change="fetchsuppliers()">
-                             <option value="10">10</option>
-                             <option value="25">25</option>
-                             <option value="50">50</option>
-                             <option value="100">100</option>
-                             <option value="200">200</option>
-                             <option value="500">500</option>
-                             <option value="1000">1000</option>
-                             </select> entries</label></div>
+                              <div class="dataTables_length mb-3" id="productUnitTable_length"><label>Show 
+                              <select name="productUnitTable_length"  class="" v-model="limit" v-on:change="fetchsuppliers()">
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                              <option value="200">200</option>
+                              <option value="500">500</option>
+                              <option value="1000">1000</option>
+                              </select> entries</label></div>
 
-                             <div id="productUnitTable_filter" class="dataTables_filter mb-3">
-                                 <label>
-                                     Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchsuppliers()">
-                                     <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
-                                 </label>
-                             </div>
-                                 <table id="productUnitTable" class="display dataTable no-footer" role="grid">
-                                     <thead class="text-body">
-                                         <tr role="row">
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
-                                                 ID
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="supplier: activate to sort column ascending" style="width: 95.5288px;" @click="sorting('first_name')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'first_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'first_name' ? 'sorting_desc' : 'sorting'">
-                                                 First Name
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Phone No: activate to sort column ascending" style="width: 81.8109px;" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'last_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'last_name' ? 'sorting_desc' : 'sorting'" @click="sorting('last_name')">
-                                                 Last Name
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 114.84px;">
-                                                 Address
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 158.462px;">
-                                                 Phone #
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="No Of Product: activate to sort column ascending" style="width: 108.67px;">
-                                                 Mobile
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Stock Quantity: activate to sort column ascending" style="width: 112.917px;">
-                                                 Country
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Stock Quantity: activate to sort column ascending" style="width: 112.917px;">
-                                                 State
-                                             </th>
-                                             <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Stock Quantity: activate to sort column ascending" style="width: 112.917px;">
-                                                 City
-                                             </th>
-                                             <!-- <th v-if="$parent.permissions.includes('supplier-manage')" class="no-sort sorting_disabled" rowspan="1" colspan="1" aria-label="Action" style="width: 53.1891px;">
-                                                 Action
-                                             </th> -->
-                                         </tr>
-                                     </thead>
-                                     <tbody class="kt-table-tbody text-dark">
-                                         <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="supplier in suppliers" v-bind:key="supplier.supplier_id">
-                                             <td class="sorting_1">
-                                                 {{supplier.supplier_id}}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.supplier_first_name }}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.supplier_last_name }}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.supplier_address }}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.supplier_phone }}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.supplier_mobile}}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.country.country_name}}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.state.name}}
-                                             </td>
-                                             <td>
-                                                 {{ supplier.supplier_city}}
-                                             </td>
-                                             <!-- <td v-if="$parent.permissions.includes('supplier-manage')" class="white__nowrap">
-                                                 <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2 mr-3" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editsupplier(supplier)">
-                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                                 </svg>
-                                                     <span class="pl-2">Edit</span>
-                                                 </a>
-                                                 <a class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deletesupplier(supplier.supplier_id)">
-                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line>
-                                                     <line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                                     <span>Delete</span>
-                                                 </a>
-                                             </td> -->
-                                         </tr>
-                                         <tr v-if="suppliers.length == 0" class="text-center font-size-16"><td colspan="10">No Order Found</td></tr>
-                                     </tbody>
-                                 </table>
-                                 <!-- <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
-                                     <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchsuppliers(pagination.prev_page_url)">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
-                                         </button>
-                                     </li>
+                              <div id="productUnitTable_filter" class="dataTables_filter mb-3">
+                                    <label>
+                                       Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchsuppliers()">
+                                       <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
+                                    </label>
+                              </div>
+                                    <table id="productUnitTable" class="display dataTable no-footer" role="grid">
+                                       <thead class="text-body">
+                                          <tr role="row">
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">
+                                                   ID
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="supplier: activate to sort column ascending" style="width: 95.5288px;" @click="sorting('first_name')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'first_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'first_name' ? 'sorting_desc' : 'sorting'">
+                                                   First Name
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Phone No: activate to sort column ascending" style="width: 81.8109px;" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'last_name'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'last_name' ? 'sorting_desc' : 'sorting'" @click="sorting('last_name')">
+                                                   Last Name
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 114.84px;">
+                                                   Address
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 158.462px;">
+                                                   Phone #
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="No Of Product: activate to sort column ascending" style="width: 108.67px;">
+                                                   Mobile
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Stock Quantity: activate to sort column ascending" style="width: 112.917px;">
+                                                   Country
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Stock Quantity: activate to sort column ascending" style="width: 112.917px;">
+                                                   State
+                                                </th>
+                                                <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-label="Stock Quantity: activate to sort column ascending" style="width: 112.917px;">
+                                                   City
+                                                </th>
+                                                <!-- <th v-if="$parent.permissions.includes('supplier-manage')" class="no-sort sorting_disabled" rowspan="1" colspan="1" aria-label="Action" style="width: 53.1891px;">
+                                                   Action
+                                                </th> -->
+                                          </tr>
+                                       </thead>
+                                       <tbody class="kt-table-tbody text-dark">
+                                          <tr class="kt-table-row kt-table-row-level-0 odd" role="row" v-for="supplier in suppliers" v-bind:key="supplier.supplier_id">
+                                                <td class="sorting_1">
+                                                   {{supplier.supplier_id}}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.supplier_first_name }}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.supplier_last_name }}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.supplier_address }}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.supplier_phone }}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.supplier_mobile}}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.country.country_name}}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.state.name}}
+                                                </td>
+                                                <td>
+                                                   {{ supplier.supplier_city}}
+                                                </td>
+                                                <!-- <td v-if="$parent.permissions.includes('supplier-manage')" class="white__nowrap">
+                                                   <a href="javascript:void(0)" class="click-edit btn btn-outline-primary text-nowrap  waves-effect p-2 mr-3" id="click-edit1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Check out more demos" @click="editsupplier(supplier)">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                   </svg>
+                                                      <span class="pl-2">Edit</span>
+                                                   </a>
+                                                   <a class="btn btn-outline-danger text-nowrap  waves-effect p-2" href="#" @click="deletesupplier(supplier.supplier_id)">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x me-25"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                                      <line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                      <span>Delete</span>
+                                                   </a>
+                                                </td> -->
+                                          </tr>
+                                          <tr v-if="suppliers.length == 0" class="text-center font-size-16"><td colspan="10">No Order Found</td></tr>
+                                       </tbody>
+                                    </table>
+                                    <!-- <ul class="pagination pagination-sm mb-0 mt-3 justify-content-end align-items-center px-2">
+                                       <li v-bind:class="[{disabled: !pagination.prev_page_url}]"><button class="page-link" href="#" @click="fetchsuppliers(pagination.prev_page_url)">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg> Previous
+                                          </button>
+                                       </li>
 
-                                     <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
+                                       <li v-for="n in pagination.last_page" :key="n"><button class="page-link text-dark" :class="{ 'active' : pagination.current_page == n  }" href="#">{{ n }}</button></li>
 
-                                     <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchsuppliers(pagination.next_page_url)">
-                                         Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
-                                         </svg>
-                                     </button></li>
-                                 </ul> -->
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
-   </div>
+                                       <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><button class="page-link" href="#" @click="fetchsuppliers(pagination.next_page_url)">
+                                          Next<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline>
+                                          </svg>
+                                       </button></li>
+                                    </ul> -->
+                              </div>
+                           </div>
+                        </div>
+                  </div>
+               </div>
+            </div>
+      </div>
+      </div>
    </div>
 
 
@@ -1799,6 +1799,20 @@
 .match-height > [class*='col'] > .card {
    flex: 1 1 auto;
 }
+.bullet {
+   width: 1rem;
+   height: 1rem;
+   display: inline-block;
+}
+ .bullet {
+   border-radius: 50%;
+}
+ .bullet.bullet-primary {
+   background-color: #7367f0;
+}
+ .bullet.bullet-warning {
+   background-color: #ff9f43;
+}
 /****** TABLE CSS *******/
 .pagination.pagination-sm li button{
    padding: 6px 12px;
@@ -1832,7 +1846,17 @@ table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.st
    background-color: rgba(234, 84, 85, 0.12);
    color: #ea5455 !important;
 }
+/*.table-responsive::-webkit-scrollbar
+{
+	width: 3px;
+	background-color: #F5F5F5;
+}
 
+.table-responsive::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+   width: 3px;
+}*/
 .icon-wrapper svg {
    height: 50px;
    width: 50px;

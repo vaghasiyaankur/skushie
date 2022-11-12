@@ -79,7 +79,7 @@
                                     </div>
                                 </li>
                                 <li class="scrollable-container media-list ps ps--active-y">
-                                    <div class="list-item align-items-center">
+                                    <div class="list-item media align-items-center">
                                         <img class="d-block rounded mr-3" src="/assets/images/avatars/dropdown1-1.png" alt="donuts" width="62">
                                         <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-center">
                                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x ficon cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
@@ -109,7 +109,7 @@
                                             <h5 class="cart-item-price">$374.90</h5>
                                         </div>
                                     </div>
-                                    <div class="list-item align-items-center">
+                                    <div class="list-item media align-items-center">
                                         <img class="d-block rounded mr-3" src="/assets/images/avatars/dropdown1-1.png" alt="donuts" width="62">
                                         <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-center">
                                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x ficon cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
@@ -139,7 +139,7 @@
                                             <h5 class="cart-item-price">$374.90</h5>
                                         </div>
                                     </div>
-                                    <div class="list-item align-items-center">
+                                    <div class="list-item media align-items-center">
                                         <img class="d-block rounded mr-3" src="/assets/images/avatars/dropdown1-1.png" alt="donuts" width="62">
                                         <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-center">
                                             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x ficon cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
@@ -191,8 +191,9 @@
                                         <div class="badge rounded-pill badge-light-primary">6 New</div>
                                     </div>
                                 </li>
-                                <li class="scrollable-container media-list ps ps--active-y"><a class="d-flex" href="#">
-                                        <div class="list-item d-flex align-items-start">
+                                <li class="scrollable-container media-list ps ps--active-y">
+                                    <a class="d-flex" href="#">
+                                        <div class="list-item media d-flex align-items-start">
                                             <div class="me-1">
                                                 <div class="avatar"><img src="/assets/images/avatars/13-small.png" alt="avatar" width="32" height="32"></div>
                                             </div>
@@ -200,8 +201,9 @@
                                                 <p class="media-heading"><span class="font-weight-bold">Congratulation Sam 🎉</span>winner!</p><small class="notification-text"> Won the monthly best seller badge.</small>
                                             </div>
                                         </div>
-                                    </a><a class="d-flex" href="#">
-                                        <div class="list-item d-flex align-items-start">
+                                    </a>
+                                    <a class="d-flex" href="#">
+                                        <div class="list-item media d-flex align-items-start">
                                             <div class="me-1">
                                                 <div class="avatar"><img src="/assets/images/avatars/13-small.png" alt="avatar" width="32" height="32"></div>
                                             </div>
@@ -209,8 +211,9 @@
                                                 <p class="media-heading"><span class="font-weight-bold">New message</span>&nbsp;received</p><small class="notification-text"> You have 10 unread messages</small>
                                             </div>
                                         </div>
-                                    </a><a class="d-flex" href="#">
-                                        <div class="list-item d-flex align-items-start">
+                                    </a>
+                                    <a class="d-flex" href="#">
+                                        <div class="list-item media d-flex align-items-start">
                                             <div class="me-1">
                                                 <div class="avatar bg-light-danger">
                                                     <div class="avatar-content">MD</div>
@@ -221,36 +224,46 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <div class="list-item d-flex align-items-center justify-content-between">
-                                        <h6 class="font-weight-bold mr-auto mb-0 fontsize-16">System Notifications</h6>
-                                        <div class="form-check form-check-primary form-switch">
-                                            <input class="form-check-input" id="systemNotification" type="checkbox" checked="">
-                                            <label class="form-check-label" for="systemNotification"></label>
+                                    <div class="media media d-flex align-items-center p-4" style="border-bottom: 1px solid #ebe9f1;">
+                                        <h5 class="font-weight-bolder mr-auto mb-0"> System Notifications </h5>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" value="true" id="__BVID__3680">
+                                            <label class="custom-control-label" for="__BVID__3680"></label>
                                         </div>
-                                    </div><a class="d-flex" href="#">
-                                        <div class="list-item d-flex align-items-start">
+                                    </div>
+
+                                    <a class="d-flex" href="#">
+                                        <div class="list-item media d-flex align-items-start">
                                             <div class="me-1">
                                                 <div class="avatar bg-light-danger">
-                                                    <div class="avatar-content"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x avatar-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div>
+                                                    <div class="avatar-content">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x avatar-icon"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="list-item-body flex-grow-1">
                                                 <p class="media-heading"><span class="font-weight-bold">Server down</span>&nbsp;registered</p><small class="notification-text"> USA Server is down due to high CPU usage</small>
                                             </div>
                                         </div>
-                                    </a><a class="d-flex" href="#">
-                                        <div class="list-item d-flex align-items-start">
+                                    </a>
+                                    <a class="d-flex" href="#">
+                                        <div class="list-item media d-flex align-items-start">
                                             <div class="me-1">
                                                 <div class="avatar bg-light-success">
-                                                    <div class="avatar-content"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check avatar-icon"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                                                    <div class="avatar-content">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check avatar-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="list-item-body flex-grow-1">
                                                 <p class="media-heading"><span class="font-weight-bold">Sales report</span>&nbsp;generated</p><small class="notification-text"> Last month sales report generated</small>
                                             </div>
                                         </div>
-                                    </a><a class="d-flex" href="#">
-                                        <div class="list-item d-flex align-items-start">
+                                    </a>
+                                    <a class="d-flex" href="#">
+                                        <div class="list-item media d-flex align-items-start">
                                             <div class="me-1">
                                                 <div class="avatar bg-light-warning">
                                                     <div class="avatar-content">
@@ -683,5 +696,32 @@ input::-webkit-inner-spin-button {
 .topbar .dropdown .dropdown-menu.profile__dropdown{
     left: 0 !important;
     top: 9px !important;
+}
+a:hover{
+    text-decoration: none;
+}
+/*======== CUSTOM SWITCH CSS ==========*/
+.custom-switch .custom-control-label:before{
+    height: 1.7rem;
+    width: 3rem;
+    border-radius: 1rem;
+}
+.custom-switch .custom-control-label:after{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+}
+.custom-switch .custom-control-input:checked~.custom-control-label:after {
+    -webkit-transform: translateX(1.4rem);
+    transform: translateX(1.4rem);
+}
+.custom-switch .custom-control-input:checked~.custom-control-label:after {
+    background-color: #fff;
+}
+.custom-control-label::before{
+    top: 0;
+}
+.dropdown-menu-media .media-list .media:hover {
+    background: #f8f8f8;
 }
 </style>

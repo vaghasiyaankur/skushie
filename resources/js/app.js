@@ -8,6 +8,8 @@ import AttachImage from './Components/admin/AttachImage';
 // You need a specific loader for CSS files like https://github.com/webpack/css-loader
 import 'v-toaster/dist/v-toaster.css';
 import VueNestable from 'vue-nestable'
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 
 import VueApexCharts from 'vue-apexcharts'
@@ -15,6 +17,7 @@ import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)
 Vue.use(VueRouter)
 Vue.use(Toaster, { timeout: 2000 })
+Vue.use(Toast);
 Vue.component('input-tag', InputTag)
 Vue.component('attach-image', AttachImage)
 Vue.component('apexchart', VueApexCharts)

@@ -319,6 +319,7 @@ select:hover,select:focus{
                       :permissions="permissions"
                       warehouse="warehouse"
                       globalSettings="globalSettings"
+                      @showNotification="showNotification"
                     ></router-view>
                   </div>
                 </div>
@@ -346,6 +347,8 @@ import Footer from "./partials/Footer";
 import ToolBar from "./partials/ToolBar";
 import ColorPanel from "./partials/ColorPanel";
 import BreadCrumb from "./partials/BreadCrumbs";
+import useToast from "vue-toastification";
+import Notification from './partials/Notification';
 
 export default {
   name: "Main",
@@ -365,6 +368,7 @@ export default {
       permissions: [],
       warehouse: [],
       globalSettings: {},
+      toast : useToast,
     };
   },
   methods: {
@@ -374,6 +378,21 @@ export default {
 					document.getElementById("tc_aside").classList.remove('aside-on');
 					document.getElementById("aside-overlay").classList.remove('active');
         
+    },
+
+    showNotification(message,type) {
+      const content = {
+          component: Notification,
+          props: {
+              message: message,
+              type : type
+          },
+      }
+      if(type == 'success'){
+          this.toast.success(content);
+      }else{
+          this.toast.error(content);
+      }
     },
 
     setBurgerMenu() {
