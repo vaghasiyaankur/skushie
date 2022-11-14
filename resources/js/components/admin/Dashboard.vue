@@ -577,9 +577,9 @@
                         <div class="contract-trigger"></div>
                      </div>
                   </div>
-                  <div class="col-md-4 col-12 budget-wrapper p-4" style="position: relative;">
+                  <div class="col-md-4 col-12 budget-wrapper p-4 position-relative">
                      <div class="btn-group"> 
-                        <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown waves-effect mb-5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown waves-effect mb-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         2020
                         </button>
                         <div class="dropdown-menu">
@@ -673,21 +673,7 @@
                            <div class=" table-responsive" id="printableTable">
                               <div id="productUnitTable_wrapper" class="dataTables_wrapper no-footer">
       
-                                    <div class="dataTables_length mb-3" id="productUnitTable_length"><label>Show
-                                          <select name="productUnitTable_length"  class="" v-model="limit" v-on:change="fetchcustomers()">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                                <option value="200">200</option>
-                                                <option value="500">500</option>
-                                                <option value="1000">1000</option>
-                                          </select> entries</label></div>
-      
-                                    <div id="productUnitTable_filter" class="dataTables_filter mb-3">
-                                    <label>Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchcustomers()"></label>
-                                    <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
-                                    </div>
+                                 <h4 class="mb-3">Top 5 Customer</h4>
                                     <table id="productUnitTable" class="display dataTable no-footer order--table" role="grid">
                                        <thead class="text-body">
                                           <tr role="row">
@@ -761,29 +747,13 @@
             <div class="col-12 ">
                <div class="card card-custom gutter-b bg-white border-0">
                   <div class="card-body">
-                        <div>
-                           <div class="table-responsive" id="printableTable">
+                        <div class="h-100">
+                           <div class="table-responsive h-100" id="printableTable">
                            
                               <div id="productUnitTable_wrapper" class="dataTables_wrapper no-footer">
 
-                              <div class="dataTables_length mb-3" id="productUnitTable_length"><label>Show 
-                              <select name="productUnitTable_length"  class="" v-model="limit" v-on:change="fetchsuppliers()">
-                              <option value="10">10</option>
-                              <option value="25">25</option>
-                              <option value="50">50</option>
-                              <option value="100">100</option>
-                              <option value="200">200</option>
-                              <option value="500">500</option>
-                              <option value="1000">1000</option>
-                              </select> entries</label></div>
-
-                              <div id="productUnitTable_filter" class="dataTables_filter mb-3">
-                                    <label>
-                                       Search:<input type="text" class="" placeholder=""  v-model="searchParameter" @keyup="fetchsuppliers()">
-                                       <button v-if="this.searchParameter != ''" @click="clearSearch">clear</button>
-                                    </label>
-                              </div>
-                                    <table id="productUnitTable" class="display dataTable no-footer" role="grid">
+                                 <h4 class="mb-3">Top 5 Supplier</h4>
+                                    <table id="productUnitTable" class="display dataTable no-footer order--table" role="grid">
                                        <thead class="text-body">
                                           <tr role="row">
                                                 <th class="sorting" tabindex="0"  rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 31.25px;" @click="sorting('id')" :class="(this.$data.sortType == 'asc' || this.$data.sortType == 'ASC') && this.$data.sortBy == 'id'  ? 'sorting_asc' : (this.$data.sortType == 'desc' || this.$data.sortType == 'DESC') && this.$data.sortBy == 'id' ? 'sorting_desc' : 'sorting'">

@@ -81,25 +81,25 @@
                                 <li class="scrollable-container media-list ps ps--active-y">
                                     <div class="list-item media align-items-center">
                                         <img class="d-block rounded mr-3" src="/assets/images/avatars/dropdown1-1.png" alt="donuts" width="62">
-                                        <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-center">
-                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x ficon cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-between position-relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
                                                 <line x1="6" y1="6" x2="18" y2="18"></line>
-                                            </svg> -->
+                                            </svg>
                                             <div class="media-heading">
                                                 <h6 class="cart-item-title"><a class="text-body" href="app-ecommerce-details.html"> Apple watch 5</a></h6><small class="cart-item-by">By Apple</small>
                                             </div>
-                                            <div class="cart-item-qty">
+                                            <div class="cart-item-qty">                                               
                                                 <div class="input-group bootstrap-touchspin">
                                                     <span class="input-group-btn bootstrap-touchspin-injected">
-                                                        <button class="btn btn-primary bootstrap-touchspin-down" type="button">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
+                                                        <button class="btn bootstrap-touchspin-down" type="button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
                                                             <line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                                         </button>
                                                     </span>
                                                     <input class="touchspin-cart form-control" type="number" value="1">
                                                         <span class="input-group-btn bootstrap-touchspin-injected">
-                                                                <button class="btn btn-primary bootstrap-touchspin-up" type="button">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line>
+                                                                <button class="btn bootstrap-touchspin-up" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line>
                                                                         <line x1="5" y1="12" x2="19" y2="12"></line>
                                                                     </svg>
                                                             </button>
@@ -111,25 +111,25 @@
                                     </div>
                                     <div class="list-item media align-items-center">
                                         <img class="d-block rounded mr-3" src="/assets/images/avatars/dropdown1-1.png" alt="donuts" width="62">
-                                        <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-center">
-                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x ficon cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-between position-relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
                                                 <line x1="6" y1="6" x2="18" y2="18"></line>
-                                            </svg> -->
+                                            </svg>
                                             <div class="media-heading">
                                                 <h6 class="cart-item-title"><a class="text-body" href="app-ecommerce-details.html"> Apple watch 5</a></h6><small class="cart-item-by">By Apple</small>
                                             </div>
                                             <div class="cart-item-qty">
                                                 <div class="input-group bootstrap-touchspin">
                                                     <span class="input-group-btn bootstrap-touchspin-injected">
-                                                        <button class="btn btn-primary bootstrap-touchspin-down" type="button">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
+                                                        <button class="btn bootstrap-touchspin-down" type="button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
                                                             <line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                                         </button>
                                                     </span>
                                                     <input class="touchspin-cart form-control" type="number" value="1">
                                                         <span class="input-group-btn bootstrap-touchspin-injected">
-                                                                <button class="btn btn-primary bootstrap-touchspin-up" type="button">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line>
+                                                                <button class="btn bootstrap-touchspin-up" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line>
                                                                         <line x1="5" y1="12" x2="19" y2="12"></line>
                                                                     </svg>
                                                             </button>
@@ -141,25 +141,25 @@
                                     </div>
                                     <div class="list-item media align-items-center">
                                         <img class="d-block rounded mr-3" src="/assets/images/avatars/dropdown1-1.png" alt="donuts" width="62">
-                                        <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-center">
-                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x ficon cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <div class="list-item-body flex-grow-1 d-flex align-items-center justify-content-between position-relative">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cart-item-remove"><line x1="18" y1="6" x2="6" y2="18"></line>
                                                 <line x1="6" y1="6" x2="18" y2="18"></line>
-                                            </svg> -->
+                                            </svg>
                                             <div class="media-heading">
                                                 <h6 class="cart-item-title"><a class="text-body" href="app-ecommerce-details.html"> Apple watch 5</a></h6><small class="cart-item-by">By Apple</small>
                                             </div>
                                             <div class="cart-item-qty">
                                                 <div class="input-group bootstrap-touchspin">
                                                     <span class="input-group-btn bootstrap-touchspin-injected">
-                                                        <button class="btn btn-primary bootstrap-touchspin-down" type="button">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
+                                                        <button class="btn bootstrap-touchspin-down" type="button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
                                                             <line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                                         </button>
                                                     </span>
                                                     <input class="touchspin-cart form-control" type="number" value="1">
                                                         <span class="input-group-btn bootstrap-touchspin-injected">
-                                                                <button class="btn btn-primary bootstrap-touchspin-up" type="button">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line>
+                                                                <button class="btn bootstrap-touchspin-up" type="button">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line>
                                                                         <line x1="5" y1="12" x2="19" y2="12"></line>
                                                                     </svg>
                                                             </button>
@@ -173,7 +173,7 @@
                                       <!-- <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px; height: 350px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 314px;"></div></div> -->
                                 </li>
                                 <li class="dropdown-menu-footer">
-                                    <div class="d-flex justify-content-between mb-1">
+                                    <div class="d-flex justify-content-between mb-3">
                                         <h6 class="fw-bolder mb-0">Total:</h6>
                                         <h6 class="text-primary fw-bolder mb-0">$10,999.00</h6>
                                     </div><a class="btn btn-primary w-100 waves-effect waves-float waves-light" href="app-ecommerce-checkout.html">Checkout</a>
@@ -609,7 +609,7 @@ export default {
 .topbar .nav_container .dropdown-menu-media .media-list .list-item {
     display: flex;
     flex-grow: 1;
-    padding: 0.9rem 1.28rem;
+    padding: 1.9rem 1.28rem;
     border: none;
     border-bottom: 1px solid #ebe9f1;
 }
@@ -626,16 +626,27 @@ export default {
     overflow: hidden;
 }
 .topbar .nav_container ul.navbar-nav li div.input-group {
-    padding: 0.7rem 1rem;
+    padding: 0;    
+    border: 1px solid #d8d6de;
 }
 .bootstrap-touchspin.input-group {
     width: 9rem;
     align-items: center;
+    border-radius: 5px;
+    height: 30px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.form-control-sm {
+    height: 2.142rem;
+    font-size: .857rem;
+    line-height: 1;
+}
+.form-control .btn-sm {
+    padding: 0.25rem 0.5rem;
 }
 /*.bootstrap-touchspin.input-group > .input-group-btn:first-child {
     left: 12px !important;
@@ -643,15 +654,24 @@ input::-webkit-inner-spin-button {
 }*/
 .bootstrap-touchspin .bootstrap-touchspin-injected {
     margin: 0 !important;
+    padding: 0 5px;
 }
 .bootstrap-touchspin.input-group .form-control {
     padding: 5px;
-    height: auto;
+    height: 23px;
     border: 0;
-    background-color: #f8f8f8;
-    border-radius: 0.357rem !important;
+    background-color: transparent;
     text-align: center;
     font-weight: 500;
+    border-right:1px solid #d8d6de;
+    border-left:1px solid #d8d6de;
+    border-radius: 0 !important;
+    margin: 0 5px;
+    font-size: 14px;
+    box-shadow: none;
+}
+.bootstrap-touchspin.input-group .form-control:hover{
+    box-shadow: none !important;
 }
 .input-group > .form-control, .input-group > .form-select {
     position: relative;
@@ -661,9 +681,18 @@ input::-webkit-inner-spin-button {
 }
 .bootstrap-touchspin .bootstrap-touchspin-injected .bootstrap-touchspin-down, .bootstrap-touchspin .bootstrap-touchspin-injected .bootstrap-touchspin-up {
     padding: 0;
-    min-width: 20px;
-    min-height: 20px;
-    border-radius: 0.357rem !important;
+}
+.dropdown-menu-media svg.feather.feather-x.cart-item-remove{
+    position: absolute;
+    right: 0;
+    top: -22px;
+    visibility: hidden;
+    cursor: pointer;
+
+}
+.dropdown-menu-media .media-list .media:hover svg.feather.feather-x.cart-item-remove{
+    visibility: visible !important;
+
 }
 .input-group .btn {
     position: relative;

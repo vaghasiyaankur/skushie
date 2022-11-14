@@ -72,7 +72,6 @@ import Notification from './partials/Notification';
 					password: this.password
 				})
 				.then(res => {
-					console.log(res.data.user.warehouses);
 					if (res.data.status == 'Success') {
 						var warehouse = [];
 						

@@ -1,11 +1,11 @@
 <template>
     <div>
       <div role="alert" class="Vue-Toastification__toast-body d-flex align-items-center">
-          <div class="Vue-Toastification__image mr-3">
+          <div class="Vue-Toastification__image">
             <div class="d-flex align-items-start">
-                <span class="b-avatar mr-3 flex-shrink-0 badge-success rounded-circle" style="width: 3rem; height: 3rem;">
+                <span class="b-avatar mr-3 flex-shrink-0 badge-success rounded-circle" style="width: 2rem; height: 2rem;">
                     <span class="b-avatar-custom d-flex justify-content-center align-items-center h-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-coffee">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-coffee">
                             <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line>
                             <line x1="14" y1="1" x2="14" y2="4"></line>
                         </svg>
@@ -13,14 +13,15 @@
                 </span>
                 <div class="d-flex flex-grow-1">
                     <div>
-                        <h5 class="mb-0 font-weight-bolder toastification-title text-success">Welcome John Doe</h5>
-                        <small class="d-inline-block text-body fontsize-16">You have successfully logged in as admin. Now you can start to explore!</small>
+                        <h5 class="font-weight-bolder toastification-title text-success">Welcome John Doe</h5>
+                        <small class="d-inline-block text-body">You have successfully logged in as admin. Now you can start to explore!</small>
                     </div>
                     <span class="cursor-pointer toastification-close-icon ml-auto ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-body feather feather-x">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-body feather feather-x">
                             <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </span>
+                    
                 </div>
             </div>
             <!-- <svg  v-if="type == 'success'" xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-coffee"><path  d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
@@ -49,9 +50,6 @@
   .Vue-Toastification__close-button{
     display: none;
   }
-  .Vue-Toastification__progress-bar{
-    display: none;
-  }
   .Vue-Toastification__toast-body{
     font-family: 'Montserrat', sans-serif !important;
   }
@@ -60,21 +58,34 @@
   }
   .Vue-Toastification__progress-bar{
       height:0px !important;
-      animation-play-state: paused !important;
+      animation-play-state: running !important;
   }
   .Vue-Toastification__container{
       z-index: 11112;
   }
   .Vue-Toastification__toast{
-      padding:24px !important;
+      padding:14px 24px !important;
+  }
+  .Vue-Toastification__toast-body{
+    line-height: 19px;
   }
   .Vue-Toastification__toast--default{
     background-color: #fff;
     color: #fff;
     box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
   }
+  .Vue-Toastification__toast{
+    max-width: 404px;
+    max-height: 100px;
+  }
   .toastification-title{
-    font-size: 20px;
+    font-size: 18px;
+  }
+  .Vue-Toastification__toast-body{
+    white-space: normal;
+  }
+  .Vue-Toastification__container.top-left, .Vue-Toastification__container.top-right, .Vue-Toastification__container.top-center{
+    top: 0;
   }
   /*.Vue-Toastification__toast--success{
       background: linear-gradient(89.83deg, #ADF3E9 1.03%, #D5FCF9 99.85%);
